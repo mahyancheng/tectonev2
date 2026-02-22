@@ -78,6 +78,34 @@ const HomePage: React.FC = () => {
           as="image"
           href={homepage}
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Tectone Renex Steel Pte Ltd",
+            "url": "https://tectonesteel.com",
+            "telephone": "+6596771199",
+            "email": "tectone777@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "11 Woodlands Cl, #04-40 Woodlands 11",
+              "addressLocality": "Singapore",
+              "postalCode": "737853",
+              "addressCountry": "SG"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            ],
+            "sameAs": [
+              "https://www.facebook.com/share/1FQVZzyYPn/"
+            ]
+          })}
+        </script>
       </Head>
       {/* Hero Section */}
       <section className="relative bg-gray-900 text-white">

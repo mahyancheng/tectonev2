@@ -206,12 +206,26 @@ const SecurityScreenPage: React.FC = () => {
         <meta property="og:title" content="Mosquito Netting & Insect Screen Products | Get a Quote Now | Tectone Renex Steel" />
         <meta property="og:description" content="Browse our high-quality insect screen and mosquito net products designed for Singapore homes." />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
-        <link rel="canonical" href="https://tectonesteel.com/our-product/" />
+        <link rel="canonical" href="https://tectonesteel.com/our-product" />
         <link
           rel="preload"
           as="image"
           href={productPicture}
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })}
+        </script>
       </Head>
       {/* Hero Section */}
       <section className="py-12">
