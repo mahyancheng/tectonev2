@@ -171,7 +171,7 @@ const ProductDetailPage: React.FC = () => {
                     src={product.image || "https://via.placeholder.com/800x600"}
                     alt={product.title}
                     className="absolute inset-0 w-full h-full object-cover object-center"
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                   />
                 </div>

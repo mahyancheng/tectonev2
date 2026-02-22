@@ -47,6 +47,8 @@ const ContactPage: React.FC = () => {
           property="og:description"
           content="Reach out to our team for product inquiries and installation details."
         />
+        <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
         <link rel="canonical" href="https://tectonesteel.com/contact-us" />
       </Head>
