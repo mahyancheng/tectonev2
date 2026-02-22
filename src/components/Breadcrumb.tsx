@@ -104,31 +104,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://tectonesteel.com/",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Blog",
-                item: "https://tectonesteel.com/blog",
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: pageName || "Article",
-                item: `https://tectonesteel.com${location.pathname}`,
-              }
-
-            ],
+            itemListElement: schemaItems,
           })}
         </script>
-
-
       </Head>
 
       {/* ✅ HTML Breadcrumb */}

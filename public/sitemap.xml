@@ -56,12 +56,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tectonesteel.com/our-product/product/109-folding-screen</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://tectonesteel.com/our-product/product/102-fixed-screen</loc>
     <lastmod>2025-12-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -74,63 +68,14 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog list (具体每篇 /blog/:slug 建议之后自动生成 sitemap) -->
+  <!-- Blog list -->
   <url>
-    <loc>https://tectonesteel.com/blog/insect-screen-in-singapore</loc>
+    <loc>https://tectonesteel.com/blog</loc>
     <lastmod>2025-12-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 
-  <url>
-    <loc>https://tectonesteel.com/blog/sliding-door-mosquito-screen-in-singapore</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-   <url>
-    <loc>https://tectonesteel.com/blog/sliding-aluminium-mosquito-net-door-prices</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-   <url>
-    <loc>https://tectonesteel.com/blog/let-the-air-in-keep-the-bugs-out</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://tectonesteel.com/blog/tectone-renex-steel-singapore-strongest-for-insect-screen-systems</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://tectonesteel.com/blog/mosquito-netting-in-singapore</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://tectonesteel.com/blog/mosquito-nets-for-windows-in-singapore</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://tectonesteel.com/blog/aluminium-mosquito-net</loc>
-    <lastmod>2025-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-<!--  -->
   <!-- Contact -->
   <url>
     <loc>https://tectonesteel.com/contact-us</loc>

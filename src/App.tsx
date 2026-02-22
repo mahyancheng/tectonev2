@@ -41,7 +41,6 @@ const PRODUCT_PATHS = [
   "105-security-sliding-door",
   "103-security-casement-window",
   "106-security-sliding-window",
-  "109-folding-screen",
   "102-fixed-screen",
   "108-security-top-hung",
 ];
