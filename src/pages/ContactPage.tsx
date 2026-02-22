@@ -48,7 +48,7 @@ const ContactPage: React.FC = () => {
           content="Reach out to our team for product inquiries and installation details."
         />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
-        <link rel="canonical" href="https://tectonesteel.com/contact-us/" />
+        <link rel="canonical" href="https://tectonesteel.com/contact-us" />
       </Head>
 
       {/* Contact Hero */}

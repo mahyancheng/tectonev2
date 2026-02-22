@@ -4,7 +4,7 @@ import ContactSection from "@/components/ContactSection";
 import { Head } from "vite-react-ssg";
 
 const QuotePage: React.FC = () => {
-  const canonical = "https://tectonesteel.com/quote/";
+  const canonical = "https://tectonesteel.com/quote";
 
   return (
     <>

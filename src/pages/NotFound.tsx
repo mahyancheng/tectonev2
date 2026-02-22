@@ -12,6 +12,7 @@ const NotFound = () => {
   return (
     <>
       <Head>
+        <title>Page Not Found | Tectone Renex Steel</title>
         <meta name="robots" content="noindex, follow" />
       </Head>
       <main className="min-h-[75vh] flex items-center justify-center bg-muted/30 px-6">
