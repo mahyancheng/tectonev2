@@ -27,7 +27,7 @@ export interface BlogPost {
 
 interface ContentContextType {
   blogPosts: BlogPost[];
-  addBlogPost: (post: Omit<BlogPost, "publishedAt">) => Promise<void>;
+  addBlogPost: (post: Omit<BlogPost, "publishedAt" | "updatedAt">) => Promise<void>;
   updateBlogPost: (id: string, post: Partial<BlogPost>) => Promise<void>;
   deleteBlogPost: (id: string) => Promise<void>;
   setFeaturedPost: (id: string) => Promise<void>;
