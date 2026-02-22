@@ -20,6 +20,8 @@ import ContactPage from "./pages/ContactPage";
 import QuotePage from "./pages/QuotePage";
 import ThankYouPage from "./pages/ThankYouPage";
 import BlogPage from "./pages/BlogPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage from "./pages/TermsPage";
 import NotFound from "./pages/NotFound";
 
 // ✅ Dynamic pages
@@ -94,6 +96,8 @@ export const routes: RouteRecord[] = [
       { path: "quote", element: <QuotePage /> },
       { path: "thank-you", element: <ThankYouPage /> },
       { path: "blog", element: <BlogPage /> },
+      { path: "privacy-policy", element: <PrivacyPolicyPage /> },
+      { path: "terms", element: <TermsPage /> },
 
       {
         path: "our-product/product/:productId",
