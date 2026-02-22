@@ -71,7 +71,8 @@ const HomePage: React.FC = () => {
         />
         <meta property="og:title" content="Insect Screen Singapore | Custom Mosquito Netting | Tectone Renex Steel Pte Ltd" />
         <meta property="og:description" content="Premium insect screens with elegant design and superior protection. Get your quote now." />
-        <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://tectonesteel.com/" />
         <link
           rel="preload"

@@ -1,7 +1,7 @@
 
 import React from "react";
 import ContactSection from "@/components/ContactSection";
-import { title } from "process";
+
 import ScreneSolution from "../images/ScreneSolution.webp"
 import { Head } from "vite-react-ssg";
 
@@ -62,6 +62,8 @@ const AboutPage: React.FC = () => {
           property="og:description"
           content="Learn about our commitment to high-quality insect screens and mosquito netting solutions for Singapore homes."
         />
+        <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
         <link
           rel="canonical"

@@ -205,7 +205,8 @@ const SecurityScreenPage: React.FC = () => {
         />
         <meta property="og:title" content="Mosquito Netting & Insect Screen Products | Get a Quote Now | Tectone Renex Steel" />
         <meta property="og:description" content="Browse our high-quality insect screen and mosquito net products designed for Singapore homes." />
-        <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://tectonesteel.com/our-product" />
         <link
           rel="preload"
@@ -383,23 +384,25 @@ const SecurityScreenPage: React.FC = () => {
 
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, index) => (
-              <div
+              <details
                 key={index}
-                className="bg-white rounded-lg shadow-sm overflow-hidden animate-on-scroll"
+                className="bg-white rounded-lg shadow-sm overflow-hidden animate-on-scroll group"
+                open={activeIndex === index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFAQ(index);
+                }}
               >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full text-left p-6 focus:outline-none flex justify-between items-center"
+                <summary
+                  className="w-full text-left p-6 cursor-pointer flex justify-between items-center list-none [&::-webkit-details-marker]:hidden"
                 >
                   <h3 className="text-lg font-semibold">{faq.question}</h3>
                   <span className="ml-2 text-tectone-gold text-xl">
-                    {activeIndex === index ? '-' : '+'}
+                    {activeIndex === index ? '−' : '+'}
                   </span>
-                </button>
-                {activeIndex === index && (
-                  <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
-                )}
-              </div>
+                </summary>
+                <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
+              </details>
             ))}
           </div>
         </div>
