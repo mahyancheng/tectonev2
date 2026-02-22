@@ -164,6 +164,15 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-800 mt-10 pt-5 text-center text-slate-500 text-xs sm:text-sm">
           <p>© {currentYear} Tectone Renex Steel Pte Ltd. All Rights Reserved.</p>
+          <div className="mt-2 flex justify-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-tectone-gold transition-colors">
+              Privacy Policy
+            </Link>
+            <span>·</span>
+            <Link to="/terms" className="hover:text-tectone-gold transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
