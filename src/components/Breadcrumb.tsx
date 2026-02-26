@@ -97,8 +97,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
   }));
 
   return (
-    <>
-      {/* ✅ BreadcrumbList Schema */}
+    <nav aria-label="Breadcrumb" className="bg-gray-100 py-3">
       <Head>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -108,39 +107,35 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
           })}
         </script>
       </Head>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center text-sm flex-wrap gap-x-2 mt-3">
+          {crumbs.map((c, i) => {
+            const isLast = i === crumbs.length - 1;
 
-      {/* ✅ HTML Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="bg-gray-100 py-3">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center text-sm flex-wrap gap-x-2 mt-3">
-            {crumbs.map((c, i) => {
-              const isLast = i === crumbs.length - 1;
-
-              if (!c.clickable || isLast) {
-                return (
-                  <span
-                    key={c.key}
-                    className="breadcrumb-item font-semibold text-tectone-dark"
-                  >
-                    {c.label}
-                  </span>
-                );
-              }
-
+            if (!c.clickable || isLast) {
               return (
-                <Link
+                <span
                   key={c.key}
-                  to={c.to!}
-                  className="breadcrumb-item text-gray-600 hover:text-tectone-gold transition-colors"
+                  className="breadcrumb-item font-semibold text-tectone-dark"
                 >
                   {c.label}
-                </Link>
+                </span>
               );
-            })}
-          </div>
+            }
+
+            return (
+              <Link
+                key={c.key}
+                to={c.to!}
+                className="breadcrumb-item text-gray-600 hover:text-tectone-gold transition-colors"
+              >
+                {c.label}
+              </Link>
+            );
+          })}
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
