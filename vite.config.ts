@@ -4,31 +4,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import VitePluginSitemap from "vite-plugin-sitemap";
 
-/**
- * 把 Vite build 注入的 <link rel="stylesheet" href="...css">
- * 自动改成非阻塞 preload + noscript fallback
- */
-function preloadCssNonBlocking() {
-  return {
-    name: "preload-css-nonblocking",
-    transformIndexHtml(html: string) {
-      return html.replace(
-        /<link\s+rel="stylesheet"([^>]*?)href="([^"]+\.css)"([^>]*)>/g,
-        (_match, before, href, after) => {
-          const attrs = `${before || ""} ${after || ""}`
-            .replace(/\s+/g, " ")
-            .trim();
-
-          return `
-<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'" ${attrs}>
-<noscript><link rel="stylesheet" href="${href}" ${attrs}></noscript>
-`.trim();
-        }
-      );
-    },
-  };
-}
-
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -46,7 +21,7 @@ export default defineConfig(({ mode }) => ({
 
     mode === "development" && componentTagger(),
 
-    preloadCssNonBlocking(),
+    
 
     mode === "production" &&
     VitePluginSitemap({
