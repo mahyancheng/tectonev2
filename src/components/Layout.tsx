@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
 
   const handleScrollAnimations = () => {
+    if (typeof window === "undefined") return;
     const elements = document.querySelectorAll<HTMLElement>(".animate-on-scroll");
     elements.forEach((el) => {
       const rect = el.getBoundingClientRect();
@@ -24,7 +25,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    handleScrollAnimations();
+    // Delay to avoid SSR/CSR className mismatch
+    requestAnimationFrame(() => {
+      handleScrollAnimations();
+    });
     window.addEventListener("scroll", handleScrollAnimations, { passive: true });
     return () => window.removeEventListener("scroll", handleScrollAnimations);
   }, []);
