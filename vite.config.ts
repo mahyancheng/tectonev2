@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
 
     mode === "development" && componentTagger(),
 
-    preloadCssNonBlocking(),
+    
 
     mode === "production" &&
     VitePluginSitemap({
