@@ -25,12 +25,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    // Delay to avoid SSR/CSR className mismatch
-    requestAnimationFrame(() => {
-      handleScrollAnimations();
+    // Double rAF ensures React hydration is fully complete before adding classes
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        handleScrollAnimations();
+      });
     });
     window.addEventListener("scroll", handleScrollAnimations, { passive: true });
-    return () => window.removeEventListener("scroll", handleScrollAnimations);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", handleScrollAnimations);
+    };
   }, []);
 
   // ✅ 可选：你不想某些页面出现 WhatsApp，就在这里控制
