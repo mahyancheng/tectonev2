@@ -5,8 +5,7 @@ import homepage from "../images/HomePage.webp";
 import productPicture from "../images/productPicture.webp";
 import installImg from "../images/install2.webp";
 import beforeGrille from "../images/install3.webp";
-import lockMp4 from "../images/hero/lock.mp4";
-import lockWebm from "../images/hero/lock.webm";
+import lockGif from "../images/hero/lock.gif";
 import FieldReviews from "@/components/FieldReviews";
 import { Head } from "vite-react-ssg";
 import Reveal from "@/components/Reveal";
@@ -112,10 +111,9 @@ const HomePage: React.FC = () => {
               the headline, but still visible. */}
         <div className="absolute right-4 sm:right-6 lg:right-10 bottom-16 sm:bottom-20 z-10 w-[110px] sm:w-[140px] md:w-[180px] lg:w-[220px] aspect-[9/16] pointer-events-none">
           <LockScrollVideo
-            mp4Src={lockMp4}
-            webmSrc={lockWebm}
+            src={lockGif}
             className="w-full h-full"
-            caption="LOCK · RT-MECH · 100 FPS"
+            caption="LOCK · RT-MECH"
           />
         </div>
 

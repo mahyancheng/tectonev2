@@ -1,45 +1,52 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 /**
  * LockScrollVideo
- * A small looping video clip of the Tectone insect-screen lock mechanism.
- * Behaviour:
- *  – Only plays while scrolled into view (IntersectionObserver pause/resume),
- *    so we don't burn CPU on a 100fps loop the user can't see.
- *  – Scroll position drives a subtle opacity + Y translate (the "scroll
- *    animation" feel) — without re-encoding the clip or scrubbing frames.
- *  – Honours `prefers-reduced-motion` — the clip is paused and the scroll
- *    coupling is dropped.
- *  – Sources order is MP4 → WebM. MP4 is the smaller, more compatible asset
- *    in our encode; WebM is a backup.
+ * A small looping clip of the Tectone insect-screen lock mechanism.
  *
- * The video itself stays at its source 100fps; we only downres'd the spatial
- * resolution (480p short edge) during encoding.
+ * The asset is shipped as an optimized GIF (~700 KB, 180px wide, palette-gen
+ * down to 96 colours, 25 fps preserved from source) — rendered via <img>
+ * so it behaves exactly like a native GIF in every browser. Previously
+ * MP4 + WebM via <video>; that introduced rendering quirks on some
+ * devices and locked us out of CSS `image-rendering` tweaks.
+ *
+ * Behaviour:
+ *  – Scroll position drives a subtle Y translate + opacity (the "scroll
+ *    animation" feel) via Framer Motion's `useScroll`.
+ *  – When off-screen we swap the `src` to an empty data URI so the
+ *    browser stops decoding GIF frames — a small CPU/battery win,
+ *    equivalent to <video>'s `pause()`.
+ *  – Honours `prefers-reduced-motion` — the GIF freezes on its first
+ *    frame and the scroll coupling is dropped.
  */
 
 interface LockScrollVideoProps {
-  mp4Src: string;
-  webmSrc?: string;
+  /** Path to the optimized GIF. */
+  src: string;
   /** Tailwind classes for the framed wrapper (size + position). */
   className?: string;
   /** Show the corner mono caption. Defaults true. */
   caption?: string | false;
 }
 
+// 1×1 transparent GIF — used to release the decoder when the clip leaves
+// the viewport without unmounting the element (preserves the wrapper
+// dimensions, no layout shift on re-enter).
+const BLANK_GIF =
+  "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+
 const LockScrollVideo: React.FC<LockScrollVideoProps> = ({
-  mp4Src,
-  webmSrc,
+  src,
   className = "",
-  caption = "LOCK · RT-MECH · 100 FPS",
+  caption = "LOCK · RT-MECH",
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const reduced = useReducedMotion();
+  const [inView, setInView] = useState(false);
 
-  // Scroll-coupled feel: as the wrapper scrolls through the viewport, the
-  // clip subtly drifts up and fades. Range is [enter, leave] expressed
-  // relative to the viewport.
+  // Scroll-coupled feel: the clip subtly drifts up + fades as the wrapper
+  // travels through the viewport. Range: [enter top, leave bottom].
   const { scrollYProgress } = useScroll({
     target: wrapRef,
     offset: ["start end", "end start"],
@@ -47,33 +54,20 @@ const LockScrollVideo: React.FC<LockScrollVideoProps> = ({
   const y = useTransform(scrollYProgress, [0, 1], [24, -24]);
   const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
 
-  // Pause when off-screen
+  // Release the GIF decoder while off-screen.
   useEffect(() => {
-    const v = videoRef.current;
     const wrap = wrapRef.current;
-    if (!v || !wrap) return;
-
-    if (reduced) {
-      v.pause();
-      return;
-    }
-
+    if (!wrap) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
-        if (entry.isIntersecting) {
-          v.play().catch(() => {
-            /* autoplay blocked — ignore */
-          });
-        } else {
-          v.pause();
-        }
+        setInView(entry.isIntersecting);
       },
       { threshold: 0.12 }
     );
     io.observe(wrap);
     return () => io.disconnect();
-  }, [reduced]);
+  }, []);
 
   return (
     <motion.div
@@ -81,21 +75,14 @@ const LockScrollVideo: React.FC<LockScrollVideoProps> = ({
       style={reduced ? undefined : { y, opacity }}
       className={`relative overflow-hidden border border-white/15 bg-black/40 backdrop-blur-sm ${className}`}
     >
-      <video
-        ref={videoRef}
-        muted
-        loop
-        playsInline
-        // We control play/pause via IntersectionObserver above, but autoPlay
-        // also helps Safari prime the decoder for in-viewport playback.
-        autoPlay
-        preload="metadata"
+      <img
+        src={inView ? src : BLANK_GIF}
+        alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="block w-full h-full object-cover"
-      >
-        {webmSrc && <source src={webmSrc} type="video/webm" />}
-        <source src={mp4Src} type="video/mp4" />
-      </video>
+      />
 
       {/* hairline frame-grid texture so it sits inside the design system */}
       <div className="absolute inset-0 frame-grid opacity-30 pointer-events-none" />
