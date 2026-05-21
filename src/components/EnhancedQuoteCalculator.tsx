@@ -117,13 +117,34 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
   };
   const prevStep = () => setStep((p) => p - 1);
 
-  const calculatePrice = () => {
+  /**
+   * Pricing model:
+   *   width_mm × height_mm → mm²
+   *   sqft = mm² / 92,903.04   (1 sqft = 304.8 × 304.8 mm)
+   *   total = sqft × pricePerSqft
+   *
+   * Door rate:   SGD 38 / sqft   (products with id starting in 107/104/105)
+   * Window rate: SGD 29 / sqft   (103/106/102/108)
+   * Source of truth: src/components/ProductData.tsx → pricePerSqft.
+   */
+  const MM2_PER_SQFT = 304.8 * 304.8; // 92903.04
+
+  const calculateBreakdown = () => {
     const w = parseFloat(formData.width);
     const h = parseFloat(formData.height);
-    const area = (isNaN(w) ? 0 : w) * (isNaN(h) ? 0 : h);
-    const baseRate = selectedProduct?.pricePerInch || 0;
-    return (area * baseRate).toFixed(2);
+    const wMm = isNaN(w) ? 0 : w;
+    const hMm = isNaN(h) ? 0 : h;
+    const areaMm2 = wMm * hMm;
+    const areaSqft = areaMm2 / MM2_PER_SQFT;
+    const rate = selectedProduct?.pricePerSqft || 0;
+    const total = areaSqft * rate;
+    return { wMm, hMm, areaSqft, rate, total };
   };
+
+  const calculatePrice = () => calculateBreakdown().total.toFixed(2);
+
+  const formatSqft = (n: number) =>
+    n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   const restrictInvalidNumberInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const invalid = ["e", "E", "+", "-", "*", "%", ","];
@@ -154,8 +175,10 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
             phone: formData.phone,
             postcode: formData.postcode,
             product_type: formData.productType,
-            width: formData.width,
-            height: formData.height,
+            width_mm: formData.width,
+            height_mm: formData.height,
+            area_sqft: calculateBreakdown().areaSqft.toFixed(2),
+            rate_sgd_per_sqft: calculateBreakdown().rate,
             price: formattedPrice,
           }),
         }
@@ -221,7 +244,8 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
       y += 7;
       const w = formData.width.startsWith(".") ? `0${formData.width}` : formData.width;
       const h = formData.height.startsWith(".") ? `0${formData.height}` : formData.height;
-      doc.text(`${w}w x ${h}h`, 20, y);
+      const { areaSqft, rate } = calculateBreakdown();
+      doc.text(`${w}mm × ${h}mm  (${formatSqft(areaSqft)} sqft × SGD ${rate}/sqft)`, 20, y);
       y += 10;
       doc.setFont("helvetica", "italic");
       doc.setTextColor(100);
@@ -315,7 +339,7 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                 </p>
                 {formData.width && formData.height && (
                   <p className="text-xs text-white/55 mt-1">
-                    {formData.width}" wide × {formData.height}" tall
+                    {formData.width} mm × {formData.height} mm
                   </p>
                 )}
               </div>
@@ -434,7 +458,7 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                   </h3>
                   {!compact && (
                     <p className="text-xs text-white/55 mb-5">
-                      Measure the opening in inches. We'll fine-tune on the site visit.
+                      Measure the opening in millimetres. We'll fine-tune on the site visit.
                     </p>
                   )}
 
@@ -455,11 +479,11 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                           value={formData.width}
                           onChange={handleChange}
                           onKeyDown={restrictInvalidNumberInput}
-                          placeholder="36"
-                          className={`input-field pr-10 ${compact ? "!py-2 !text-sm" : ""}`}
+                          placeholder="914"
+                          className={`input-field pr-12 ${compact ? "!py-2 !text-sm" : ""}`}
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-white/40">
-                          in
+                          mm
                         </span>
                       </div>
                     </div>
@@ -479,42 +503,54 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                           value={formData.height}
                           onChange={handleChange}
                           onKeyDown={restrictInvalidNumberInput}
-                          placeholder="80"
-                          className={`input-field pr-10 ${compact ? "!py-2 !text-sm" : ""}`}
+                          placeholder="2032"
+                          className={`input-field pr-12 ${compact ? "!py-2 !text-sm" : ""}`}
                         />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-white/40">
-                          in
+                          mm
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {formData.width && formData.height && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className={`border border-white/10 bg-white/[0.03] ${compact ? "mt-3 px-3.5 py-2.5 flex items-baseline justify-between gap-3" : "mt-6 p-4 rounded-md"}`}
-                    >
-                      {compact ? (
-                        <>
-                          <span className="eyebrow">Estimated</span>
-                          <span className="font-serif text-lg text-white tracking-tight tabular-nums">
-                            {formatPrice(parseFloat(calculatePrice()))}
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <p className="eyebrow mb-1">Estimated</p>
-                          <p className="font-serif text-2xl text-white tracking-tight">
-                            {formatPrice(parseFloat(calculatePrice()))}
-                          </p>
-                          <p className="text-xs text-white/45 mt-1">
-                            Indicative only · Final quote confirmed after on-site measurement
-                          </p>
-                        </>
-                      )}
-                    </motion.div>
-                  )}
+                  {formData.width && formData.height && (() => {
+                    const { wMm, hMm, areaSqft, rate, total } = calculateBreakdown();
+                    const trail = `${wMm} × ${hMm} mm  =  ${formatSqft(areaSqft)} sqft × SGD ${rate}`;
+                    return (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`border border-white/10 bg-white/[0.03] ${compact ? "mt-3 px-3.5 py-2.5" : "mt-6 p-4 rounded-md"}`}
+                      >
+                        {compact ? (
+                          <>
+                            <div className="flex items-baseline justify-between gap-3">
+                              <span className="eyebrow">Estimated</span>
+                              <span className="font-serif text-lg text-white tracking-tight tabular-nums">
+                                {formatPrice(total)}
+                              </span>
+                            </div>
+                            <div className="mt-1 text-[10px] font-mono tracking-[0.10em] text-white/45 tabular-nums">
+                              {trail}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <p className="eyebrow mb-1">Estimated</p>
+                            <p className="font-serif text-2xl text-white tracking-tight tabular-nums">
+                              {formatPrice(total)}
+                            </p>
+                            <p className="mt-2 text-[11px] font-mono tracking-[0.10em] text-white/50 tabular-nums">
+                              {trail}
+                            </p>
+                            <p className="text-xs text-white/45 mt-2">
+                              Indicative only · Final quote confirmed after on-site measurement
+                            </p>
+                          </>
+                        )}
+                      </motion.div>
+                    );
+                  })()}
 
                   <div className={`grid grid-cols-2 gap-3 ${compact ? "mt-4" : "mt-auto pt-8"}`}>
                     <button type="button" onClick={prevStep} className="btn-outline">
@@ -549,43 +585,62 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                   )}
 
                   {/* Order summary — single inline strip in compact, full card otherwise */}
-                  {compact ? (
-                    <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4 px-3.5 py-2.5 border border-white/10 bg-white/[0.03]">
-                      <div className="flex items-baseline gap-2 text-xs">
-                        <span className="eyebrow">Spec</span>
-                        <span className="text-white/85 tabular-nums">
-                          {formData.width || "—"}″ × {formData.height || "—"}″
-                        </span>
+                  {(() => {
+                    const { areaSqft, rate, total } = calculateBreakdown();
+                    if (compact) {
+                      return (
+                        <div className="mb-4 px-3.5 py-2.5 border border-white/10 bg-white/[0.03]">
+                          <div className="flex flex-wrap items-baseline justify-between gap-3">
+                            <div className="flex items-baseline gap-2 text-xs">
+                              <span className="eyebrow">Spec</span>
+                              <span className="text-white/85 tabular-nums">
+                                {formData.width || "—"} × {formData.height || "—"} mm
+                              </span>
+                            </div>
+                            <div className="flex items-baseline gap-2">
+                              <span className="eyebrow">Est.</span>
+                              <span className="font-serif text-lg text-white tracking-tight tabular-nums">
+                                {formatPrice(total)}
+                              </span>
+                            </div>
+                          </div>
+                          {formData.width && formData.height && (
+                            <div className="mt-1 text-[10px] font-mono tracking-[0.10em] text-white/45 tabular-nums">
+                              {formatSqft(areaSqft)} sqft × SGD {rate}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                    return (
+                      <div className="rounded-lg border border-white/10 bg-white/[0.03] divide-y divide-white/10 mb-6">
+                        <div className="flex items-baseline justify-between px-4 py-3">
+                          <span className="eyebrow">Product</span>
+                          <span className="text-sm text-white font-medium tracking-tight text-right max-w-[60%]">
+                            {selectedProduct?.title || "—"}
+                          </span>
+                        </div>
+                        <div className="flex items-baseline justify-between px-4 py-3">
+                          <span className="eyebrow">Dimensions</span>
+                          <span className="text-sm text-white/85 font-medium tabular-nums">
+                            {formData.width || "—"} mm × {formData.height || "—"} mm
+                          </span>
+                        </div>
+                        <div className="flex items-baseline justify-between px-4 py-3">
+                          <span className="eyebrow">Area · rate</span>
+                          <span className="text-sm text-white/85 font-mono tracking-[0.10em] tabular-nums">
+                            {formatSqft(areaSqft)} sqft × SGD {rate}
+                          </span>
+                        </div>
+                        <div className="flex items-baseline justify-between px-4 py-3.5 bg-white/[0.02]">
+                          <span className="eyebrow">Estimated</span>
+                          <span className="font-serif text-xl text-white tracking-tight tabular-nums">
+                            {formatPrice(total)}
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="eyebrow">Est.</span>
-                        <span className="font-serif text-lg text-white tracking-tight tabular-nums">
-                          {formatPrice(parseFloat(calculatePrice()))}
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="rounded-lg border border-white/10 bg-white/[0.03] divide-y divide-white/10 mb-6">
-                      <div className="flex items-baseline justify-between px-4 py-3">
-                        <span className="eyebrow">Product</span>
-                        <span className="text-sm text-white font-medium tracking-tight text-right max-w-[60%]">
-                          {selectedProduct?.title || "—"}
-                        </span>
-                      </div>
-                      <div className="flex items-baseline justify-between px-4 py-3">
-                        <span className="eyebrow">Dimensions</span>
-                        <span className="text-sm text-white/85 font-medium tabular-nums">
-                          {formData.width || "—"}" wide × {formData.height || "—"}" tall
-                        </span>
-                      </div>
-                      <div className="flex items-baseline justify-between px-4 py-3.5 bg-white/[0.02]">
-                        <span className="eyebrow">Estimated</span>
-                        <span className="font-serif text-xl text-white tracking-tight tabular-nums">
-                          {formatPrice(parseFloat(calculatePrice()))}
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                    );
+                  })()}
 
                   <div className={compact ? "grid grid-cols-2 gap-2.5" : "space-y-3.5"}>
                     {[
