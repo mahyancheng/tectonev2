@@ -65,7 +65,7 @@ const InstallationsGallery: React.FC<InstallationsGalleryProps> = ({ productName
             {photoGallery.map((img) => (
               <div
                 key={img.id}
-                className="aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border hover:border-tectone-gold transition-colors cursor-pointer group"
+                className="aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-border hover:border-white/40 transition-colors cursor-pointer group"
               >
                 {/* ✅ 重要优化：第一张图 eager + high priority，其他 lazy */}
                 <img
@@ -91,7 +91,7 @@ const InstallationsGallery: React.FC<InstallationsGalleryProps> = ({ productName
               return (
                 <div
                   key={video.id}
-                  className="rounded-xl overflow-hidden bg-muted border border-border hover:border-tectone-gold transition-all group"
+                  className="rounded-xl overflow-hidden bg-muted border border-border hover:border-white/40 transition-all group"
                 >
                   <div className={`relative w-full ${aspectClass} bg-black`}>
                     {video.embedUrl ? (
@@ -114,7 +114,7 @@ const InstallationsGallery: React.FC<InstallationsGalleryProps> = ({ productName
                       </>
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-                        <div className="w-16 h-16 rounded-full bg-tectone-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                        <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                           <Play className="h-8 w-8 text-white ml-1" fill="white" />
                         </div>
                       </div>

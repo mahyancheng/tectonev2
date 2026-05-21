@@ -23,8 +23,8 @@ function MapCard({ address, zoom = 16, className = "" }: MapCardProps) {
         referrerPolicy="no-referrer-when-downgrade"
       />
       <noscript>
-        <div className="w-full h-full flex items-center justify-center bg-gray-300">
-          <span className="text-gray-600">
+        <div className="w-full h-full flex items-center justify-center bg-white/[0.08]">
+          <span className="text-white/55">
             Map (enable JavaScript to view) — {address}
           </span>
         </div>
@@ -58,7 +58,7 @@ const ContactPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Get In Touch</h1>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-white/55 max-w-3xl mx-auto">
               Have questions about our products or need a custom solution? Contact us today and
               our team will be happy to assist you.
             </p>
@@ -67,7 +67,7 @@ const ContactPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="flex">
-              <div className="bg-white rounded-lg shadow-md p-8 flex-1">
+              <div className="bg-white/[0.03] rounded-lg shadow-md p-8 flex-1">
                 <h2 className="text-2xl font-bold mb-6">Send Us A Message</h2>
                 <ContactForm />
               </div>
@@ -75,20 +75,20 @@ const ContactPage: React.FC = () => {
 
             {/* Contact Info */}
             <div className="animate-fade-in flex">
-              <div className="bg-white rounded-lg shadow-md p-8 flex-1">
+              <div className="bg-white/[0.03] rounded-lg shadow-md p-8 flex-1">
                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
 
                 <div className="space-y-6">
                   {/* Location */}
                   <div className="flex items-start">
-                    <div className="h-10 w-10 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                      <MapPin className="h-5 w-5 text-tectone-gold" />
+                    <div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                      <MapPin className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-base mb-1">Our Location</h3>
                       <a
                         href="https://www.google.com/maps/place/Tectone+Renex+Steel+PTE.LTD/@1.4343653,103.8024411,657m/data=!3m3!1e3!4b1!5s0x31da16faf7b0b4bd:0x58393daf6590b2c8!4m6!3m5!1s0x31da1360cb67a2bd:0xec08568965b74b79!8m2!3d1.4343653!4d103.8024411!16s%2Fg%2F11svpxgdvm?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/55 hover:text-white transition-colors"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -99,14 +99,14 @@ const ContactPage: React.FC = () => {
 
                   {/* Phone */}
                   <div className="flex items-start">
-                    <div className="h-10 w-10 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                      <Phone className="h-5 w-5 text-tectone-gold" />
+                    <div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                      <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-base mb-1">Phone Number</h3>
                       <a
                         href="tel:+6596771199"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/55 hover:text-white transition-colors"
                       >
                         +65 9677 1199
                       </a>
@@ -115,14 +115,14 @@ const ContactPage: React.FC = () => {
 
                   {/* Email */}
                   <div className="flex items-start">
-                    <div className="h-10 w-10 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                      <Mail className="h-5 w-5 text-tectone-gold" />
+                    <div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                      <Mail className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-base mb-1">Email Address</h3>
                       <a
                         href="mailto:tectone777@gmail.com"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/55 hover:text-white transition-colors"
                       >
                         tectone777@gmail.com
                       </a>
@@ -131,12 +131,12 @@ const ContactPage: React.FC = () => {
 
                   {/* Hours */}
                   <div className="flex items-start">
-                    <div className="h-10 w-10 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                      <Clock className="h-5 w-5 text-tectone-gold" />
+                    <div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                      <Clock className="h-5 w-5 text-white" />
                     </div>
                     <div>
                       <h3 className="font-bold text-base mb-1">Business Hours</h3>
-                      <p className="text-gray-600">
+                      <p className="text-white/55">
                         Monday - Friday: 9am - 6pm
                         <br />
                         Sunday & Public Holidays: Closed
@@ -146,14 +146,14 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Social */}
-                <div className="mt-8 pt-8 border-t border-gray-200">
+                <div className="mt-8 pt-8 border-t border-white/10">
                   <h3 className="font-bold text-base mb-4">Connect With Us</h3>
                   <div className="flex space-x-4">
                     <a
                       href="https://www.facebook.com/share/1FQVZzyYPn/?mibextid=wwXIfr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center hover:bg-tectone-gold hover:text-white transition-colors"
+                      className="h-10 w-10 rounded-full bg-white/[0.06] flex items-center justify-center hover:bg-white/10 hover:text-white transition-colors"
                     >
                       <span className="sr-only">Facebook</span>
                       <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -173,19 +173,19 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Map Section (✅ very suitable for cv-auto) */}
-      <section className="py-12 bg-gray-100 cv-auto">
+      <section className="py-12 bg-white/[0.03] cv-auto">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Visit Our Showroom</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-white/55 max-w-3xl mx-auto">
               See our products in person at our showroom. Our experts are available to
               assist you with any questions you may have.
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md overflow-hidden animate-on-scroll">
+          <div className="bg-white/[0.03] rounded-lg shadow-md overflow-hidden animate-on-scroll">
             {/* ✅ one container only */}
-            <div className="w-full h-[500px] bg-gray-200">
+            <div className="w-full h-[500px] bg-white/[0.06]">
               <MapCard
                 address="Tectone Renex Steel PTE.LTD"
                 zoom={17}

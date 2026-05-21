@@ -101,7 +101,7 @@ function CreatePostForm({
   return (
     <div className="space-y-4">
       <div>
-        <Label htmlFor="urlId" className="text-slate-700">
+        <Label htmlFor="urlId" className="text-white/65">
           URL (slug) *
         </Label>
         <Input
@@ -111,7 +111,7 @@ function CreatePostForm({
           placeholder="e.g. insect-screen-singapore-guide"
         />
         {urlId && (
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs text-white/45">
             Will save as: <span className="font-mono">{slugPreview}</span>
           </p>
         )}
@@ -119,7 +119,7 @@ function CreatePostForm({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="title" className="text-slate-700">
+          <Label htmlFor="title" className="text-white/65">
             Title *
           </Label>
           <Input
@@ -130,7 +130,7 @@ function CreatePostForm({
           />
         </div>
         <div>
-          <Label htmlFor="author" className="text-slate-700">
+          <Label htmlFor="author" className="text-white/65">
             Author *
           </Label>
           <Input
@@ -143,7 +143,7 @@ function CreatePostForm({
       </div>
 
       <div>
-        <Label htmlFor="tags" className="text-slate-700">
+        <Label htmlFor="tags" className="text-white/65">
           Tags (comma separated)
         </Label>
         <Input
@@ -155,7 +155,7 @@ function CreatePostForm({
       </div>
 
       <div>
-        <Label htmlFor="excerpt" className="text-slate-700">
+        <Label htmlFor="excerpt" className="text-white/65">
           Excerpt
         </Label>
         <Textarea
@@ -167,7 +167,7 @@ function CreatePostForm({
       </div>
 
       <div>
-        <Label htmlFor="content" className="text-slate-700">
+        <Label htmlFor="content" className="text-white/65">
           Content *
         </Label>
         <Textarea
@@ -179,7 +179,7 @@ function CreatePostForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="imageUrl" className="text-slate-700">
+        <Label htmlFor="imageUrl" className="text-white/65">
           Cover Image URL
         </Label>
         <Input
@@ -216,7 +216,7 @@ function CreatePostForm({
             onClick={onCancel}
             disabled={submitting}
             variant="outline"
-            className="border-slate-300 text-slate-700 hover:bg-slate-100 w-40 rounded-full"
+            className="border-slate-300 text-white/65 hover:bg-slate-100 w-40 rounded-full"
           >
             Cancel
           </Button>
@@ -277,7 +277,7 @@ export default function AdminDashboard() {
             Welcome to <span className="text-amber-500">Tectone Renex Steel</span>{" "}
             <span className="text-slate-900">Admin</span>
           </h2>
-          <p className="text-slate-500 text-lg mt-2">
+          <p className="text-white/45 text-lg mt-2">
             Manage your blog content to educate customers about insect screens & security mesh.
           </p>
         </motion.div>
@@ -324,9 +324,9 @@ export default function AdminDashboard() {
 
             <DialogContent
               className="
-                max-w-2xl max-h-[85vh] overflow-y-auto bg-white border border-slate-200 text-slate-900
+                max-w-2xl max-h-[85vh] overflow-y-auto bg-white/[0.03] border border-slate-200 text-slate-900
                 [&_input]:text-slate-900 [&_textarea]:text-slate-900
-                [&_input]:bg-white [&_textarea]:bg-white
+                [&_input]:bg-white/[0.03] [&_textarea]:bg-white
                 [&_input]:placeholder:text-slate-400 [&_textarea]:placeholder:text-slate-400
                 [&_input]:border-slate-300 [&_textarea]:border-slate-300
                 [&_input:focus]:ring-amber-400 [&_textarea:focus]:ring-amber-400
@@ -354,14 +354,14 @@ export default function AdminDashboard() {
         {/* Posts list */}
         <div className="grid gap-4">
           {blogPosts.map((post) => (
-            <Card key={post.id} className="bg-white border border-slate-200 rounded-2xl">
+            <Card key={post.id} className="bg-white/[0.03] border border-slate-200 rounded-2xl">
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div className="space-y-2">
                     <CardTitle className="text-lg text-slate-900">
                       {post.title}
                     </CardTitle>
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-white/45">
                       by {post.author} •{" "}
                       {post.publishedAt
                         ? new Date(post.publishedAt).toLocaleDateString()
@@ -392,7 +392,7 @@ export default function AdminDashboard() {
                         <Button
                           variant="outline"
                           size="sm"
-                          className="border-slate-300 text-slate-700 hover:bg-slate-100 rounded-full"
+                          className="border-slate-300 text-white/65 hover:bg-slate-100 rounded-full"
                         >
                           <Edit className="w-4 h-4" />
                         </Button>
@@ -400,9 +400,9 @@ export default function AdminDashboard() {
 
                       <DialogContent
                         className="
-                          max-w-2xl max-h-[80vh] overflow-y-auto bg-white border border-slate-200 text-slate-900
+                          max-w-2xl max-h-[80vh] overflow-y-auto bg-white/[0.03] border border-slate-200 text-slate-900
                           [&_input]:text-slate-900 [&_textarea]:text-slate-900
-                          [&_input]:bg-white [&_textarea]:bg-white
+                          [&_input]:bg-white/[0.03] [&_textarea]:bg-white
                           [&_input]:placeholder:text-slate-400 [&_textarea]:placeholder:text-slate-400
                           [&_input]:border-slate-300 [&_textarea]:border-slate-300
                           [&_input:focus]:ring-amber-400 [&_textarea:focus]:ring-amber-400
@@ -418,7 +418,7 @@ export default function AdminDashboard() {
                         {editingPost && (
                           <div className="space-y-4">
                             <div>
-                              <Label htmlFor="edit-title" className="text-slate-700">
+                              <Label htmlFor="edit-title" className="text-white/65">
                                 Title
                               </Label>
                               <Input
@@ -433,7 +433,7 @@ export default function AdminDashboard() {
                             </div>
 
                             <div>
-                              <Label htmlFor="edit-author" className="text-slate-700">
+                              <Label htmlFor="edit-author" className="text-white/65">
                                 Author
                               </Label>
                               <Input
@@ -448,7 +448,7 @@ export default function AdminDashboard() {
                             </div>
 
                             <div>
-                              <Label htmlFor="edit-imageUrl" className="text-slate-700">
+                              <Label htmlFor="edit-imageUrl" className="text-white/65">
                                 Image URL
                               </Label>
                               <Input
@@ -463,7 +463,7 @@ export default function AdminDashboard() {
                             </div>
 
                             <div>
-                              <Label htmlFor="edit-tags" className="text-slate-700">
+                              <Label htmlFor="edit-tags" className="text-white/65">
                                 Tags
                               </Label>
                               <Input
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
                             </div>
 
                             <div>
-                              <Label htmlFor="edit-excerpt" className="text-slate-700">
+                              <Label htmlFor="edit-excerpt" className="text-white/65">
                                 Excerpt
                               </Label>
                               <Textarea
@@ -506,7 +506,7 @@ export default function AdminDashboard() {
                             </div>
 
                             <div>
-                              <Label htmlFor="edit-content" className="text-slate-700">
+                              <Label htmlFor="edit-content" className="text-white/65">
                                 Content
                               </Label>
                               <Textarea
@@ -560,7 +560,7 @@ export default function AdminDashboard() {
               </CardHeader>
 
               <CardContent>
-                <p className="text-slate-700">{post.excerpt}</p>
+                <p className="text-white/65">{post.excerpt}</p>
               </CardContent>
             </Card>
           ))}

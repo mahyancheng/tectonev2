@@ -53,25 +53,27 @@ const DesignedPostBody: React.FC<Props> = ({ html }) => {
       {/* 居中容器 */}
       <div className="mx-auto max-w-3xl">
         {/* 顶部细分割线 */}
-        <hr className="my-6 border-t border-gray-200" />
+        <hr className="my-6 border-t border-white/10" />
 
         {/* 正文：仿截图样式 */}
         <div
           className="
-            prose prose-gray max-w-none
-            prose-p:leading-7 prose-h2:mt-10 prose-h2:mb-3 prose-h2:leading-tight
-            prose-h3:mt-8 prose-h3:mb-2
-            prose-hr:my-6
-            prose-li:my-1
-            prose-strong:text-gray-900
-            prose-a:text-tectone-gold hover:prose-a:text-amber-500
+            prose prose-invert max-w-none
+            prose-p:leading-7 prose-p:text-white/75
+            prose-h2:mt-10 prose-h2:mb-3 prose-h2:leading-tight prose-h2:text-white prose-h2:font-serif prose-h2:tracking-tight
+            prose-h3:mt-8 prose-h3:mb-2 prose-h3:text-white prose-h3:font-serif
+            prose-hr:my-6 prose-hr:border-white/10
+            prose-li:my-1 prose-li:text-white/75
+            prose-strong:text-white
+            prose-a:text-white prose-a:no-underline hover:prose-a:underline hover:prose-a:underline-offset-4
+            prose-blockquote:text-white/80 prose-blockquote:border-white/30
           "
         >
           <div dangerouslySetInnerHTML={{ __html: clean }} />
         </div>
 
         {/* 底部分割线 */}
-        <hr className="my-8 border-t border-gray-200" />
+        <hr className="my-8 border-t border-white/10" />
       </div>
 
       {/* 设计补充样式（无需单独 CSS 文件） */}

@@ -59,7 +59,7 @@ const ThankYouPage: React.FC = () => {
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Button asChild className="bg-tectone-gold hover:bg-tectone-gold/90">
+              <Button asChild className="bg-white/[0.03] hover:bg-white/10/90">
                 <Link to="/" className="flex items-center gap-2">
                   <Home className="w-4 h-4" />
                   Go to Home

@@ -10,26 +10,26 @@ const BlogPageSkeleton: React.FC = () => {
     <section className="py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="h-10 w-56 bg-gray-200 rounded mx-auto mb-4" />
-          <div className="h-4 w-[520px] max-w-full bg-gray-200 rounded mx-auto" />
+          <div className="h-10 w-56 bg-white/[0.06] rounded mx-auto mb-4" />
+          <div className="h-4 w-[520px] max-w-full bg-white/[0.06] rounded mx-auto" />
         </div>
 
         {/* Featured skeleton */}
         <div className="mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-5 bg-white rounded-lg shadow-md overflow-hidden border border-border">
+          <div className="grid grid-cols-1 lg:grid-cols-5 bg-white/[0.03] rounded-lg shadow-md overflow-hidden border border-border">
             <div className="lg:col-span-2">
-              <div className="relative w-full aspect-[16/10] bg-gray-200" />
+              <div className="relative w-full aspect-[16/10] bg-white/[0.06]" />
             </div>
             <div className="lg:col-span-3 p-6 flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <div className="h-6 w-24 bg-gray-200 rounded" />
-                <div className="h-4 w-28 bg-gray-200 rounded" />
+                <div className="h-6 w-24 bg-white/[0.06] rounded" />
+                <div className="h-4 w-28 bg-white/[0.06] rounded" />
               </div>
-              <div className="h-7 w-3/4 bg-gray-200 rounded" />
-              <div className="h-4 w-full bg-gray-200 rounded" />
-              <div className="h-4 w-5/6 bg-gray-200 rounded" />
-              <div className="h-4 w-2/3 bg-gray-200 rounded" />
-              <div className="mt-4 h-5 w-28 bg-gray-200 rounded" />
+              <div className="h-7 w-3/4 bg-white/[0.06] rounded" />
+              <div className="h-4 w-full bg-white/[0.06] rounded" />
+              <div className="h-4 w-5/6 bg-white/[0.06] rounded" />
+              <div className="h-4 w-2/3 bg-white/[0.06] rounded" />
+              <div className="mt-4 h-5 w-28 bg-white/[0.06] rounded" />
             </div>
           </div>
         </div>
@@ -40,19 +40,19 @@ const BlogPageSkeleton: React.FC = () => {
             {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-white rounded-lg shadow-md overflow-hidden border border-border"
+                className="bg-white/[0.03] rounded-lg shadow-md overflow-hidden border border-border"
               >
-                <div className="relative w-full aspect-[16/9] bg-gray-200" />
+                <div className="relative w-full aspect-[16/9] bg-white/[0.06]" />
                 <div className="p-6 flex flex-col gap-3">
                   <div className="flex items-center gap-2">
-                    <div className="h-5 w-20 bg-gray-200 rounded" />
-                    <div className="h-3 w-24 bg-gray-200 rounded" />
+                    <div className="h-5 w-20 bg-white/[0.06] rounded" />
+                    <div className="h-3 w-24 bg-white/[0.06] rounded" />
                   </div>
-                  <div className="h-5 w-3/4 bg-gray-200 rounded" />
-                  <div className="h-4 w-full bg-gray-200 rounded" />
-                  <div className="h-4 w-5/6 bg-gray-200 rounded" />
-                  <div className="h-4 w-2/3 bg-gray-200 rounded" />
-                  <div className="mt-2 h-4 w-24 bg-gray-200 rounded" />
+                  <div className="h-5 w-3/4 bg-white/[0.06] rounded" />
+                  <div className="h-4 w-full bg-white/[0.06] rounded" />
+                  <div className="h-4 w-5/6 bg-white/[0.06] rounded" />
+                  <div className="h-4 w-2/3 bg-white/[0.06] rounded" />
+                  <div className="mt-2 h-4 w-24 bg-white/[0.06] rounded" />
                 </div>
               </div>
             ))}
@@ -118,7 +118,7 @@ const BlogPage: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
-              <p className="text-gray-600 max-w-3xl mx-auto">
+              <p className="text-white/55 max-w-3xl mx-auto">
                 Stay updated with insights about insect screens for Singapore homes.
               </p>
             </div>
@@ -128,10 +128,10 @@ const BlogPage: React.FC = () => {
               <div className="mb-16">
                 <Link
                   to={`/blog/${featured.id}`}
-                  className="grid grid-cols-1 lg:grid-cols-5 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
+                  className="grid grid-cols-1 lg:grid-cols-5 bg-white/[0.03] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
                 >
                   <div className="lg:col-span-2">
-                    <div className="relative w-full aspect-[16/10] bg-gray-100">
+                    <div className="relative w-full aspect-[16/10] bg-white/[0.03]">
                       {featured.imageUrl && (
                         <img
                           src={featured.imageUrl}
@@ -147,11 +147,11 @@ const BlogPage: React.FC = () => {
                   <div className="lg:col-span-3 p-6 flex flex-col">
                     <div className="flex items-center mb-2">
                       {featured.tags?.[0] && (
-                        <span className="bg-tectone-gold/10 text-tectone-gold text-sm px-3 py-1 rounded">
+                        <span className="bg-white/10 text-white text-sm px-3 py-1 rounded">
                           {featured.tags[0]}
                         </span>
                       )}
-                      <span className="text-gray-500 text-sm ml-3">
+                      <span className="text-white/45 text-sm ml-3">
                         {featured.publishedAt
                           ? new Date(featured.publishedAt).toLocaleDateString()
                           : "Draft"}
@@ -162,11 +162,11 @@ const BlogPage: React.FC = () => {
                       {featured.title}
                     </h2>
 
-                    <div className="text-xs sm:text-sm md:text-base text-gray-600 mb-4 md:mb-6 line-clamp-3">
+                    <div className="text-xs sm:text-sm md:text-base text-white/55 mb-4 md:mb-6 line-clamp-3">
                       <DesignedPostBody html={featured.excerpt} />
                     </div>
 
-                    <span className="mt-auto text-tectone-gold font-semibold text-sm">
+                    <span className="mt-auto text-white font-semibold text-sm">
                       Read More →
                     </span>
                   </div>
@@ -181,9 +181,9 @@ const BlogPage: React.FC = () => {
                   <Link
                     key={post.id}
                     to={`/blog/${post.id}`}
-                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+                    className="bg-white/[0.03] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
                   >
-                    <div className="relative w-full aspect-[16/9] bg-gray-100">
+                    <div className="relative w-full aspect-[16/9] bg-white/[0.03]">
                       {post.imageUrl && (
                         <img
                           src={post.imageUrl}
@@ -198,11 +198,11 @@ const BlogPage: React.FC = () => {
                     <div className="p-3 sm:p-4 md:p-6 flex flex-col flex-1">
                       <div className="flex items-center mb-2">
                         {post.tags?.[0] && (
-                          <span className="bg-tectone-gold/10 text-tectone-gold text-xs sm:text-sm px-2.5 py-0.5 rounded">
+                          <span className="bg-white/10 text-white text-xs sm:text-sm px-2.5 py-0.5 rounded">
                             {post.tags[0]}
                           </span>
                         )}
-                        <span className="text-gray-500 text-[10px] sm:text-xs ml-1.5 sm:ml-2">
+                        <span className="text-white/45 text-[10px] sm:text-xs ml-1.5 sm:ml-2">
                           {post.publishedAt
                             ? new Date(post.publishedAt).toLocaleDateString()
                             : "Draft"}
@@ -213,11 +213,11 @@ const BlogPage: React.FC = () => {
                         {post.title}
                       </h3>
 
-                      <div className="text-[11px] sm:text-sm md:text-base text-gray-600 line-clamp-3 mb-3 md:mb-4">
+                      <div className="text-[11px] sm:text-sm md:text-base text-white/55 line-clamp-3 mb-3 md:mb-4">
                         <DesignedPostBody html={post.excerpt} />
                       </div>
 
-                      <span className="mt-auto text-tectone-gold font-semibold text-xs sm:text-sm">
+                      <span className="mt-auto text-white font-semibold text-xs sm:text-sm">
                         Read More →
                       </span>
                     </div>

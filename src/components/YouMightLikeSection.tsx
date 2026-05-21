@@ -36,7 +36,7 @@ const YouMightLikeSection: React.FC<YouMightLikeSectionProps> = ({
             <Link
               key={product.id}
               to={`/our-product/product/${product.id}`}
-              className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-xl hover:border-tectone-gold transition-all duration-300"
+              className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-xl hover:border-white/40 transition-all duration-300"
             >
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
@@ -47,13 +47,13 @@ const YouMightLikeSection: React.FC<YouMightLikeSectionProps> = ({
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-tectone-gold transition-colors">
+                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-white transition-colors">
                   {product.title}
                 </h3>
                 <p className="text-muted-foreground text-sm line-clamp-2 mb-4">
                   {product.description.split("\n")[0]}
                 </p>
-                <span className="inline-flex items-center text-tectone-gold font-semibold text-sm group-hover:gap-2 transition-all">
+                <span className="inline-flex items-center text-white font-semibold text-sm group-hover:gap-2 transition-all">
                   Learn More <ArrowRight className="h-4 w-4 ml-1" />
                 </span>
               </div>

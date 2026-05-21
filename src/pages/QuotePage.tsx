@@ -41,7 +41,7 @@ const QuotePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Get Your Custom Quote</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-white/55 max-w-2xl mx-auto">
               Calculate your solution cost in just 3 simple steps. Our team will contact you with a
               detailed proposal.
             </p>
@@ -55,7 +55,7 @@ const QuotePage: React.FC = () => {
           {/* Help CTA */}
           <div className="text-center mt-12">
             <h2 className="text-2xl font-semibold mb-3">Need Help?</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-white/55 mb-6">
               Our experts are here to help you choose the perfect insect screen solution.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

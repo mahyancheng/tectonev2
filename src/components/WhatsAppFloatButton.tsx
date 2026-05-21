@@ -27,7 +27,7 @@ export default function WhatsAppChatWidget({
     <div className="fixed bottom-5 right-5 z-[9999]">
       {/* ✅ 弹窗用 absolute 挂在按钮上面：不会影响按钮位置 */}
       {open && (
-        <div className="absolute bottom-full right-0 mb-3 w-[320px] rounded-2xl shadow-2xl border bg-white overflow-hidden">
+        <div className="absolute bottom-full right-0 mb-3 w-[320px] rounded-2xl shadow-2xl border border-white/15 bg-black/95 backdrop-blur-xl overflow-hidden">
           {/* Header */}
           <div className="px-4 py-3 bg-[#25D366] text-white flex justify-between items-center">
             <div>
@@ -36,7 +36,7 @@ export default function WhatsAppChatWidget({
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="h-8 w-8 grid place-items-center rounded-full hover:bg-white/20"
+              className="h-8 w-8 grid place-items-center rounded-full text-white hover:bg-white/15"
               aria-label="Close chat"
             >
               ✕
@@ -45,7 +45,7 @@ export default function WhatsAppChatWidget({
 
           {/* Body */}
           <div className="p-4">
-            <div className="mb-3 text-sm bg-gray-100 rounded-xl px-3 py-2 inline-block">
+            <div className="mb-3 text-sm text-white/85 bg-white/[0.06] border border-white/10 rounded-xl px-3 py-2 inline-block">
               Hi 👋 How can we help you?
             </div>
 
@@ -53,7 +53,7 @@ export default function WhatsAppChatWidget({
               value={msg}
               onChange={(e) => setMsg(e.target.value)}
               rows={3}
-              className="w-full border rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-[#25D366]/40"
+              className="w-full bg-white/[0.04] border border-white/15 rounded-xl px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-[#25D366]/40 transition-colors"
             />
 
             <a
@@ -65,7 +65,7 @@ export default function WhatsAppChatWidget({
               Continue on WhatsApp
             </a>
 
-            <div className="mt-2 text-[11px] text-gray-400">
+            <div className="mt-2 text-[11px] text-white/45">
               Opens WhatsApp Web / App
             </div>
           </div>

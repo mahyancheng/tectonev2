@@ -3,16 +3,16 @@
 
   const ContactSection = () => {
     return (
-      <section className="py-20 bg-secondary">
+      <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               {/* LEFT INFO */}
               <div>
-                {/* ✅ 正确的 Section 主标题：h2 */}
-                <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+                <p className="eyebrow mb-4">Contact</p>
+                <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-5">Get In Touch</h2>
 
-                <p className=" mb-6">
+                <p className="text-white/65 leading-relaxed mb-8 max-w-md">
                   Have questions about our products or need a custom solution? Contact us today and
                   our team will be happy to assist you.
                 </p>
@@ -28,7 +28,7 @@
                       <h3 className="font-bold text-base">Our Location</h3>
                       <a
                         href="https://www.google.com/maps/place/Tectone+Renex+Steel+PTE.LTD/@1.4343653,103.8024411,657m/data=!3m3!1e3!4b1!5s0x31da16faf7b0b4bd:0x58393daf6590b2c8!4m6!3m5!1s0x31da1360cb67a2bd:0xec08568965b74b79!8m2!3d1.4343653!4d103.8024411!16s%2Fg%2F11svpxgdvm"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/60 hover:text-white transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -56,7 +56,7 @@
                       <h3 className="font-bold text-base">Phone</h3>
                       <a
                         href="tel:+6596771199"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/60 hover:text-white transition-colors"
                       >
                         +65-9677 1199
                       </a>
@@ -80,7 +80,7 @@
                       <h3 className="font-bold text-base">Email</h3>
                       <a
                         href="mailto:tectone777@gmail.com"
-                        className="text-gray-600 hover:text-tectone-gold transition-colors"
+                        className="text-white/60 hover:text-white transition-colors"
                       >
                         tectone777@gmail.com
                       </a>

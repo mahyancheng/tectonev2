@@ -99,7 +99,7 @@ const BlogPostDetail: React.FC = () => {
       <article className="py-12">
         <div className="container mx-auto px-4">
           {/* ✅ Cover：固定高度 + 背景占位，避免图片到位时抖动 */}
-          <div className="rounded-lg overflow-hidden shadow-md mb-8 bg-gray-100">
+          <div className="rounded-lg overflow-hidden shadow-md mb-8 bg-white/[0.03]">
             {post.imageUrl ? (
               <img
                 src={post.imageUrl}
@@ -117,17 +117,17 @@ const BlogPostDetail: React.FC = () => {
             {/* Meta */}
             <div className="flex items-center gap-3 mb-3">
               {post.tags?.[0] && (
-                <span className="bg-tectone-gold/10 text-tectone-gold text-xs font-semibold px-2.5 py-1 rounded">
+                <span className="bg-white/10 text-white text-xs font-semibold px-2.5 py-1 rounded">
                   {post.tags[0]}
                 </span>
               )}
-              <span className="text-gray-500 text-xs">
+              <span className="text-white/45 text-xs">
                 {post.publishedAt
                   ? new Date(post.publishedAt).toLocaleDateString()
                   : "Draft"}
               </span>
               {post.author && (
-                <span className="text-gray-500 text-xs">· {post.author}</span>
+                <span className="text-white/45 text-xs">· {post.author}</span>
               )}
             </div>
 
@@ -136,7 +136,7 @@ const BlogPostDetail: React.FC = () => {
             </h1>
 
             {(post.excerpt || post.content) && (
-              <p className="text-gray-600 mb-8">
+              <p className="text-white/55 mb-8">
                 {htmlToPlainText(post.excerpt || post.content, 220)}
               </p>
             )}
@@ -160,7 +160,7 @@ const BlogPostDetail: React.FC = () => {
                       <Link
                         key={rp.id}
                         to={`/blog/${rp.id}`}
-                        className="group rounded-lg overflow-hidden border border-border bg-white hover:shadow-md transition"
+                        className="group rounded-lg overflow-hidden border border-border bg-white/[0.03] hover:shadow-md transition"
                       >
                         {rp.imageUrl ? (
                           <img
@@ -171,22 +171,22 @@ const BlogPostDetail: React.FC = () => {
                             decoding="async"
                           />
                         ) : (
-                          <div className="h-40 w-full bg-gray-100" />
+                          <div className="h-40 w-full bg-white/[0.03]" />
                         )}
 
                         <div className="p-4">
                           {rp.tags?.[0] && (
-                            <span className="bg-tectone-gold/10 text-tectone-gold text-[11px] font-semibold px-2 py-0.5 rounded">
+                            <span className="bg-white/10 text-white text-[11px] font-semibold px-2 py-0.5 rounded">
                               {rp.tags[0]}
                             </span>
                           )}
                           <h4 className="mt-2 font-semibold">{rp.title}</h4>
                           {(rp.excerpt || rp.content) && (
-                            <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            <p className="text-sm text-white/55 mt-1 line-clamp-2">
                               {htmlToPlainText(rp.excerpt || rp.content, 110)}
                             </p>
                           )}
-                          <span className="mt-3 inline-flex items-center text-tectone-gold text-sm">
+                          <span className="mt-3 inline-flex items-center text-white text-sm">
                             Read More →
                           </span>
                         </div>
@@ -198,7 +198,7 @@ const BlogPostDetail: React.FC = () => {
             )}
 
             <div className="mt-10">
-              <Link to="/blog" className="text-tectone-gold underline">
+              <Link to="/blog" className="text-white underline">
                 ← Back to Blog
               </Link>
             </div>

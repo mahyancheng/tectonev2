@@ -236,11 +236,11 @@ const SecurityScreenPage: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
                 Premium Insect Screen Solutions
               </h1>
-              <p className="text-gray-600 mb-6">
+              <p className="text-white/55 mb-6">
                 Our comprehensive range of <b>aluminium insect screens</b> offers elegant, grille-free protection from mosquitoes
                 and pests while enhancing the look of modern homes and businesses in Singapore.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-white/55 mb-6">
                 Each screen is <b>custom-manufactured to your exact door and window dimensions</b>, ensuring a seamless fit and lasting durability.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -253,7 +253,7 @@ const SecurityScreenPage: React.FC = () => {
               </div>
             </div>
             <div className="relative animate-fade-in">
-              <div className="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
+              <div className="aspect-[4/3] bg-white/[0.06] rounded-lg overflow-hidden">
                 <img
                   src={productPicture}
                   alt="Insect screen installation"
@@ -266,7 +266,7 @@ const SecurityScreenPage: React.FC = () => {
       </section>
 
       {/* Product Quote Calculator */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white/[0.03]">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Get a Quick Quote</h2>
@@ -282,7 +282,7 @@ const SecurityScreenPage: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Insect Screen Product Range
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-white/55 max-w-3xl mx-auto">
               Discover our comprehensive collection of <b>premium aluminium insect screens</b>, crafted for modern Singapore homes and businesses.
               Each design keeps mosquitoes and pests out while maintaining sleek, grille-free aesthetics and lasting durability.
 
@@ -294,7 +294,7 @@ const SecurityScreenPage: React.FC = () => {
               <Link
                 to={`/our-product/product/${product.id}`}
                 key={product.id}
-                className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                className="group block bg-white/[0.03] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="h-48 overflow-hidden">
                   <img
@@ -309,11 +309,11 @@ const SecurityScreenPage: React.FC = () => {
                 <div className="p-6 flex flex-col justify-between min-h-[360px]">
                   <div>
                     <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                    <p className="text-gray-600 mb-4">{product.description}</p>
-                    <ul className="text-sm text-gray-500">
+                    <p className="text-white/55 mb-4">{product.description}</p>
+                    <ul className="text-sm text-white/45">
                       {product.features.map((f, i) => (
                         <li key={i} className="flex items-center mb-1">
-                          <Check className="h-4 w-4 text-tectone-gold mr-2" />
+                          <Check className="h-4 w-4 text-white mr-2" />
                           {f}
                         </li>
                       ))}
@@ -322,7 +322,7 @@ const SecurityScreenPage: React.FC = () => {
 
                   {/* Read More section */}
                   <div className="pt-4">
-                    <p className="text-sm font-semibold text-tectone-gold hover:text-tectone-gold/40 transition-colors duration-200">
+                    <p className="text-sm font-semibold text-white hover:text-white/40 transition-colors duration-200">
                       Read More &gt;
                     </p>
 
@@ -335,13 +335,13 @@ const SecurityScreenPage: React.FC = () => {
       </section>
 
       {/* Features */}
-      <section className="cv-auto py-16 bg-gray-50">
+      <section className="cv-auto py-16 bg-white/[0.03]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Key Features
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-white/55 max-w-3xl mx-auto">
               Our aluminium insect screens blend elegant design with advanced engineering to keep pests out and fresh air
               flowing—perfect for Singapore’s modern homes and businesses.
             </p>
@@ -353,14 +353,14 @@ const SecurityScreenPage: React.FC = () => {
               return (
                 <div
                   key={index}
-                  className="border border-border rounded-lg p-6 transition-all hover:border-tectone-gold hover:shadow-md bg-card animate-on-scroll"
+                  className="border border-border rounded-lg p-6 transition-all hover:border-white/40 hover:shadow-md bg-card animate-on-scroll"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  <div className="h-14 w-14 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-4">
-                    <Icon className="h-8 w-8 text-tectone-gold" />
+                  <div className="h-14 w-14 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                    <Icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.desc}</p>
+                  <p className="text-white/55">{feature.desc}</p>
                 </div>
               );
             })}
@@ -373,11 +373,11 @@ const SecurityScreenPage: React.FC = () => {
         <BuyingProcessRoadmap />
       </section>
       {/* FAQ */}
-      <section className="cv-auto py-16 bg-gray-100">
+      <section className="cv-auto py-16 bg-white/[0.03]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-white/55 max-w-3xl mx-auto">
               Find answers to common questions about our insect screen solutions.
             </p>
           </div>
@@ -386,7 +386,7 @@ const SecurityScreenPage: React.FC = () => {
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="bg-white rounded-lg shadow-sm overflow-hidden animate-on-scroll group"
+                className="bg-white/[0.03] rounded-lg shadow-sm overflow-hidden animate-on-scroll group"
                 open={activeIndex === index}
                 onClick={(e) => {
                   e.preventDefault();
@@ -397,11 +397,11 @@ const SecurityScreenPage: React.FC = () => {
                   className="w-full text-left p-6 cursor-pointer flex justify-between items-center list-none [&::-webkit-details-marker]:hidden"
                 >
                   <h3 className="text-lg font-semibold">{faq.question}</h3>
-                  <span className="ml-2 text-tectone-gold text-xl">
+                  <span className="ml-2 text-white text-xl">
                     {activeIndex === index ? '−' : '+'}
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
+                <div className="px-6 pb-6 text-white/55">{faq.answer}</div>
               </details>
             ))}
           </div>
@@ -420,10 +420,10 @@ const SecurityScreenPage: React.FC = () => {
 
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/quote" className="btn-primary bg-tectone-gold hover:bg-tectone-gold/90">
+            <Link to="/quote" className="btn-primary bg-white/[0.03] hover:bg-white/10/90">
               Request a Quote
             </Link>
-            <Link to="/contact-us" className="btn-outline border-white text-white hover:bg-white hover:text-tectone-black">
+            <Link to="/contact-us" className="btn-outline border-white text-white hover:bg-white/[0.03] hover:text-tectone-black">
               Contact Us
             </Link>
           </div>

@@ -43,33 +43,33 @@ const SecuritySwingDoorPage: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
                 Security Swing Door
               </h1>
-              <p className="text-gray-600 mb-6">
+              <p className="text-white/55 mb-6">
                 Our premium security swing doors offer uncompromising protection with elegant design.
                 Featuring advanced triple locking systems and reinforced construction, these doors
                 provide maximum security without sacrificing aesthetics.
               </p>
 
               {/* Perfect For Section */}
-              <div className="mb-6 bg-gray-50 rounded-xl p-5 shadow-inner">
-                <h2 className="text-xl font-semibold mb-3 text-gray-800">Perfect For</h2>
+              <div className="mb-6 bg-white/[0.03] rounded-xl p-5 shadow-inner">
+                <h2 className="text-xl font-semibold mb-3 text-white/85">Perfect For</h2>
                 <div className="space-y-3">
                   {perfectFor.map((item, index) => (
                     <div key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-tectone-gold mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700 leading-snug font-semibold">{item}</span>
+                      <Check className="h-5 w-5 text-white mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-white/70 leading-snug font-semibold">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Features Section */}
-              <div className="mb-6 bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                <h2 className="text-xl font-semibold mb-3 text-gray-800">Key Features</h2>
+              <div className="mb-6 bg-white/[0.03] border border-white/10 rounded-xl p-5 shadow-sm">
+                <h2 className="text-xl font-semibold mb-3 text-white/85">Key Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {features.map((feature, index) => (
                     <div key={index} className="flex items-start">
-                      <Check className="h-5 w-5 text-tectone-gold mr-2 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700 leading-snug font-semibold">{feature}</span>
+                      <Check className="h-5 w-5 text-white mr-2 mt-1 flex-shrink-0" />
+                      <span className="text-white/70 leading-snug font-semibold">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -86,7 +86,7 @@ const SecuritySwingDoorPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden shadow-2xl">
+              <div className="aspect-[4/3] bg-white/[0.06] rounded-lg overflow-hidden shadow-2xl">
                 <img
                   src={SwingDoor}
                   alt="Tectone Security Swing Door"
@@ -99,16 +99,16 @@ const SecuritySwingDoorPage: React.FC = () => {
       </section>
 
       {/* Specifications */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white/[0.03]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-8 text-center">Technical Specifications</h2>
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white/[0.03] rounded-lg shadow-md p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {specifications.map((spec, index) => (
-                  <div key={index} className="flex justify-between border-b border-gray-200 pb-2">
-                    <span className="font-semibold text-gray-700">{spec.label}:</span>
-                    <span className="text-gray-600">{spec.value}</span>
+                  <div key={index} className="flex justify-between border-b border-white/10 pb-2">
+                    <span className="font-semibold text-white/70">{spec.label}:</span>
+                    <span className="text-white/55">{spec.value}</span>
                   </div>
                 ))}
               </div>
@@ -128,7 +128,7 @@ const SecuritySwingDoorPage: React.FC = () => {
       </section>
 
       {/* Features Detail */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white/[0.03]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -137,34 +137,34 @@ const SecuritySwingDoorPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="h-14 w-14 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-4">
-                <Shield className="h-8 w-8 text-tectone-gold" />
+            <div className="bg-white/[0.03] p-6 rounded-lg shadow-sm">
+              <div className="h-14 w-14 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                <Shield className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Maximum Security</h3>
-              <p className="text-gray-600">
+              <p className="text-white/55">
                 Triple locking system with reinforced hinges and anti-drill protection
                 provides unmatched security for your property.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="h-14 w-14 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-4">
-                <Lock className="h-8 w-8 text-tectone-gold" />
+            <div className="bg-white/[0.03] p-6 rounded-lg shadow-sm">
+              <div className="h-14 w-14 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                <Lock className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Advanced Locking</h3>
-              <p className="text-gray-600">
+              <p className="text-white/55">
                 Multi-point locking system with emergency release ensures both security
                 and safety in all situations.
               </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="h-14 w-14 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-4">
-                <Wrench className="h-8 w-8 text-tectone-gold" />
+            <div className="bg-white/[0.03] p-6 rounded-lg shadow-sm">
+              <div className="h-14 w-14 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                <Wrench className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Professional Installation</h3>
-              <p className="text-gray-600">
+              <p className="text-white/55">
                 Expert installation by certified technicians ensures perfect fit and
                 optimal performance for years to come.
               </p>

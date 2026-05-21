@@ -63,10 +63,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				/**
+				 * Monochrome remap: keeping the `tectone-*` token names so 27+
+				 * files don't need find-replace, but the values are now pure
+				 * black / grey / white per the redesigned brief. `gold` and
+				 * `dark` are intentionally retired-but-aliased to white.
+				 */
 				tectone: {
 					black: '#000000',
-					gold: '#C5A059',
-					dark:"#9a7c00", 
+					gold: '#FFFFFF',
+					dark: '#9CA3AF',
 				}
 			},
 			borderRadius: {
@@ -120,17 +126,39 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'wa-pulse': {
+					'0%, 100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)' },
+					'70%': { boxShadow: '0 0 0 16px rgba(37, 211, 102, 0)' }
+				},
+				'live-blink': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.45' }
 				}
-				
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out forwards',
-				'slide-in': 'slide-in 0.4s ease-out forwards'
+				'slide-in': 'slide-in 0.4s ease-out forwards',
+				'wa-pulse': 'wa-pulse 2s infinite',
+				'live-blink': 'live-blink 1.8s ease-in-out infinite'
 			},
 			fontFamily: {
-				'inter': ['Inter', 'sans-serif'],
+				inter: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				serif: ['Fraunces', 'Georgia', 'serif'],
+				display: ['Fraunces', 'Georgia', 'serif'],
+			},
+			backgroundImage: {
+				'mesh-grid':
+					"linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+				'mesh-dot':
+					"radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+			},
+			backgroundSize: {
+				'mesh-grid': '32px 32px',
+				'mesh-dot': '24px 24px',
 			}
 		}
 	},

@@ -31,7 +31,7 @@ const TermsPage: React.FC = () => {
               By accessing and using the website at{" "}
               <a
                 href="https://tectonesteel.com"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 tectonesteel.com
               </a>{" "}
@@ -142,7 +142,7 @@ const TermsPage: React.FC = () => {
               Email:{" "}
               <a
                 href="mailto:tectone777@gmail.com"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 tectone777@gmail.com
               </a>
@@ -150,7 +150,7 @@ const TermsPage: React.FC = () => {
               Phone:{" "}
               <a
                 href="tel:+6596771199"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 +65 9677 1199
               </a>

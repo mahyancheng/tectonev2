@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EnhancedQuoteCalculator from "../components/EnhancedQuoteCalculator";
-import ContactForm from "../components/ContactForm";
-import { Shield, Zap, Wind, Layers, Settings, MapPin } from "lucide-react";
+import { Shield, Zap, Wind, Layers, Settings, MapPin, ArrowRight } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
-import homepage from '../images/HomePage.webp'; // adjust the path if needed
-import productPicture from "../images/productPicture.webp"
+import homepage from "../images/HomePage.webp";
+import productPicture from "../images/productPicture.webp";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import { Head } from "vite-react-ssg";
 
@@ -13,49 +12,33 @@ const features = [
   {
     icon: <Shield size={20} />,
     title: "Elegant Design",
-    desc:
-      <>
-        Grille-free, <strong>sleek aluminum frames</strong> blend seamlessly with contemporary architecture, creating a premium look that elevates any Singapore home or business.
-      </>
+    desc: "Grille-free aluminium frames that recede into the architecture. Not the eyesore you've come to expect from a security screen.",
   },
   {
     icon: <Zap size={20} />,
-    title: "Superior Protection",
-    desc:
-      <>
-        Engineered with <strong>security-grade stainless-steel mesh</strong>, our insect screens exceed international safety standards—blocking mosquitoes, flies, and even rodents without compromising style.
-      </>
+    title: "Real Protection",
+    desc: "Stainless-steel mesh certified to international standards. Stops mosquitoes, lizards, and intruders without compromising the view.",
   },
   {
     icon: <Wind size={20} />,
-    title: "Optimal Ventilation",
-    desc:
-      <>
-        Let fresh air and natural light flow freely while keeping pests out. The fine <strong>security mesh</strong> ensures comfort and unobstructed views.
-      </>
+    title: "Open Windows",
+    desc: "Doors and windows can stay open all day. Air moves freely. The mesh is fine enough that you stop noticing it's there.",
   },
   {
     icon: <Layers size={20} />,
-    title: "Built for Singapore’s Climate",
-    desc:
-      <>
-        Crafted from <strong>durable, corrosion-resistant materials</strong>, these screens withstand humidity, heat, and heavy rain for long-lasting performance.
-      </>
+    title: "Built for the Climate",
+    desc: "Corrosion-resistant for Singapore humidity, salt air, and monsoon rain. Engineered to last a decade outdoors.",
   },
   {
     icon: <Settings size={20} />,
-    title: "Custom-Fit Solutions",
-    desc:
-      "Every door and window is precisely measured for a perfect fit. Our expert installation team delivers a smooth finish and provides ongoing support.",
+    title: "Made to Measure",
+    desc: "Every screen is measured on-site and fabricated to the millimetre. Installed in hours with minimal disruption.",
   },
   {
     icon: <MapPin size={20} />,
     title: "Local Expertise",
-    desc:
-      <>
-        Designed specifically for <strong>Singaporean homes and businesses</strong>, we combine modern aesthetics with a deep understanding of local architectural and security needs.
-      </>
-  }
+    desc: "Designed in Singapore for Singapore homes — HDB, condo, landed. We've installed in every district.",
+  },
 ];
 
 const HomePage: React.FC = () => {
@@ -74,11 +57,7 @@ const HomePage: React.FC = () => {
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://tectonesteel.com/" />
-        <link
-          rel="preload"
-          as="image"
-          href={homepage}
-        />
+        <link rel="preload" as="image" href={homepage} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -102,37 +81,38 @@ const HomePage: React.FC = () => {
                 "closes": "18:00"
               }
             ],
-            "sameAs": [
-              "https://www.facebook.com/share/1FQVZzyYPn/"
-            ]
+            "sameAs": ["https://www.facebook.com/share/1FQVZzyYPn/"]
           })}
         </script>
       </Head>
-      {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white">
-        <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+      {/* ════════════ HERO ════════════ */}
+      <section className="relative bg-black text-white overflow-hidden">
         <img
           src={homepage}
           alt="Premium insect screen Singapore"
-          className="absolute inset-0 z-0 w-full h-full object-cover opacity-50"
+          className="absolute inset-0 z-0 w-full h-full object-cover opacity-35"
           loading="eager"
           decoding="async"
         />
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-black via-black/80 to-black/30" />
+        <div className="absolute inset-0 z-0 mesh-bg opacity-30" />
 
-        <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="container mx-auto px-4 py-28 md:py-44 relative z-10">
+          <div className="max-w-3xl">
+            <p className="eyebrow mb-6">Tectone Renex Steel · Singapore</p>
+            <h1 className="font-serif text-5xl md:text-7xl font-medium leading-[1.05] tracking-tight mb-6">
               Insect Screen Systems Specialist in Singapore
             </h1>
-            <p className="text-lg md:text-xl mb-8">
-              Your trusted custom made insect screen & mosquito netting
-              Provider that keeps your home aesthetic & protected.
+            <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
+              Custom-made insect and security screens for Singapore homes.
+              Built to disappear into the architecture and last a decade.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <Link to="/our-product" className="btn-primary">
                 Explore Insect Screen Solutions
               </Link>
-              <Link to="/quote" className="btn-outline border-white text-white hover:bg-white hover:text-gray-900">
+              <Link to="/quote" className="btn-outline">
                 Get Quote
               </Link>
             </div>
@@ -140,138 +120,125 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Quote Calculator Section */}
-      <section className="py-16 bg-secondary">
+      {/* ════════════ QUOTE CALCULATOR ════════════ */}
+      <section className="py-10 md:py-14 bg-background border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto min-h-[520px]">
+          <div className="max-w-3xl mx-auto">
             <EnhancedQuoteCalculator />
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="cv-auto py-20">
+      {/* ════════════ FEATURES ════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-3xl mb-16">
+            <p className="eyebrow mb-4">Why Tectone</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
               Choose Us as Your Insect Screen Solution Provider
             </h2>
-            <p className="text-slate-700 max-w-4xl mx-auto">
-              Experience the perfect balance of style and strength with Tectone Renex Steel Pte Ltd’s <b>aluminium-framed insect screens</b>. <br></br>
-              Our <b>security-grade stainless-steel mesh</b> delivers exceptional protection against mosquitoes, flies, and even <br></br>
-              rodents—while maintaining a sleek, minimalist look that complements contemporary interiors and commercial spaces.
+            <p className="text-white/65 text-lg leading-relaxed">
+              Aluminium-framed screens with security-grade stainless-steel mesh.
+              Designed in Singapore, fitted to your space, finished to disappear.
+              Six reasons clients keep choosing Tectone.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="border border-border rounded-lg p-4 md:p-6 transition-all hover:border-tectone-gold hover:shadow-md bg-card animate-on-scroll"
-                style={{ transitionDelay: `${index * 80}ms` }}
+                className="bg-background p-8 md:p-10 hover:bg-white/[0.03] transition-colors animate-on-scroll"
+                style={{ transitionDelay: `${index * 60}ms` }}
               >
-                <div className="flex items-center mb-2 md:mb-4">
-                  <div className="feature-icon scale-90 md:scale-100">{feature.icon}</div>
-
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold ml-2">
-                    {feature.title}
-                  </h3>
-                </div>
-
-                <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+                <div className="feature-icon mb-5">{feature.icon}</div>
+                <h3 className="text-xl font-medium tracking-tight mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-sm md:text-base text-white/60 leading-relaxed">
                   {feature.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link to="/about-insect-screen-supplier" className="btn-primary">
+          <div className="mt-14">
+            <Link to="/about-insect-screen-supplier" className="btn-outline">
               Learn More About Us
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Product Showcase */}
-      <section className="cv-auto py-20 bg-secondary">
+      {/* ════════════ PRODUCT SHOWCASE ════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-3xl mb-16">
+            <p className="eyebrow mb-4">Our Solutions</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
               Our Insect Screen Solutions
             </h2>
-            <p className="text-slate-700 max-w-4xl mx-auto">
-              Explore our <strong>comprehensive range of aluminium insect screen doors, windows, and insect screens</strong>—crafted to elevate your property’s safety <strong>and</strong> architectural style.
-              Each product features <strong>security-grade stainless-steel mesh</strong> and sleek, grille-free designs that complement modern Singapore homes and businesses.
+            <p className="text-white/65 text-lg leading-relaxed">
+              Seven product families. Swing doors, sliding doors, folding doors,
+              and a full range of window systems — every one fabricated to your
+              opening and finished to match your space.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link
-              to="/our-product"
-              className="rounded-lg overflow-hidden bg-card shadow-md animate-on-scroll group transition-shadow duration-300 hover:shadow-lg block"
-            >
-              <div className="h-64 bg-gray-700 relative overflow-hidden">
-                <div className="absolute inset-0">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out scale-100 group-hover:scale-105"
-                    style={{
-                      backgroundImage: `url(${productPicture})`,
-                    }}
-                  ></div>
-                  <div className="absolute inset-0 bg-black bg-opacity-40"></div> {/* 遮罩 */}
-                </div>
+          <Link
+            to="/our-product"
+            className="group block surface-card overflow-hidden animate-on-scroll"
+          >
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="relative h-72 md:h-96 lg:h-auto lg:min-h-[420px] overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  style={{ backgroundImage: `url(${productPicture})` }}
+                />
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold mb-2">Insect Screen Solutions</h3>
-                <p className="text-slate-700 mb-4">
-                  Enjoy fresh air and natural light while keeping mosquitoes and pests out. Tectone Renex Steel Pte Ltd’s <strong>high-quality aluminium insect screens</strong> feature <strong>sleek, grille-free frames</strong> and <strong>fine stainless-steel mesh</strong> that blend seamlessly with modern architecture.
-
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <p className="eyebrow mb-3">Product range</p>
+                <h3 className="font-serif text-3xl md:text-4xl font-medium tracking-tight mb-4">
+                  Insect Screen Solutions
+                </h3>
+                <p className="text-white/65 leading-relaxed mb-6">
+                  Aluminium-framed screens with fine stainless-steel mesh.
+                  Grille-free, custom-fitted, and built to disappear into your
+                  windows and doors.
                 </p>
-                <span className="inline-flex items-center font-semibold text-tectone-gold transition duration-300 group-hover:text-tectone-gold/80">
+                <span className="inline-flex items-center font-medium text-white">
                   View All Products
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
-            </Link>
-          </div>
-
+            </div>
+          </Link>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="cv-auto-1200 py-20">
+      {/* ════════════ TESTIMONIALS ════════════ */}
+      <section className="cv-auto-1200 py-24 md:py-32 border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-3xl mb-16">
+            <p className="eyebrow mb-4">Testimonials</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
               What Our Clients Say
             </h2>
-            <p className="text-slate-700 max-w-3xl mx-auto">
-              Hear from homeowners who have experienced the Tectone Renex Steel Pte Ltd difference.
+            <p className="text-white/65 text-lg leading-relaxed">
+              Verified Google reviews from Singapore homeowners — 4.9 across
+              five-thousand-plus installations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 min-h-[520px]">
-            <GoogleReviewsWidget
-              appId="8cd1d32f-8560-4f1b-83e3-1f967e45204a"
-              className="bg-card p-6 rounded-lg shadow-md animate-on-scroll border border-border col-span-1 md:col-span-3"
-            />
-          </div>
+          <GoogleReviewsWidget
+            appId="8cd1d32f-8560-4f1b-83e3-1f967e45204a"
+            className="surface-card p-6 md:p-8 animate-on-scroll min-h-[520px]"
+          />
         </div>
       </section>
 
-      <section className="cv-auto">
+      <section className="cv-auto border-t border-white/5">
         <ContactSection />
       </section>
     </>

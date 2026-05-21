@@ -31,6 +31,9 @@ import BlogPostDetail from "./pages/BlogPostDetail";
 // 🔸 Admin
 import AdminDashboard from "./pages/AdminDashboard";
 
+// 🎯 Paid-traffic landing pages (no site chrome)
+import SecurityScreenLandingPage from "./pages/SecurityScreenLandingPage";
+
 const queryClient = new QueryClient();
 
 /**
@@ -83,6 +86,27 @@ function ProvidersShell() {
   );
 }
 
+/**
+ * Bare providers shell for paid-traffic landing pages. Skips the site
+ * Navbar / Breadcrumb / Footer so the page can drive a single conversion goal.
+ */
+function LandingShell() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <ScrollToTop />
+        <ContentProvider>
+          <Suspense fallback={<div className="min-h-[40vh]" />}>
+            <Outlet />
+          </Suspense>
+          <Toaster />
+          <Sonner />
+        </ContentProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
+
 // App.tsx（routes 重点片段）
 export const routes: RouteRecord[] = [
   {
@@ -113,6 +137,13 @@ export const routes: RouteRecord[] = [
       { path: "admin", element: <AdminDashboard /> },
       { path: "404", element: <NotFound /> },
       { path: "*", element: <NotFound /> },
+    ],
+  },
+  {
+    path: "/lp",
+    element: <LandingShell />,
+    children: [
+      { path: "security-screen", element: <SecurityScreenLandingPage /> },
     ],
   },
 ];

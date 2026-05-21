@@ -14,43 +14,43 @@ const BuyingProcessRoadmap: React.FC = () => {
     {
       title: "Submit Quote",
       description: "Fill out our quote calculator with your measurements",
-      icon: <FileText className="h-6 w-6 text-tectone-gold" />
+      icon: <FileText className="h-6 w-6 text-white" />
     },
     {
       title: "Sales Contact",
       description: "Our team will reach out to discuss your requirements",
-      icon: <PhoneOutgoing className="h-6 w-6 text-tectone-gold" />
+      icon: <PhoneOutgoing className="h-6 w-6 text-white" />
     },
     {
       title: "On-Site Visit",
       description: "We'll schedule a visit to take precise measurements",
-      icon: <Eye className="h-6 w-6 text-tectone-gold" />
+      icon: <Eye className="h-6 w-6 text-white" />
     },
     {
       title: "Finalized Quote",
       description: "Receive your detailed quote with all specifications",
-      icon: <Check className="h-6 w-6 text-tectone-gold" />
+      icon: <Check className="h-6 w-6 text-white" />
     },
     {
       title: "Installation",
       description: "Professional installation by our expert team",
-      icon: <Package className="h-6 w-6 text-tectone-gold" />
+      icon: <Package className="h-6 w-6 text-white" />
     },
     {
       title: "After-Sales Service",
       description: "Ongoing support and maintenance when needed",
-      icon: <Wrench className="h-6 w-6 text-tectone-gold" />
+      icon: <Wrench className="h-6 w-6 text-white" />
     }
   ];
 
   return (
-    <div className="py-16 bg-gray-50">
+    <div className="py-16 bg-white/[0.03]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Our Process
           </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
+          <p className="text-white/55 max-w-3xl mx-auto">
             Experience a seamless journey from quote to installation with our simple step-by-step process
           </p>
         </div>
@@ -58,17 +58,17 @@ const BuyingProcessRoadmap: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="relative">
             {/* Vertical connecting line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gray-200 z-0"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-1 bg-white/[0.06] z-0"></div>
             
             <div className="space-y-12">
               {steps.map((step, index) => (
                 <div key={index} className="relative flex items-start animate-on-scroll">
-                  <div className="h-16 w-16 rounded-full bg-white shadow-md flex items-center justify-center mr-6 z-10 border-2 border-tectone-gold">
+                  <div className="h-16 w-16 rounded-full bg-white/[0.03] shadow-md flex items-center justify-center mr-6 z-10 border-2 border-white/40">
                     {step.icon}
                   </div>
                   <div className="pt-3">
                     <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-white/55">{step.description}</p>
                   </div>
                 </div>
               ))}

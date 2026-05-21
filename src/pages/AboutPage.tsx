@@ -1,52 +1,58 @@
-
 import React from "react";
 import ContactSection from "@/components/ContactSection";
-
-import ScreneSolution from "../images/ScreneSolution.webp"
+import ScreneSolution from "../images/ScreneSolution.webp";
 import { Head } from "vite-react-ssg";
 
+/* Stat strip — three numbers that tell the company story */
+const stats = [
+  { num: "10+", label: "Years in Singapore" },
+  { num: "5,000+", label: "Homes secured" },
+  { num: "4.9", label: "Google rating" },
+];
 
-const CoreValues = [
+/* Core principles — short, declarative */
+const principles = [
   {
-    title: "Quality",
-    desc: "We never compromise on the quality of our materials or workmanship, ensuring long-lasting solutions."
+    title: "Quality, not compromise",
+    desc: "Marine-grade alloys and certified mesh on every job. We don't ship a screen that wouldn't survive a Singapore monsoon.",
   },
   {
-    title: "Innovation",
-    desc: "We continuously explore new technologies and designs to provide cutting-edge screen solutions."
+    title: "Designed to disappear",
+    desc: "A screen should protect what's already beautiful — not announce itself. Slim frames, fine mesh, hidden hardware.",
   },
   {
-    title: "Integrity",
-    desc: "We operate with transparency and honesty in all our client interactions and business practices."
+    title: "Plain dealing",
+    desc: "Honest measurements, honest pricing, honest timelines. If something's wrong, we come back and fix it.",
   },
   {
-    title: "Customer Focus",
-    desc: "We put our customers' needs first, providing personalized service and tailored solutions."
-  }
-]
+    title: "Singapore-first",
+    desc: "Specced for the climate. Cut for HDB, condo, and landed dimensions. Installed by people who live here.",
+  },
+];
 
-const Process = [
+/* How it actually works — four steps, no fluff */
+const process = [
   {
-    number: "1",
+    number: "01",
     title: "Consultation",
-    desc: "We discuss your needs and preferences to understand your requirements fully.",
+    desc: "We talk through your space, security needs, and the look you're after. By phone, WhatsApp, or in person.",
   },
   {
-    number: "2",
-    title: "Measurement",
-    desc: "Our experts take precise measurements to ensure a perfect fit for your screens."
+    number: "02",
+    title: "On-site measurement",
+    desc: "A precise site survey of every opening. Free, no obligation.",
   },
   {
-    number: "3",
-    title: "Production",
-    desc: "We custom-manufacture your screens using premium materials and precision engineering."
+    number: "03",
+    title: "Custom fabrication",
+    desc: "Your screens are built to your dimensions in our Woodlands workshop — typically two to three weeks.",
   },
   {
-    number: "4",
+    number: "04",
     title: "Installation",
-    desc: "Our professional team installs your screens with care and precision."
-  }
-]
+    desc: "A clean install in a few hours, dust-controlled, with a five-year warranty walked through on the day.",
+  },
+];
 
 const AboutPage: React.FC = () => {
   return (
@@ -65,164 +71,134 @@ const AboutPage: React.FC = () => {
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
-        <link
-          rel="canonical"
-          href="https://tectonesteel.com/about-insect-screen-supplier"
-        />
+        <link rel="canonical" href="https://tectonesteel.com/about-insect-screen-supplier" />
         <link rel="preload" as="image" href={ScreneSolution} />
       </Head>
-      {/* About Us Hero */}
-      <section className="py-12">
+
+      {/* ════════════ HERO ════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-b border-white/5">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-7">
+              <p className="eyebrow mb-6">About Tectone</p>
+              <h1 className="font-serif text-4xl md:text-6xl font-medium leading-[1.05] tracking-tight mb-8">
                 Singapore's Premium Screen Solutions
               </h1>
-              <p className="text-sm sm:text-base text-gray-600 mb-5 md:mb-6">
-                At Tectone Renex Steel Pte Ltd, we've been enhancing Singapore homes with elegant,
-                grille-free protection since our founding. Our mission is to provide
-                premium security and insect screens that complement modern architecture
-                while offering unmatched protection.
+              <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-5">
+                Tectone Renex Steel makes the insect and security screens that
+                Singapore homes were missing — grille-free, precisely fitted,
+                quietly engineered.
               </p>
-<p className="text-sm sm:text-base text-gray-600 mb-5 md:mb-6">
-                Our team combines expertise in design, engineering, and installation to
-                deliver custom solutions that perfectly fit your home's unique requirements,
-                ensuring both aesthetic appeal and functional excellence.
+              <p className="text-base md:text-lg text-white/60 leading-relaxed">
+                Our team has spent over a decade refining one thing: a screen
+                that protects your home without changing how it looks. Designed
+                here, fabricated in our Woodlands workshop, installed in homes
+                from Bukit Timah to Punggol.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center">
-                  <div className="h-12 w-12 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <div className="h-6 w-6 bg-tectone-gold rounded-full"></div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">10+ Years</h3>
-                    <p className="text-sm text-gray-500">Industry Experience</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="h-12 w-12 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <div className="h-6 w-6 bg-tectone-gold rounded-full"></div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">5,000+</h3>
-                    <p className="text-sm text-gray-500">Happy Customers</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="h-12 w-12 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <div className="h-6 w-6 bg-tectone-gold rounded-full"></div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">100%</h3>
-                    <p className="text-sm sm:text-base text-gray-600 mb-5 md:mb-6">Satisfaction Guarantee</p>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src={ScreneSolution}
-                  alt="Tectone Renex Steel Pte Ltd office building"
-                  className="w-full h-full object-cover opacity-80"
-                  loading="eager"
-                  decoding="async"
-                />
+
+            <div className="lg:col-span-5 lg:sticky lg:top-28">
+              <div className="surface-card overflow-hidden">
+                <div className="aspect-[4/3] bg-black">
+                  <img
+                    src={ScreneSolution}
+                    alt="Tectone Renex Steel Pte Ltd"
+                    className="w-full h-full object-cover opacity-90"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Values */}
-      <section className="cv-auto py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-10">
-              These principles guide everything we do at Tectone Renex Steel Pte Ltd, from product
-              development to customer service.
-            </p>
-          </div>
-
-          {/* ✅ Move .grid outside of map */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-            {CoreValues.map((item, index) => (
-              <div
-                key={index}
-                className="border border-border rounded-lg p-4 md:p-6 transition-all hover:border-tectone-gold hover:shadow-md bg-card animate-on-scroll"
-                style={{ transitionDelay: `${index * 80}ms` }}   // ✅ 取代 delay-${index}
-              >
-                <div className="h-10 w-10 md:h-12 md:w-12 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                  <div className="h-5 w-5 md:h-6 md:w-6 bg-tectone-gold rounded-full"></div>
+      {/* ════════════ STAT STRIP ════════════ */}
+      <section className="border-b border-white/5">
+        <div className="container mx-auto px-4 py-10">
+          <div className="grid grid-cols-3 gap-6 text-center">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="font-serif text-3xl md:text-5xl font-medium tracking-tight text-white">
+                  {s.num}
                 </div>
-                <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 md:mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  {item.desc}
-                </p>
-
+                <div className="eyebrow mt-2">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Process */}
-      < section className="cv-auto py-16 bg-gray-100" >
+      {/* ════════════ PRINCIPLES ════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-b border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              From consultation to installation, we ensure a smooth and efficient process
-              that delivers exceptional results.
+          <div className="max-w-3xl mb-14">
+            <p className="eyebrow mb-4">Principles</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
+              What we believe
+            </h2>
+            <p className="text-white/65 text-lg leading-relaxed">
+              Four ideas that decide every product, every site visit, every
+              warranty call.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-            {Process.map((Process, index) =>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5">
+            {principles.map((p, i) => (
               <div
-                key={index}
-                className="relative animate-on-scroll"
-                style={{ transitionDelay: `${index * 80}ms` }}
+                key={p.title}
+                className="bg-background p-8 md:p-10 animate-on-scroll"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-
-                <div className="h-12 w-12 md:h-16 md:w-16 bg-tectone-gold rounded-full flex items-center justify-center text-white font-bold text-lg md:text-2xl mb-3 md:mb-4">
-                  {Process.number}
-                </div>
-
-                <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 md:mb-2">
-                  {Process.title}
+                <p className="eyebrow mb-3">0{i + 1}</p>
+                <h3 className="font-serif text-2xl md:text-3xl font-medium tracking-tight mb-3">
+                  {p.title}
                 </h3>
-
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                  {Process.desc}
-                </p>
+                <p className="text-white/60 leading-relaxed">{p.desc}</p>
               </div>
-            )}
-
+            ))}
           </div>
         </div>
-      </section >
+      </section>
 
-      {/* Contact Section */}
-      < section className="cv-auto py-16" >
+      {/* ════════════ PROCESS ════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-b border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Have questions or ready to enhance your home with our premium screens?
-              Get in touch with our team today.
+          <div className="max-w-3xl mb-14">
+            <p className="eyebrow mb-4">How it works</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
+              From first call to final install
+            </h2>
+            <p className="text-white/65 text-lg leading-relaxed">
+              Roughly three weeks, end to end. No surprises, no chasing.
             </p>
           </div>
 
-          <section className="cv-auto">
-            <ContactSection />
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+            {process.map((p, i) => (
+              <div
+                key={p.number}
+                className="bg-background p-8 md:p-10 animate-on-scroll"
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <p className="font-serif text-3xl text-white/30 tracking-tight mb-4">
+                  {p.number}
+                </p>
+                <h3 className="text-base md:text-lg font-medium tracking-tight mb-2">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-white/55 leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section >
+      </section>
+
+      {/* ════════════ CONTACT ════════════ */}
+      <section className="cv-auto">
+        <ContactSection />
+      </section>
     </>
   );
 };

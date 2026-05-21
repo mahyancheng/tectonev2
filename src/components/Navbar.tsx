@@ -1,29 +1,33 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
-import headerIcon from "../images/header02.webp";
+import headerIcon from "../images/tectone-logo-white.jpg";
+
+const productLinks = [
+  { to: "/our-product/product/107-security-swing-door", label: "Insect Screen Swing Door" },
+  { to: "/our-product/product/104-security-folding-door", label: "Insect Screen Folding Door" },
+  { to: "/our-product/product/105-security-sliding-door", label: "Insect Screen Sliding Door" },
+  { to: "/our-product/product/103-security-casement-window", label: "Casement Window" },
+  { to: "/our-product/product/106-security-sliding-window", label: "Insect Screen Sliding Window" },
+  { to: "/our-product/product/102-fixed-screen", label: "Fixed Insect Screen" },
+  { to: "/our-product/product/108-security-top-hung", label: "Top Hung" },
+];
 
 const Navbar: React.FC = () => {
-  // Mobile
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 主菜单（手机）
-  const [isProductsOpen, setIsProductsOpen] = useState(false); // 二级菜单（手机）
-
-  // Desktop
-  const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false); // 二级菜单（桌面）
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 延迟关闭（桌面 hover）
-  const hoverCloseDelay = 200; // 150~300ms 之间都可以
+  const hoverCloseDelay = 200;
   const closeTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (closeTimerRef.current) {
-        clearTimeout(closeTimerRef.current);
-      }
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     };
   }, []);
 
@@ -42,51 +46,50 @@ const Navbar: React.FC = () => {
     }, hoverCloseDelay) as unknown as number;
   };
 
-  // 统一关闭
   const closeAllMenus = () => {
     setIsMenuOpen(false);
     setIsProductsOpen(false);
     setIsDesktopProductsOpen(false);
   };
 
+  const navLinkBase =
+    "text-sm font-medium tracking-tight text-white/75 hover:text-white transition-colors";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-2" : "bg-white/90 py-4"
+        isScrolled
+          ? "bg-black/85 backdrop-blur-xl border-b border-white/10 py-3"
+          : "bg-black/40 backdrop-blur-md py-4"
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center" onClick={closeAllMenus}>
-          {/* ✅ CLS 修复：明确 width/height，让浏览器提前保留空间 */}
           <img
             src={headerIcon}
             alt="Tectone Renex Steel Pte Ltd"
             width={48}
             height={48}
-            className="h-12 w-auto"
+            className="h-10 w-auto"
             decoding="async"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-8">
-          <Link
-            to="/"
-            className="font-semibold text-gray-800 hover:text-tectone-gold transition-colors"
-            onClick={closeAllMenus}
-          >
+          <Link to="/" className={navLinkBase} onClick={closeAllMenus}>
             Home
           </Link>
 
           <Link
             to="/about-insect-screen-supplier"
-            className="font-semibold text-gray-800 hover:text-tectone-gold transition-colors"
+            className={navLinkBase}
             onClick={closeAllMenus}
           >
             About Us
           </Link>
 
-          {/* Desktop Products — hover 打开 | 延迟关闭 | 透明缓冲桥 */}
+          {/* Desktop Products dropdown */}
           <div
             className="relative"
             onMouseEnter={openDesktopProducts}
@@ -94,13 +97,12 @@ const Navbar: React.FC = () => {
           >
             <Link
               to="/our-product"
-              className="flex items-center font-semibold text-gray-800 hover:text-tectone-gold transition-colors"
+              className={`flex items-center ${navLinkBase}`}
               onClick={closeAllMenus}
             >
-              Products <ChevronDown className="ml-1 h-4 w-4" />
+              Products <ChevronDown className="ml-1 h-3.5 w-3.5" />
             </Link>
 
-            {/* 缓冲桥：消除 trigger 与 dropdown 之间的空隙 */}
             <div
               className={`absolute left-0 right-0 h-3 top-full ${
                 isDesktopProductsOpen ? "" : "pointer-events-none"
@@ -110,7 +112,8 @@ const Navbar: React.FC = () => {
             />
 
             <div
-              className={`absolute left-0 top-full w-56 bg-white shadow-lg rounded-md overflow-hidden transform transition-all duration-150 origin-top-left z-10
+              className={`absolute left-0 top-full mt-2 w-64 rounded-xl overflow-hidden transform transition-all duration-150 origin-top-left z-10
+                bg-black/95 backdrop-blur-xl border border-white/10 shadow-2xl
                 ${
                   isDesktopProductsOpen
                     ? "opacity-100 scale-100"
@@ -120,203 +123,113 @@ const Navbar: React.FC = () => {
               onMouseEnter={openDesktopProducts}
               onMouseLeave={scheduleCloseDesktopProducts}
             >
-              <Link
-                to="/our-product/product/107-security-swing-door"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Insect Screen Swing Door
-              </Link>
-              <Link
-                to="/our-product/product/104-security-folding-door"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Insect Screen Folding Door
-              </Link>
-              <Link
-                to="/our-product/product/105-security-sliding-door"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Insect Screen Sliding Door
-              </Link>
-              <Link
-                to="/our-product/product/103-security-casement-window"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Casement Window
-              </Link>
-              <Link
-                to="/our-product/product/106-security-sliding-window"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Insect Screen Sliding Window
-              </Link>
-              <Link
-                to="/our-product/product/102-fixed-screen"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Fixed Insect Screen
-              </Link>
-              <Link
-                to="/our-product/product/108-security-top-hung"
-                className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white"
-                onClick={closeAllMenus}
-              >
-                Top Hung
-              </Link>
+              {productLinks.map((p) => (
+                <Link
+                  key={p.to}
+                  to={p.to}
+                  className="block px-4 py-2.5 text-sm text-white/75 hover:bg-white/[0.06] hover:text-white transition-colors"
+                  onClick={closeAllMenus}
+                >
+                  {p.label}
+                </Link>
+              ))}
             </div>
           </div>
 
-          <Link
-            to="/blog"
-            className="font-semibold text-gray-800 hover:text-tectone-gold transition-colors"
-            onClick={closeAllMenus}
-          >
+          <Link to="/blog" className={navLinkBase} onClick={closeAllMenus}>
             Blog
           </Link>
 
-          <Link
-            to="/contact-us"
-            className="font-semibold text-gray-800 hover:text-tectone-gold transition-colors"
-            onClick={closeAllMenus}
-          >
+          <Link to="/contact-us" className={navLinkBase} onClick={closeAllMenus}>
             Contact Us
           </Link>
 
-          <Link to="/quote" className="btn-primary" onClick={closeAllMenus}>
+          <Link to="/quote" className="btn-primary text-sm" onClick={closeAllMenus}>
             Get A Quote
           </Link>
         </nav>
 
         {/* Mobile menu button */}
         <button
-          className="lg:hidden text-gray-800"
+          className="lg:hidden text-white p-1"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X /> : <Menu />}
+          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <>
-          {/* 背景遮罩（点空白处关闭） */}
-          <div className="fixed inset-0 bg-black/30 lg:hidden" onClick={closeAllMenus} />
-
-          <nav className="lg:hidden bg-white border-t py-4 px-4 shadow-lg animate-fade-in relative z-10">
-            <div className="flex flex-col space-y-4">
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden"
+            onClick={closeAllMenus}
+          />
+          <nav className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-white/10 py-5 px-4 animate-fade-in relative z-10">
+            <div className="flex flex-col space-y-1">
               <Link
                 to="/"
-                className="font-semibold text-gray-800 hover:text-tectone-gold"
+                className="py-2.5 text-white/85 hover:text-white text-base font-medium"
                 onClick={closeAllMenus}
               >
                 Home
               </Link>
               <Link
                 to="/about-insect-screen-supplier"
-                className="font-semibold text-gray-800 hover:text-tectone-gold"
+                className="py-2.5 text-white/85 hover:text-white text-base font-medium"
                 onClick={closeAllMenus}
               >
                 About Us
               </Link>
 
-              {/* Mobile Products */}
               <div className="relative">
                 <button
-                  className="flex items-center font-semibold text-gray-800 hover:text-tectone-gold w-full justify-between"
+                  className="flex items-center w-full justify-between py-2.5 text-white/85 hover:text-white text-base font-medium"
                   onClick={() => setIsProductsOpen((v) => !v)}
                   aria-expanded={isProductsOpen}
-                  aria-controls="mobile-products"
                 >
-                  Products{" "}
+                  Products
                   <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform ${
                       isProductsOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
                 {isProductsOpen && (
-                  <div
-                    id="mobile-products"
-                    className="pl-4 mt-2 space-y-2 border-l-2 border-tectone-gold animate-fade-in"
-                  >
-                    <Link
-                      to="/our-product/product/107-security-swing-door"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Security Swing Door
-                    </Link>
-                    <Link
-                      to="/our-product/product/104-security-folding-door"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Security Folding Door
-                    </Link>
-                    <Link
-                      to="/our-product/product/105-security-sliding-door"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Security Sliding Door
-                    </Link>
-                    <Link
-                      to="/our-product/product/103-security-casement-window"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Casement Window
-                    </Link>
-                    <Link
-                      to="/our-product/product/106-security-sliding-window"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Sliding Window
-                    </Link>
-                    <Link
-                      to="/our-product/product/102-fixed-screen"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Fixed Security Screen
-                    </Link>
-                    <Link
-                      to="/our-product/product/108-security-top-hung"
-                      className="block px-4 py-2 text-sm text-gray-800 hover:bg-tectone-gold hover:text-white rounded-md"
-                      onClick={closeAllMenus}
-                    >
-                      Top Hung
-                    </Link>
+                  <div className="pl-4 mt-1 mb-2 space-y-1 border-l border-white/15 animate-fade-in">
+                    {productLinks.map((p) => (
+                      <Link
+                        key={p.to}
+                        to={p.to}
+                        className="block px-3 py-2 text-sm text-white/70 hover:text-white"
+                        onClick={closeAllMenus}
+                      >
+                        {p.label}
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>
 
               <Link
                 to="/blog"
-                className="font-semibold text-gray-800 hover:text-tectone-gold"
+                className="py-2.5 text-white/85 hover:text-white text-base font-medium"
                 onClick={closeAllMenus}
               >
                 Blog
               </Link>
               <Link
                 to="/contact-us"
-                className="font-semibold text-gray-800 hover:text-tectone-gold"
+                className="py-2.5 text-white/85 hover:text-white text-base font-medium"
                 onClick={closeAllMenus}
               >
                 Contact Us
               </Link>
               <Link
                 to="/quote"
-                className="btn-primary text-center"
+                className="btn-primary mt-3 text-center"
                 onClick={closeAllMenus}
               >
                 Get A Quote

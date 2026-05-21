@@ -39,16 +39,16 @@ const UseCasesSection: React.FC<UseCasesSectionProps> = ({ productName = "Our Pr
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
           {useCases.map((useCase, index) => {
             const IconComponent = useCase.icon;
             return (
               <div
                 key={index}
-                className="bg-card border border-border rounded-xl p-4 md:p-6 hover:shadow-lg hover:border-tectone-gold transition-all duration-300"
+                className="bg-card border border-border rounded-xl p-4 md:p-6 hover:shadow-lg hover:border-white/40 transition-all duration-300"
               >
-                <div className="h-12 w-12 md:h-16 md:w-16 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-3 md:mb-5 mx-auto">
-                  <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-tectone-gold" />
+                <div className="h-12 w-12 md:h-16 md:w-16 bg-white/10 rounded-full flex items-center justify-center mb-3 md:mb-5 mx-auto">
+                  <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 </div>
                 <h3 className="text-sm sm:text-base md:text-xl font-semibold text-foreground mb-2 md:mb-3 text-center">
                   {useCase.title}

@@ -55,7 +55,7 @@ const ContactForm: React.FC = () => {
     <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-1">
             Name
           </label>
           <input
@@ -70,7 +70,7 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-semibold text-white/70 mb-1">
             Email
           </label>
           <input
@@ -86,7 +86,7 @@ const ContactForm: React.FC = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-1">
+        <label htmlFor="phone" className="block text-sm font-semibold text-white/70 mb-1">
           Phone Number
         </label>
         <input
@@ -101,7 +101,7 @@ const ContactForm: React.FC = () => {
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1">
+        <label htmlFor="message" className="block text-sm font-semibold text-white/70 mb-1">
           Message
         </label>
         <textarea

@@ -73,13 +73,13 @@ const SecurityScreenPage: React.FC = () => {
               <Link
                 key={product.id}
                 to={product.href}
-                className="group bg-card rounded-lg border border-border p-6 hover:shadow-lg transition-all duration-300 hover:border-tectone-gold"
+                className="group bg-card rounded-lg border border-border p-6 hover:shadow-lg transition-all duration-300 hover:border-white/40"
               >
                 <div className="flex items-center mb-4">
-                  <div className="h-12 w-12 bg-tectone-gold/10 rounded-full flex items-center justify-center mr-4">
-                    <IconComponent className="h-6 w-6 text-tectone-gold" />
+                  <div className="h-12 w-12 bg-white/10 rounded-full flex items-center justify-center mr-4">
+                    <IconComponent className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-tectone-gold transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-white transition-colors">
                     {product.title}
                   </h3>
                 </div>
@@ -122,8 +122,8 @@ const SecurityScreenPage: React.FC = () => {
               const IconComponent = feature.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="h-16 w-16 bg-tectone-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <IconComponent className="h-8 w-8 text-tectone-gold" />
+                  <div className="h-16 w-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-2">
                     {feature.title}

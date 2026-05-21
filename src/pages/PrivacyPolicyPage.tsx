@@ -31,7 +31,7 @@ const PrivacyPolicyPage: React.FC = () => {
               obtained through our website at{" "}
               <a
                 href="https://tectonesteel.com"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 tectonesteel.com
               </a>
@@ -130,7 +130,7 @@ const PrivacyPolicyPage: React.FC = () => {
               these rights, please contact us at{" "}
               <a
                 href="mailto:tectone777@gmail.com"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 tectone777@gmail.com
               </a>
@@ -158,7 +158,7 @@ const PrivacyPolicyPage: React.FC = () => {
               Email:{" "}
               <a
                 href="mailto:tectone777@gmail.com"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 tectone777@gmail.com
               </a>
@@ -166,7 +166,7 @@ const PrivacyPolicyPage: React.FC = () => {
               Phone:{" "}
               <a
                 href="tel:+6596771199"
-                className="text-tectone-gold underline"
+                className="text-white underline"
               >
                 +65 9677 1199
               </a>

@@ -87,19 +87,19 @@ const ProductDetailPage: React.FC = () => {
             {/* 左侧：信息 */}
             <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col min-h-0">
               <header className="space-y-4">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
                     {product.title}
                 </h1>
-<div className="text-sm sm:text-base md:text-base text-gray-600 leading-relaxed whitespace-pre-line max-w-[65ch]">
+<div className="text-sm sm:text-base md:text-base text-white/55 leading-relaxed whitespace-pre-line max-w-[65ch]">
                   {product.description}
                 </div>
               </header>
 
               {/* 信息区块 */}
-              <div className="mt-8 grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-5">
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 {product.securityStyle && product.securityStyle.length > 0 && (
-                  <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 md:mb-3">
+                  <div className="bg-white/[0.03] border border-white/10 rounded-xl p-5 shadow-sm">
+                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 md:mb-3">
                       {(() => {
                         switch (productId) {
                           case "sliding-door":
@@ -121,8 +121,8 @@ const ProductDetailPage: React.FC = () => {
                     <ul className="space-y-2">
                       {product.securityStyle.map((item: string, i: number) => (
                         <li key={i} className="flex items-start gap-3">
-                          <div className="mt-2 h-1.5 w-1.5 rounded-full bg-tectone-gold" aria-hidden />
-                          <span className="text-xs sm:text-sm md:text-base text-gray-800 leading-snug">{item}</span>
+                          <div className="mt-2 h-1.5 w-1.5 rounded-full bg-white/[0.03] border border-white/10" aria-hidden />
+                          <span className="text-xs sm:text-sm md:text-base text-white/85 leading-snug">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -130,31 +130,30 @@ const ProductDetailPage: React.FC = () => {
                 )}
 
                 {product.perfectFor && product.perfectFor.length > 0 && (
-                  <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 md:mb-3">Perfect For</h2>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="bg-white/[0.03] border border-white/10 rounded-xl p-5 shadow-sm">
+                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 md:mb-3">Perfect For</h2>
+                    <ul className="space-y-2">
                       {product.perfectFor.map((item: string, i: number) => (
-                        <span
-                          key={i}
-                          className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-xs sm:text-sm md:text-base font-semibold text-gray-800">
-                          {item}
-                        </span>
+                        <li key={i} className="flex items-start gap-3">
+                          <div className="mt-2 h-1.5 w-1.5 rounded-full bg-white/40 flex-shrink-0" aria-hidden />
+                          <span className="text-sm md:text-base text-white/85 leading-snug break-words">{item}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
                 )}
 
                 {product.features && product.features.length > 0 && (
-                  <div className="md:col-span-2 bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
-                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 md:mb-3">Key Features</h2>
-                    <ul className="grid grid-cols-2 sm:grid-cols-2 gap-2 md:gap-3">
+                  <div className="md:col-span-2 bg-white/[0.03] border border-white/10 rounded-xl p-5 shadow-sm">
+                    <h2 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 md:mb-3">Key Features</h2>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                       {product.features.map((feature: string, i: number) => (
                         <li
                           key={i}
-                          className="group flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50 p-4 hover:bg-white hover:shadow-md transition"
+                          className="group flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-3.5 hover:bg-white/[0.05] transition min-w-0"
                         >
-                          <Check className="h-5 w-5 text-tectone-gold mt-0.5" aria-hidden />
-                          <span className="text-xs sm:text-sm md:text-base text-gray-800 leading-snug">{feature}</span>
+                          <Check className="h-4 w-4 text-white/70 mt-0.5 flex-shrink-0" aria-hidden />
+                          <span className="text-sm md:text-base text-white/85 leading-snug break-words min-w-0">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -166,7 +165,7 @@ const ProductDetailPage: React.FC = () => {
             {/* 右侧：图片 + 按钮（按钮在图片下方） */}
             <div className="order-1 lg:order-2 lg:col-span-5">
               <div className="sticky top-24">
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-gray-100">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-white/[0.03]">
                   <img
                     src={product.image || "https://via.placeholder.com/800x600"}
                     alt={product.title}
@@ -194,24 +193,22 @@ const ProductDetailPage: React.FC = () => {
 
       {/* Specifications */}
       {product.specifications && product.specifications.length > 0 && (
-        <section className="cv-auto py-16 bg-gray-50">
+        <section className="cv-auto py-16 md:py-20 border-t border-white/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center">Technical Specifications</h2>
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6">
+              <p className="eyebrow mb-3 text-center">Specs</p>
+              <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight mb-10 text-center">Technical Specifications</h2>
+              <div className="surface-card overflow-hidden">
+                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5">
                   {product.specifications.map(
                     (spec: { label: string; value: string }, index: number) => (
-                      <div
-                        key={index}
-                        className="flex justify-between border-b border-gray-200 pb-2"
-                      >
-                        <span className="text-xs sm:text-sm md:text-base font-semibold text-gray-700">{spec.label}:</span>
-                        <span className="text-xs sm:text-sm md:text-base text-gray-600">{spec.value}</span>
+                      <div key={index} className="bg-background px-5 py-4">
+                        <dt className="eyebrow mb-1">{spec.label}</dt>
+                        <dd className="text-sm md:text-base text-white/90 break-words">{spec.value}</dd>
                       </div>
                     )
                   )}
-                </div>
+                </dl>
               </div>
             </div>
           </div>
@@ -219,36 +216,38 @@ const ProductDetailPage: React.FC = () => {
       )}
 
       {/* Quote Calculator */}
-      <section className="py-16">
+      <section className="py-16 md:py-20 border-t border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Get Your Custom Quote</h2>
+            <p className="eyebrow mb-3 text-center">Quote</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight mb-8 text-center">Get Your Custom Quote</h2>
             <EnhancedQuoteCalculator />
           </div>
         </div>
       </section>
 
       {/* Features Detail */}
-      <section className="cv-auto py-16 bg-gray-50">
+      <section className="cv-auto py-16 md:py-20 border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose Our {product.title}?
+          <div className="text-center mb-10 md:mb-14 max-w-2xl mx-auto">
+            <p className="eyebrow mb-3">Why Tectone</p>
+            <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight">
+              Why Choose Our {product.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
             {features.map(({ Icon, title, desc }, index) => (
               <div
                 key={title}
-                className="border border-border rounded-lg p-4 md:p-6 transition-all hover:border-tectone-gold hover:shadow-md bg-card animate-on-scroll"
-                style={{ transitionDelay: `${index * 80}ms` }}
+                className="bg-background p-6 md:p-8 animate-on-scroll"
+                style={{ transitionDelay: `${index * 60}ms` }}
               >
-                <div className="h-10 w-10 md:h-14 md:w-14 bg-tectone-gold/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
-                  <Icon className="h-6 w-6 md:h-8 md:w-8 text-tectone-gold" />
+                <div className="feature-icon mb-4">
+                  <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 md:mb-2">{title}</h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">{desc}</p>
+                <h3 className="text-base md:text-lg font-medium tracking-tight mb-2 break-words">{title}</h3>
+                <p className="text-sm md:text-base text-white/60 leading-relaxed break-words">{desc}</p>
               </div>
             ))}
           </div>

@@ -144,11 +144,11 @@ const ProductQuoteCalculator: React.FC<ProductQuoteCalculatorProps> = ({ product
     <div className="bg-card p-6 rounded-lg shadow-md animate-on-scroll border border-border">
       <h2 className="text-2xl font-semibold mb-4">Get Your {productType} Quote</h2>
       <div className="mb-6 relative flex justify-between">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-tectone-gold text-white font-semibold z-10">
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/[0.03] text-white font-semibold z-10">
           1
         </div>
-        <div className={`h-1 absolute top-4 left-0 right-0 z-0 ${step > 1 ? "bg-tectone-gold" : "bg-gray-300"}`}></div>
-        <div className={`flex items-center justify-center w-8 h-8 rounded-full text-white font-semibold z-10 ${step > 1 ? "bg-tectone-gold" : "bg-gray-300"
+        <div className={`h-1 absolute top-4 left-0 right-0 z-0 ${step > 1 ? "bg-white/[0.03] border border-white/10" : "bg-white/[0.08]"}`}></div>
+        <div className={`flex items-center justify-center w-8 h-8 rounded-full text-white font-semibold z-10 ${step > 1 ? "bg-white/[0.03] border border-white/10" : "bg-white/[0.08]"
           }`}>
           2
         </div>
@@ -289,7 +289,7 @@ const ProductQuoteCalculator: React.FC<ProductQuoteCalculatorProps> = ({ product
         <DialogContent className="bg-card border-border text-foreground">
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold mb-2">Quote Request Submitted!</DialogTitle>
-            <DialogDescription className="text-gray-600">
+            <DialogDescription className="text-white/55">
               Thank you, <strong>{successData.name}</strong>. We've received your request and emailed your custom quote.
             </DialogDescription>
           </DialogHeader>

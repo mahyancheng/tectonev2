@@ -97,7 +97,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
   }));
 
   return (
-    <nav aria-label="Breadcrumb" className="bg-gray-100 py-3">
+    <nav aria-label="Breadcrumb" className="bg-black/40 border-b border-white/5 py-3">
       <Head>
         <script type="application/ld+json">
           {JSON.stringify({
@@ -116,7 +116,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
               return (
                 <span
                   key={c.key}
-                  className="breadcrumb-item font-semibold text-tectone-dark"
+                  className="breadcrumb-item font-medium text-white/90"
                 >
                   {c.label}
                 </span>
@@ -127,7 +127,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ pageName }) => {
               <Link
                 key={c.key}
                 to={c.to!}
-                className="breadcrumb-item text-gray-600 hover:text-tectone-gold transition-colors"
+                className="breadcrumb-item text-white/55 hover:text-white transition-colors"
               >
                 {c.label}
               </Link>
