@@ -30,16 +30,37 @@ const imageVariants = {
   exit: { opacity: 0, scale: 0.98, transition: { duration: 0.3 } },
 };
 
-const EnhancedQuoteCalculator: React.FC = () => {
+interface EnhancedQuoteCalculatorProps {
+  /**
+   * Optional pre-selected product id (e.g. "107-security-swing-door").
+   * When provided, takes precedence over the URL-based detection and the
+   * calculator opens on Step 2 (dimensions) with that product locked in.
+   * Used by the homepage catalog accordion.
+   */
+  initialProductId?: string;
+  /**
+   * Compact mode — hides the left preview pane and collapses the controls
+   * to full-width single column. Use when embedding the calculator in a
+   * context where the product is already shown (e.g. inside a catalog
+   * row accordion). Defaults to false.
+   */
+  compact?: boolean;
+}
+
+const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initialProductId, compact = false }) => {
   const { toast } = useToast();
   const location = useLocation();
 
   const formatPrice = (value: number) =>
     value.toLocaleString("en-US", { style: "currency", currency: "SGD", minimumFractionDigits: 2 });
 
+  // Prop wins over URL — explicit > inferred.
   const pathProductType = location.pathname.split("/").pop();
-  const initialProduct = productDetails.find((p) => p.id === pathProductType);
-  const initialProductType = initialProduct?.id || "";
+  const resolvedInitial =
+    (initialProductId && productDetails.find((p) => p.id === initialProductId)?.id) ||
+    productDetails.find((p) => p.id === pathProductType)?.id ||
+    "";
+  const initialProductType = resolvedInitial;
 
   const [step, setStep] = useState(initialProductType ? 2 : 1);
   const [formData, setFormData] = useState({
@@ -246,101 +267,105 @@ const EnhancedQuoteCalculator: React.FC = () => {
      Render
      ════════════════════════════════════════════════════ */
   return (
-    <div className="surface-card overflow-hidden">
-      <div className="grid lg:grid-cols-2 gap-0 min-h-[320px]">
-        {/* ──────────── LEFT: preview ──────────── */}
-        <div className="relative bg-black overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10 min-h-[160px] lg:min-h-full">
-          {/* Subtle mesh texture, always present */}
-          <div className="absolute inset-0 mesh-bg opacity-30 pointer-events-none" />
+    <div className={compact ? "" : "surface-card overflow-hidden"}>
+      <div className={compact ? "" : "grid lg:grid-cols-2 gap-0 min-h-[320px]"}>
+        {/* ──────────── LEFT: preview (hidden in compact mode) ──────────── */}
+        {!compact && (
+          <div className="relative bg-black overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10 min-h-[160px] lg:min-h-full">
+            {/* Subtle mesh texture, always present */}
+            <div className="absolute inset-0 mesh-bg opacity-30 pointer-events-none" />
 
-          <AnimatePresence mode="wait">
-            {selectedProduct ? (
-              <motion.img
-                key={selectedProduct.id}
-                src={selectedProduct.image}
-                alt={selectedProduct.title}
-                variants={imageVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="absolute inset-0 w-full h-full object-cover opacity-70"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <motion.div
-                key="placeholder"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <div className="text-center px-6">
-                  <p className="eyebrow mb-3">Step 1 of 3</p>
-                  <p className="font-serif text-lg md:text-2xl text-white/85 leading-tight max-w-xs mx-auto">
-                    Pick a product. Quote in under a minute.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {selectedProduct && (
-            <div className="absolute bottom-0 inset-x-0 p-5 md:p-6 bg-gradient-to-t from-black via-black/85 to-transparent">
-              <p className="eyebrow mb-1">Selected product</p>
-              <p className="font-serif text-lg md:text-xl text-white tracking-tight leading-tight">
-                {selectedProduct.title}
-              </p>
-              {formData.width && formData.height && (
-                <p className="text-xs text-white/55 mt-1">
-                  {formData.width}" wide × {formData.height}" tall
-                </p>
+            <AnimatePresence mode="wait">
+              {selectedProduct ? (
+                <motion.img
+                  key={selectedProduct.id}
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title}
+                  variants={imageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="absolute inset-0 w-full h-full object-cover opacity-70"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <motion.div
+                  key="placeholder"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className="text-center px-6">
+                    <p className="eyebrow mb-3">Step 1 of 3</p>
+                    <p className="font-serif text-lg md:text-2xl text-white/85 leading-tight max-w-xs mx-auto">
+                      Pick a product. Quote in under a minute.
+                    </p>
+                  </div>
+                </motion.div>
               )}
+            </AnimatePresence>
+
+            {selectedProduct && (
+              <div className="absolute bottom-0 inset-x-0 p-5 md:p-6 bg-gradient-to-t from-black via-black/85 to-transparent">
+                <p className="eyebrow mb-1">Selected product</p>
+                <p className="font-serif text-lg md:text-xl text-white tracking-tight leading-tight">
+                  {selectedProduct.title}
+                </p>
+                {formData.width && formData.height && (
+                  <p className="text-xs text-white/55 mt-1">
+                    {formData.width}" wide × {formData.height}" tall
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ──────────── RIGHT: controls (always shown) ──────────── */}
+        <div className={compact ? "p-0 flex flex-col" : "p-4 md:p-6 flex flex-col"}>
+          {/* Stepper — hidden in compact mode (parent context provides the product label) */}
+          {!compact && (
+            <div className="mb-4">
+              <div className="flex items-center gap-2.5">
+                {[1, 2, 3].map((s, i) => (
+                  <div key={s} className="contents">
+                    <div className="flex items-center gap-2">
+                      <motion.div
+                        animate={{
+                          backgroundColor: step >= s ? "#ffffff" : "rgba(255,255,255,0.08)",
+                          color: step >= s ? "#000000" : "rgba(255,255,255,0.5)",
+                          scale: step === s ? 1.05 : 1,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium"
+                      >
+                        {step > s ? <Check className="h-3.5 w-3.5" /> : s}
+                      </motion.div>
+                      <span
+                        className={`text-xs uppercase tracking-[0.18em] hidden sm:inline ${
+                          step >= s ? "text-white/85" : "text-white/35"
+                        }`}
+                      >
+                        {s === 1 ? "Product" : s === 2 ? "Size" : "You"}
+                      </span>
+                    </div>
+                    {i < 2 && (
+                      <div className="flex-1 h-px bg-white/10 relative overflow-hidden">
+                        <motion.div
+                          initial={false}
+                          animate={{ width: step > s ? "100%" : "0%" }}
+                          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                          className="absolute inset-y-0 left-0 bg-white/85"
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
-        </div>
-
-        {/* ──────────── RIGHT: controls ──────────── */}
-        <div className="p-4 md:p-6 flex flex-col">
-          {/* Stepper */}
-          <div className="mb-4">
-            <div className="flex items-center gap-2.5">
-              {[1, 2, 3].map((s, i) => (
-                <div key={s} className="contents">
-                  <div className="flex items-center gap-2">
-                    <motion.div
-                      animate={{
-                        backgroundColor: step >= s ? "#ffffff" : "rgba(255,255,255,0.08)",
-                        color: step >= s ? "#000000" : "rgba(255,255,255,0.5)",
-                        scale: step === s ? 1.05 : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium"
-                    >
-                      {step > s ? <Check className="h-3.5 w-3.5" /> : s}
-                    </motion.div>
-                    <span
-                      className={`text-xs uppercase tracking-[0.18em] hidden sm:inline ${
-                        step >= s ? "text-white/85" : "text-white/35"
-                      }`}
-                    >
-                      {s === 1 ? "Product" : s === 2 ? "Size" : "You"}
-                    </span>
-                  </div>
-                  {i < 2 && (
-                    <div className="flex-1 h-px bg-white/10 relative overflow-hidden">
-                      <motion.div
-                        initial={false}
-                        animate={{ width: step > s ? "100%" : "0%" }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-y-0 left-0 bg-white/85"
-                      />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
 
           {/* Step body */}
           <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
@@ -403,19 +428,21 @@ const EnhancedQuoteCalculator: React.FC = () => {
                   exit="exit"
                   className="flex-1 flex flex-col"
                 >
-                  <p className="eyebrow mb-2">Step 2 · Dimensions</p>
-                  <h3 className="font-serif text-xl md:text-2xl tracking-tight text-white mb-1">
+                  <p className="eyebrow mb-1.5">Step 2 · Dimensions</p>
+                  <h3 className={`font-serif tracking-tight text-white ${compact ? "text-lg md:text-xl mb-3" : "text-xl md:text-2xl mb-1"}`}>
                     What size do you need?
                   </h3>
-                  <p className="text-xs text-white/55 mb-5">
-                    Measure the opening in inches. We'll fine-tune on the site visit.
-                  </p>
+                  {!compact && (
+                    <p className="text-xs text-white/55 mb-5">
+                      Measure the opening in inches. We'll fine-tune on the site visit.
+                    </p>
+                  )}
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label
                         htmlFor="qc-width"
-                        className="block text-xs font-medium text-white/65 mb-1.5 uppercase tracking-wider"
+                        className={`block text-[10px] font-medium text-white/55 uppercase tracking-[0.14em] ${compact ? "mb-1" : "mb-1.5 text-xs text-white/65"}`}
                       >
                         Width
                       </label>
@@ -429,9 +456,9 @@ const EnhancedQuoteCalculator: React.FC = () => {
                           onChange={handleChange}
                           onKeyDown={restrictInvalidNumberInput}
                           placeholder="36"
-                          className="input-field pr-10"
+                          className={`input-field pr-10 ${compact ? "!py-2 !text-sm" : ""}`}
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/40">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-white/40">
                           in
                         </span>
                       </div>
@@ -439,7 +466,7 @@ const EnhancedQuoteCalculator: React.FC = () => {
                     <div>
                       <label
                         htmlFor="qc-height"
-                        className="block text-xs font-medium text-white/65 mb-1.5 uppercase tracking-wider"
+                        className={`block text-[10px] font-medium text-white/55 uppercase tracking-[0.14em] ${compact ? "mb-1" : "mb-1.5 text-xs text-white/65"}`}
                       >
                         Height
                       </label>
@@ -453,9 +480,9 @@ const EnhancedQuoteCalculator: React.FC = () => {
                           onChange={handleChange}
                           onKeyDown={restrictInvalidNumberInput}
                           placeholder="80"
-                          className="input-field pr-10"
+                          className={`input-field pr-10 ${compact ? "!py-2 !text-sm" : ""}`}
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/40">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-white/40">
                           in
                         </span>
                       </div>
@@ -466,19 +493,30 @@ const EnhancedQuoteCalculator: React.FC = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="mt-6 p-4 rounded-md border border-white/10 bg-white/[0.03]"
+                      className={`border border-white/10 bg-white/[0.03] ${compact ? "mt-3 px-3.5 py-2.5 flex items-baseline justify-between gap-3" : "mt-6 p-4 rounded-md"}`}
                     >
-                      <p className="eyebrow mb-1">Estimated</p>
-                      <p className="font-serif text-2xl text-white tracking-tight">
-                        {formatPrice(parseFloat(calculatePrice()))}
-                      </p>
-                      <p className="text-xs text-white/45 mt-1">
-                        Indicative only · Final quote confirmed after on-site measurement
-                      </p>
+                      {compact ? (
+                        <>
+                          <span className="eyebrow">Estimated</span>
+                          <span className="font-serif text-lg text-white tracking-tight tabular-nums">
+                            {formatPrice(parseFloat(calculatePrice()))}
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <p className="eyebrow mb-1">Estimated</p>
+                          <p className="font-serif text-2xl text-white tracking-tight">
+                            {formatPrice(parseFloat(calculatePrice()))}
+                          </p>
+                          <p className="text-xs text-white/45 mt-1">
+                            Indicative only · Final quote confirmed after on-site measurement
+                          </p>
+                        </>
+                      )}
                     </motion.div>
                   )}
 
-                  <div className="mt-auto pt-8 grid grid-cols-2 gap-3">
+                  <div className={`grid grid-cols-2 gap-3 ${compact ? "mt-4" : "mt-auto pt-8"}`}>
                     <button type="button" onClick={prevStep} className="btn-outline">
                       <ArrowLeft className="mr-1.5 h-4 w-4" />
                       Back
@@ -500,37 +538,56 @@ const EnhancedQuoteCalculator: React.FC = () => {
                   exit="exit"
                   className="flex-1 flex flex-col"
                 >
-                  <p className="eyebrow mb-2">Step 3 · You</p>
-                  <h3 className="font-serif text-xl md:text-2xl tracking-tight text-white mb-1">
+                  <p className="eyebrow mb-1.5">Step 3 · You</p>
+                  <h3 className={`font-serif tracking-tight text-white ${compact ? "text-lg md:text-xl mb-3" : "text-xl md:text-2xl mb-1"}`}>
                     Where should we send the quote?
                   </h3>
-                  <p className="text-xs text-white/55 mb-5">
-                    A real PDF lands in your inbox — no calls you didn't ask for.
-                  </p>
+                  {!compact && (
+                    <p className="text-xs text-white/55 mb-5">
+                      A real PDF lands in your inbox — no calls you didn't ask for.
+                    </p>
+                  )}
 
-                  {/* Order summary — confirms what they're about to submit */}
-                  <div className="rounded-lg border border-white/10 bg-white/[0.03] divide-y divide-white/10 mb-6">
-                    <div className="flex items-baseline justify-between px-4 py-3">
-                      <span className="eyebrow">Product</span>
-                      <span className="text-sm text-white font-medium tracking-tight text-right max-w-[60%]">
-                        {selectedProduct?.title || "—"}
-                      </span>
+                  {/* Order summary — single inline strip in compact, full card otherwise */}
+                  {compact ? (
+                    <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4 px-3.5 py-2.5 border border-white/10 bg-white/[0.03]">
+                      <div className="flex items-baseline gap-2 text-xs">
+                        <span className="eyebrow">Spec</span>
+                        <span className="text-white/85 tabular-nums">
+                          {formData.width || "—"}″ × {formData.height || "—"}″
+                        </span>
+                      </div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="eyebrow">Est.</span>
+                        <span className="font-serif text-lg text-white tracking-tight tabular-nums">
+                          {formatPrice(parseFloat(calculatePrice()))}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-baseline justify-between px-4 py-3">
-                      <span className="eyebrow">Dimensions</span>
-                      <span className="text-sm text-white/85 font-medium tabular-nums">
-                        {formData.width || "—"}" wide × {formData.height || "—"}" tall
-                      </span>
+                  ) : (
+                    <div className="rounded-lg border border-white/10 bg-white/[0.03] divide-y divide-white/10 mb-6">
+                      <div className="flex items-baseline justify-between px-4 py-3">
+                        <span className="eyebrow">Product</span>
+                        <span className="text-sm text-white font-medium tracking-tight text-right max-w-[60%]">
+                          {selectedProduct?.title || "—"}
+                        </span>
+                      </div>
+                      <div className="flex items-baseline justify-between px-4 py-3">
+                        <span className="eyebrow">Dimensions</span>
+                        <span className="text-sm text-white/85 font-medium tabular-nums">
+                          {formData.width || "—"}" wide × {formData.height || "—"}" tall
+                        </span>
+                      </div>
+                      <div className="flex items-baseline justify-between px-4 py-3.5 bg-white/[0.02]">
+                        <span className="eyebrow">Estimated</span>
+                        <span className="font-serif text-xl text-white tracking-tight tabular-nums">
+                          {formatPrice(parseFloat(calculatePrice()))}
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-baseline justify-between px-4 py-3.5 bg-white/[0.02]">
-                      <span className="eyebrow">Estimated</span>
-                      <span className="font-serif text-xl text-white tracking-tight tabular-nums">
-                        {formatPrice(parseFloat(calculatePrice()))}
-                      </span>
-                    </div>
-                  </div>
+                  )}
 
-                  <div className="space-y-3.5">
+                  <div className={compact ? "grid grid-cols-2 gap-2.5" : "space-y-3.5"}>
                     {[
                       { name: "name", label: "Your name", placeholder: "Jason Tan", type: "text" },
                       { name: "email", label: "Email", placeholder: "you@example.com", type: "email" },
@@ -540,7 +597,7 @@ const EnhancedQuoteCalculator: React.FC = () => {
                       <div key={f.name}>
                         <label
                           htmlFor={`qc-${f.name}`}
-                          className="block text-xs font-medium text-white/65 mb-1.5 uppercase tracking-wider"
+                          className={`block text-[10px] font-medium text-white/55 uppercase tracking-[0.14em] ${compact ? "mb-1" : "mb-1.5 text-xs text-white/65"}`}
                         >
                           {f.label}
                         </label>
@@ -551,13 +608,13 @@ const EnhancedQuoteCalculator: React.FC = () => {
                           onChange={handleChange}
                           placeholder={f.placeholder}
                           type={f.type}
-                          className="input-field"
+                          className={`input-field ${compact ? "!py-2 !text-sm" : ""}`}
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-auto pt-8 grid grid-cols-2 gap-3">
+                  <div className={`grid grid-cols-2 gap-3 ${compact ? "mt-5" : "mt-auto pt-8"}`}>
                     <button type="button" onClick={prevStep} className="btn-outline">
                       <ArrowLeft className="mr-1.5 h-4 w-4" />
                       Back

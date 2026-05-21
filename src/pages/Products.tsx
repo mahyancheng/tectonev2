@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import EnhancedQuoteCalculator from "../components/EnhancedQuoteCalculator";
+import CatalogAccordion from "@/components/CatalogAccordion";
 import BuyingProcessRoadmap from "../components/BuyingProcessRoadmap";
-import { Shield, Check, Wrench, AlertTriangle, Sun, Eye, ArrowRight } from "lucide-react";
+import { Shield, Check, Wrench, AlertTriangle, Sun, Eye } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
-import productPicture from "../images/productPicture.webp"
-import SlidingDoor from "../images/SldingDoor.webp";
-import CasementWindow from "../images/CasementWindow.webp";
-import SlidingWindow from "../images/SlidingWindow.webp";
-import FixedScene from "../images/FixedScreen.webp"
-import TongHung from "../images/TopHung.webp"
-import SwingDoor from "../images/SwingDoor.webp"
-import FoldingDoor from "../images/FoldingDoor.webp"
+import productPicture from "../images/productPicture.webp";
 import { Head } from "vite-react-ssg";
+import Reveal from "@/components/Reveal";
 
 
 const features = [
@@ -81,105 +75,6 @@ const faqs = [
     answer:
       'Yes, all our insect screens come with a 10-year warranty covering manufacturing defects and structural integrity under normal use conditions.',
   },
-];
-
-const securityProducts = [
-  {
-    id: "107-security-swing-door",
-    title: "Insect Screen Swing Door",
-    image: SwingDoor,
-    description: "The Tectone Insect Screen Swing Door is designed to provide premium security without compromising on airflow, natural light, or modern design",
-    features: [
-      "Smooth track system",
-      "Multi-point locking",
-      "Space-saving design",
-      "Easy operation"]
-  },
-  {
-    id: "104-security-folding-door",
-    title: "Insect Screen Folding Door",
-    image: FoldingDoor,
-    description: "The Tectone Insect Screen Folding Door is the ideal choice for wider openings that require both maximum access and strong security",
-    features: [
-      "High-Tensile Stainless Steel Mesh (SS304)",
-      "Powder-Coated Aluminium Frame",
-      "Folding Panel Mechanism",
-      "Multi-Point Locking System",
-      "Custom Configuration",
-      "Pet and Child Friendly",
-    ]
-  },
-  {
-    id: "105-security-sliding-door",
-    title: "Insect Screen Sliding Door",
-    image: SlidingDoor,
-    description: "The Tectone Insect Screen Sliding Door is built for homeowners who value both security and seamless design",
-    features: [
-      "Stainless Steel Mesh (SS304)",
-      "Heavy-Duty Aluminium Frame",
-      "Smooth Sliding System",
-      "Multi-Point Locking",
-      "Clean and Modern Aesthetic",
-      "Custom-Built for Precision Fit",
-
-    ]
-  },
-  {
-    id: "103-security-casement-window",
-    title: "Casement Window",
-    image: CasementWindow,
-    description: "The Tectone Insect Screen Casement Window offers the perfect combination of natural ventilation, clear visibility, and robust protection.",
-    features: [
-      "Stainless Steel Mesh (SS304)",
-      "Heavy-Duty Aluminium Frame",
-      "Outward Opening Compatibility",
-      "Secure Locking System",
-      "Slim, Modern Profile",
-      "Child and Pet Safe"
-    ],
-  },
-  {
-    id: "106-security-sliding-window",
-    title: "Insect Screen Sliding Window",
-    image: SlidingWindow,
-    description: "The Tectone Insect Screen Sliding Window is designed for modern homes that require strong protection without sacrificing airflow or visibility",
-    features: [
-      "SS304 Stainless Steel Mesh",
-      "Smooth Sliding Track System",
-      "Durable Aluminium Frame",
-      "Discreet, Minimalist Design",
-      "Multi-Point Locking Option",
-      "Child and Pet Friendly",
-    ],
-  },
-  {
-    id: "102-fixed-screen",
-    title: "Fixed Insect Screen",
-    image: FixedScene,
-    description: "The Tectone Fixed Mosquito Screen offers a simple, durable, and cost-effective solution for areas that require continuous insect protection",
-    features: [
-      "Stainless Steel Mesh (SS304)",
-      "Durable Aluminium Frame",
-      "Clean, Minimalist Appearance",
-      "Excellent Ventilation",
-      "Cost-Effective Design",
-      "Custom-Made to Fit",
-    ],
-  },
-  {
-    id: "108-security-top-hung",
-    title: "Top Hung Window",
-    description: "The Tectone Insect Screen Top Hung Window is specially designed for ventilation with added security",
-    image: TongHung,
-    features: [
-      "SS304 Stainless Steel Mesh",
-      "Durable Aluminium Frame",
-      "Compatible with Top-Hung Window Designs",
-      "Water-Tolerant Ventilation",
-      "Low Maintenance",
-      "Safe for Homes with Children or Elderly",
-    ],
-  }
 ];
 
 const SecurityScreenPage: React.FC = () => {
@@ -265,72 +160,42 @@ const SecurityScreenPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Product Quote Calculator */}
-      <section className="py-16 bg-white/[0.03]">
+      {/* ════════════════════════════════════════════════════
+          CATALOG — seven systems · accordion configurator
+          Same UX as HomePage § 02: tap a row to expand the
+          inline calculator pre-loaded for that product, ↗
+          opens the full detail page.
+          ════════════════════════════════════════════════════ */}
+      <section className="cv-auto py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Get a Quick Quote</h2>
-            <EnhancedQuoteCalculator />
-          </div>
-        </div>
-      </section>
-
-      {/* Product Showcase */}
-      <section className="cv-auto py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Insect Screen Product Range
-            </h2>
-            <p className="text-white/55 max-w-3xl mx-auto">
-              Discover our comprehensive collection of <b>premium aluminium insect screens</b>, crafted for modern Singapore homes and businesses.
-              Each design keeps mosquitoes and pests out while maintaining sleek, grille-free aesthetics and lasting durability.
-
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {securityProducts.map((product) => (
-              <Link
-                to={`/our-product/product/${product.id}`}
-                key={product.id}
-                className="group block bg-white/[0.03] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-
-                <div className="p-6 flex flex-col justify-between min-h-[360px]">
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                    <p className="text-white/55 mb-4">{product.description}</p>
-                    <ul className="text-sm text-white/45">
-                      {product.features.map((f, i) => (
-                        <li key={i} className="flex items-center mb-1">
-                          <Check className="h-4 w-4 text-white mr-2" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Read More section */}
-                  <div className="pt-4">
-                    <p className="text-sm font-semibold text-white hover:text-white/40 transition-colors duration-200">
-                      Read More &gt;
-                    </p>
-
-                  </div>
-                </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+            <div className="max-w-2xl">
+              <Reveal>
+                <div className="num-tag mb-6">§ Catalog · 07 systems</div>
+              </Reveal>
+              <Reveal delay={100}>
+                <h2 className="display-xl mb-6">
+                  Seven openings,
+                  <br />
+                  <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.78)" }}>one workshop.</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={200}>
+                <p className="text-white/65 leading-relaxed">
+                  Tap a row to configure. Drop your dimensions, leave a number — a real PDF
+                  lands in your inbox. The <span className="font-mono text-white/85 text-sm">↗</span> opens the
+                  full spec sheet for that system.
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={260}>
+              <Link to="/quote" className="btn-square-outline self-start md:self-end">
+                Open Configurator ↗
               </Link>
-            ))}
+            </Reveal>
           </div>
+
+          <CatalogAccordion />
         </div>
       </section>
 

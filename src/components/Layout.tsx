@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Breadcrumb from "./Breadcrumb";
-import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 import WhatsAppChatWidget from "@/components/WhatsAppFloatButton";
 
 interface LayoutProps {
@@ -46,15 +45,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      {/* ✅ 用 pt-16 一次性把 Breadcrumb + main 往下推，避免被 fixed Navbar 遮住 */}
-      <div className="pt-16 flex-grow">
+      {/* Telemetry strip (28px) + main nav (~64-72px) = ~100px clearance */}
+      <div className="pt-[100px] flex-grow">
         <Breadcrumb />
         <main>{children}</main>
       </div>
 
       <Footer />
 
-      {/* ✅ 轻量 WhatsApp（全站浮动，不依赖 Elfsight） */}
+      {/* Floating CTA — centered Configure + Contact us pills (Kova-style).
+          Hidden on /thank-you, where the user has already converted. */}
       {showWhatsApp && (
         <WhatsAppChatWidget phoneE164="6596771199" />
       )}

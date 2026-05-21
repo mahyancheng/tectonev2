@@ -7,7 +7,7 @@ import { Head } from "vite-react-ssg";
 const stats = [
   { num: "10+", label: "Years in Singapore" },
   { num: "5,000+", label: "Homes secured" },
-  { num: "4.9", label: "Google rating" },
+  { num: "4.8", label: "Google rating" },
 ];
 
 /* Core principles — short, declarative */
@@ -80,9 +80,9 @@ const AboutPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-7">
-              <p className="eyebrow mb-6">About Tectone</p>
-              <h1 className="font-serif text-4xl md:text-6xl font-medium leading-[1.05] tracking-tight mb-8">
-                Singapore's Premium Screen Solutions
+              <span className="eyebrow-rule mb-6 block">About Tectone</span>
+              <h1 className="font-serif text-4xl md:text-6xl font-medium leading-[1.0] tracking-tight mb-8">
+                Singapore's <span className="em-italic">Premium</span> Screen Solutions
               </h1>
               <p className="text-lg md:text-xl text-white/70 leading-relaxed mb-5">
                 Tectone Renex Steel makes the insect and security screens that
@@ -116,14 +116,12 @@ const AboutPage: React.FC = () => {
 
       {/* ════════════ STAT STRIP ════════════ */}
       <section className="border-b border-white/5">
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-12 md:py-16">
           <div className="grid grid-cols-3 gap-6 text-center">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-serif text-3xl md:text-5xl font-medium tracking-tight text-white">
-                  {s.num}
-                </div>
-                <div className="eyebrow mt-2">{s.label}</div>
+                <div className="stat-num">{s.num}</div>
+                <div className="stat-label">{s.label}</div>
               </div>
             ))}
           </div>
@@ -134,9 +132,9 @@ const AboutPage: React.FC = () => {
       <section className="cv-auto py-24 md:py-32 border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-14">
-            <p className="eyebrow mb-4">Principles</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
-              What we believe
+            <span className="eyebrow-rule mb-5 block">Principles</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6 leading-[1.05]">
+              What we <span className="em-italic">believe</span>
             </h2>
             <p className="text-white/65 text-lg leading-relaxed">
               Four ideas that decide every product, every site visit, every
@@ -166,9 +164,9 @@ const AboutPage: React.FC = () => {
       <section className="cv-auto py-24 md:py-32 border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mb-14">
-            <p className="eyebrow mb-4">How it works</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6">
-              From first call to final install
+            <span className="eyebrow-rule mb-5 block">How it works</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight mb-6 leading-[1.05]">
+              From first call to <span className="em-italic">final install</span>
             </h2>
             <p className="text-white/65 text-lg leading-relaxed">
               Roughly three weeks, end to end. No surprises, no chasing.

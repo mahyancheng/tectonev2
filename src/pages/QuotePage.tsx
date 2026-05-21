@@ -1,7 +1,9 @@
 import React from "react";
-import EnhancedQuoteCalculator from "../components/EnhancedQuoteCalculator";
-import ContactSection from "@/components/ContactSection";
+import { Link } from "react-router-dom";
 import { Head } from "vite-react-ssg";
+import ContactSection from "@/components/ContactSection";
+import CatalogAccordion from "@/components/CatalogAccordion";
+import Reveal from "@/components/Reveal";
 
 const QuotePage: React.FC = () => {
   const canonical = "https://tectonesteel.com/quote";
@@ -36,41 +38,82 @@ const QuotePage: React.FC = () => {
         />
       </Head>
 
-      {/* Header / Intro */}
-      <section className="py-12 bg-secondary">
+      {/* ════════════════════════════════════════════════════
+          INTRO — editorial header. Mirrors HomePage § 02.
+          ════════════════════════════════════════════════════ */}
+      <section className="cv-auto py-20 md:py-28">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get Your Custom Quote</h1>
-            <p className="text-white/55 max-w-2xl mx-auto">
-              Calculate your solution cost in just 3 simple steps. Our team will contact you with a
-              detailed proposal.
-            </p>
-          </div>
-
-          {/* Calculator (首屏重点：不要 cv-auto) */}
-          <div className="max-w-3xl mx-auto">
-            <EnhancedQuoteCalculator />
-          </div>
-
-          {/* Help CTA */}
-          <div className="text-center mt-12">
-            <h2 className="text-2xl font-semibold mb-3">Need Help?</h2>
-            <p className="text-white/55 mb-6">
-              Our experts are here to help you choose the perfect insect screen solution.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="tel:+6596771199" className="btn-primary">
-                Call Us: +65 9677 1199
-              </a>
-              <a href="mailto:tectone777@gmail.com" className="btn-outline">
-                Email Us
-              </a>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+            <div className="max-w-2xl">
+              <Reveal>
+                <div className="num-tag mb-6">§ Quote · 07 systems</div>
+              </Reveal>
+              <Reveal delay={100}>
+                <h1 className="display-xl mb-6">
+                  Configure your
+                  <br />
+                  <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.78)" }}>opening.</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={200}>
+                <p className="text-white/65 leading-relaxed">
+                  Tap a row to expand the configurator for that system. Drop your dimensions,
+                  leave a number — a real PDF lands in your inbox within minutes. No commitment, no upsell.
+                </p>
+              </Reveal>
             </div>
+            <Reveal delay={260}>
+              <div className="num-tag md:text-right">
+                <span className="live-dot" />
+                AVG REPLY · 8 MIN · BUSINESS HOURS
+              </div>
+            </Reveal>
+          </div>
+
+          <CatalogAccordion />
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════
+          HELP CTA — direct line for the impatient
+          ════════════════════════════════════════════════════ */}
+      <section className="cv-auto py-20 border-t border-white/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl">
+            <Reveal>
+              <div className="num-tag mb-6">§ Direct · skip the form</div>
+            </Reveal>
+            <Reveal delay={120}>
+              <h2 className="display-xl mb-6">
+                Rather just
+                <br />
+                <span style={{ fontStyle: "italic", color: "rgba(255,255,255,0.78)" }}>talk?</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={220}>
+              <p className="text-white/65 mb-8 leading-relaxed">
+                Our team will pick up the line during business hours and answer measurement
+                questions in plain English. No queue tickets, no agents reading scripts.
+              </p>
+            </Reveal>
+            <Reveal delay={320}>
+              <div className="flex flex-wrap gap-4">
+                <a href="tel:+6596771199" className="btn-square">
+                  Call · +65 9677 1199
+                </a>
+                <a href="mailto:tectone777@gmail.com" className="btn-square-outline">
+                  Email Us ↗
+                </a>
+                <Link to="/contact-us" className="btn-square-outline">
+                  Site Survey ↗
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Contact section（如果它很长/很多内容 ✅适合 cv-auto） */}
+      {/* Contact section */}
       <section className="cv-auto">
         <ContactSection />
       </section>

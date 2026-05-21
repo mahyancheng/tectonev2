@@ -1,127 +1,133 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
 import headerIcon from "../images/tectone-logo-white.jpg";
 
-const quickLinks = [
-  { to: "/", label: "Home" },
-  { to: "/about-insect-screen-supplier", label: "About Us" },
-  { to: "/our-product", label: "Products" },
-  { to: "/blog", label: "Blog" },
-  { to: "/contact-us", label: "Contact Us" },
+const systems = [
+  {
+    label: "01 · Systems",
+    links: [
+      { to: "/our-product/product/107-security-swing-door", text: "RT-107 · Swing Door" },
+      { to: "/our-product/product/104-security-folding-door", text: "RT-104 · Folding Door" },
+      { to: "/our-product/product/105-security-sliding-door", text: "RT-105 · Sliding Door" },
+      { to: "/our-product/product/103-security-casement-window", text: "RT-103 · Casement Window" },
+      { to: "/our-product/product/106-security-sliding-window", text: "RT-106 · Sliding Window" },
+      { to: "/our-product/product/102-fixed-screen", text: "RT-102 · Fixed Screen" },
+      { to: "/our-product/product/108-security-top-hung", text: "RT-108 · Top Hung" },
+    ],
+  },
+  {
+    label: "02 · Build",
+    links: [
+      { to: "/quote", text: "Configure → quote" },
+      { to: "/our-product", text: "Full catalog" },
+      { to: "/about-insect-screen-supplier", text: "Manifest" },
+      { to: "/blog", text: "Field notes" },
+    ],
+  },
+  {
+    label: "03 · Channels",
+    links: [
+      { href: "tel:+6596771199", text: "+65 9677 1199 · Charlie" },
+      { href: "tel:+6580330428", text: "+65 8033 0428 · John" },
+      { href: "mailto:tectone777@gmail.com", text: "tectone777@gmail.com" },
+      { to: "/contact-us", text: "Site survey · booking" },
+    ],
+  },
 ];
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const linkBase = "text-white/55 hover:text-white transition-colors text-sm";
-  const headingBase =
-    "eyebrow mb-4";
 
   return (
-    <footer className="relative bg-black text-white pt-20 pb-10 border-t border-white/10">
-      {/* subtle mesh background — references the actual product */}
-      <div className="absolute inset-0 pointer-events-none mesh-bg opacity-50" />
+    <footer className="relative bg-black text-white border-t border-white/10 overflow-hidden">
+      {/* schematic grid */}
+      <div className="absolute inset-0 pointer-events-none frame-grid opacity-30" />
 
-      <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14">
-          {/* Company */}
+      {/* Top telemetry strip — mirror the nav */}
+      <div className="border-b border-white/10 relative">
+        <div className="container mx-auto px-4 h-10 flex items-center justify-between text-[10px] sm:text-[11px]">
+          <div className="telemetry flex items-center">
+            <span><span className="live-dot" />FAB · WOODLANDS · ONLINE</span>
+            <span className="hidden md:inline">11 WOODLANDS CL · 737853 · SG</span>
+          </div>
+          <div className="telemetry flex items-center">
+            <span className="hidden sm:inline">MON–FRI · 09:00–18:00 SGT</span>
+            <span>SUN · OFFLINE</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 pt-16 pb-10 relative">
+        {/* Brand mark + tagline */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 pb-14 border-b border-white/10">
           <div>
-            <Link to="/" className="inline-flex items-center mb-5">
+            <Link to="/" className="inline-flex items-center mb-6">
               <img
                 src={headerIcon}
                 alt="Tectone Renex Steel Pte Ltd"
-                width={40}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={48}
+                height={48}
+                className="h-12 w-auto object-contain"
                 decoding="async"
               />
             </Link>
-            <p className="text-white/55 text-sm leading-relaxed max-w-xs">
-              Tectone Renex Steel Pte Ltd — Premium insect screens and security
-              screens for doors and windows, designed with elegance for modern
-              Singapore homes.
+            <div className="num-tag mb-2">EST. 2014 · SG-UEN</div>
+            <p className="font-serif text-xl md:text-2xl text-white/80 leading-tight max-w-md tracking-tight">
+              Insect &amp; security screen <span style={{ fontStyle: "italic" }}>systems</span>, built in
+              Singapore for Singapore homes.
             </p>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className={headingBase}>Quick Links</h3>
-            <ul className="space-y-3 list-none p-0 m-0">
-              {quickLinks.map((q) => (
-                <li key={q.to}>
-                  <Link to={q.to} className={linkBase}>
-                    {q.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className={headingBase}>Contact Us</h3>
-            <ul className="space-y-4 list-none p-0 m-0">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 text-white/70 mt-0.5 shrink-0" />
-                <a
-                  href="https://www.google.com/maps/place/Tectone+Renex+Steel+PTE.LTD"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={linkBase}
-                >
-                  11 Woodlands Cl, #04-40 Woodlands 11, Singapore 737853
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="h-4 w-4 text-white/70 mt-0.5 shrink-0" />
-                <a href="mailto:tectone777@gmail.com" className={linkBase}>
-                  tectone777@gmail.com
-                </a>
-              </li>
-              <li>
-                <div className="flex items-start gap-3">
-                  <Phone className="h-4 w-4 text-white/70 mt-0.5 shrink-0" />
-                  <a href="tel:+6596771199" className={linkBase}>
-                    +65-9677 1199 (Charlie)
-                  </a>
-                </div>
-                <div className="pl-7 mt-1.5">
-                  <a href="tel:+6580330428" className={linkBase}>
-                    +65-8033 0428 (John)
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          {/* Business Hours */}
-          <div>
-            <h3 className={headingBase}>Business Hours</h3>
-            <ul className="space-y-2 list-none p-0 m-0 text-sm">
-              <li className="text-white/55">
-                <span className="text-white/85 font-medium">Monday – Friday:</span> 9am – 6pm
-              </li>
-              <li className="text-white/55">
-                <span className="text-white/85 font-medium">Sunday & PH:</span> Closed
-              </li>
-            </ul>
-
-            <Link to="/quote" className="btn-primary text-sm mt-6">
-              Get A Quote
-            </Link>
-          </div>
+          <Link to="/quote" className="btn-square self-start lg:self-auto">
+            Configure → Quote
+          </Link>
         </div>
 
-        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <p>© {currentYear} Tectone Renex Steel Pte Ltd. All Rights Reserved.</p>
-          <div className="flex gap-5">
+        {/* Three systems columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 py-14 border-b border-white/10">
+          {systems.map((col) => (
+            <div key={col.label}>
+              <div className="num-tag mb-5">{col.label}</div>
+              <ul className="space-y-3 list-none p-0 m-0">
+                {col.links.map((l) => (
+                  <li key={l.text}>
+                    {"to" in l && l.to ? (
+                      <Link
+                        to={l.to}
+                        className="text-sm text-white/65 hover:text-white transition-colors"
+                      >
+                        {l.text}
+                      </Link>
+                    ) : (
+                      <a
+                        href={(l as { href: string }).href}
+                        className="text-sm text-white/65 hover:text-white transition-colors"
+                      >
+                        {l.text}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom legal strip */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+          <span className="font-mono uppercase tracking-[0.12em]">
+            © {currentYear} TECTONE RENEX STEEL · RESERVED
+          </span>
+          <span className="font-mono uppercase tracking-[0.12em] flex items-center">
             <Link to="/privacy-policy" className="hover:text-white/70 transition-colors">
-              Privacy Policy
+              Privacy
             </Link>
+            <span className="ticker-divider" />
             <Link to="/terms" className="hover:text-white/70 transition-colors">
-              Terms of Service
+              Terms
             </Link>
-          </div>
+            <span className="ticker-divider" />
+            <span>v2.0 · 2026.Q2</span>
+          </span>
         </div>
       </div>
     </footer>

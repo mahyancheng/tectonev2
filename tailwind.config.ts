@@ -149,6 +149,7 @@ export default {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				serif: ['Fraunces', 'Georgia', 'serif'],
 				display: ['Fraunces', 'Georgia', 'serif'],
+				mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
 			},
 			backgroundImage: {
 				'mesh-grid':

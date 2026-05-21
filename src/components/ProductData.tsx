@@ -1,10 +1,13 @@
-import SlidingDoor from "../images/SldingDoor.webp";
-import CasementWindow from "../images/CasementWindow.webp";
-import SlidingWindow from "../images/SlidingWindow.webp";
-import FixedScene from "../images/FixedScreen.webp"
-import TongHung from "../images/TopHung.webp"
-import SwingDoor from "../images/SwingDoor.webp"
-import FoldingDoor from "../images/FoldingDoor.webp"
+// New showcase portraits — pure black background + white frame + mesh detail.
+// Replaces the original webp lifestyle photos with clean product cut-outs that
+// match the Balenciaga × SpaceX dark aesthetic.
+import SwingDoor from "../images/107-swing-door.jpg";
+import FoldingDoor from "../images/104-folding-door.jpg";
+import SlidingDoor from "../images/105-sliding-door.jpg";
+import CasementWindow from "../images/103-casement-window.jpg";
+import SlidingWindow from "../images/106-sliding-window.jpg";
+import FixedScene from "../images/102-fixed-screen.jpg";
+import TongHung from "../images/108-top-hung.jpg";
 
 
 
