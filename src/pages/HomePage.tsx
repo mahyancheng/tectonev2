@@ -199,7 +199,7 @@ const HomePage: React.FC = () => {
             <Reveal delay={420}>
               <div className="flex flex-wrap items-center gap-4">
                 <Link to="/quote" className="btn-square">Configure → Quote</Link>
-                <Link to="/our-product" className="btn-square-outline">View Catalog ↗</Link>
+                <Link to="/our-product" className="btn-square-outline">View Products ↗</Link>
                 <span className="hidden md:flex items-center gap-2 ml-2 text-white/45">
                   <span className="ticker-divider" />
                   <span className="num-tag">Avg lead time · 14 days</span>
@@ -320,7 +320,7 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <div className="num-tag mb-6">§ 02 · Catalog · 07 systems</div>
+              <div className="num-tag mb-6">§ 02 · Products · 07 systems</div>
               <h2 className="display-xl mb-6">
                 Seven openings,
                 <br />
@@ -332,7 +332,7 @@ const HomePage: React.FC = () => {
               </p>
             </div>
             <Link to="/our-product" className="btn-square-outline self-start md:self-end">
-              View Full Catalog ↗
+              View All Products ↗
             </Link>
           </div>
 

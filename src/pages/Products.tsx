@@ -177,7 +177,7 @@ const SecurityScreenPage: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
               <Reveal>
-                <div className="num-tag mb-6">§ Catalog · 07 systems</div>
+                <div className="num-tag mb-6">§ Products · 07 systems</div>
               </Reveal>
               <Reveal delay={100}>
                 <h2 className="display-xl mb-6">

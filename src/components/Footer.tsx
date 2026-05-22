@@ -19,9 +19,9 @@ const systems = [
     label: "02 · Build",
     links: [
       { to: "/quote", text: "Configure → quote" },
-      { to: "/our-product", text: "Full catalog" },
-      { to: "/about-insect-screen-supplier", text: "Manifest" },
-      { to: "/blog", text: "Field notes" },
+      { to: "/our-product", text: "All products" },
+      { to: "/about-insect-screen-supplier", text: "About us" },
+      { to: "/blog", text: "Blog" },
     ],
   },
   {

@@ -116,7 +116,7 @@ const Navbar: React.FC = () => {
                 className={`flex items-center ${navLinkBase}`}
                 onClick={closeAllMenus}
               >
-                <span className="text-white/35 mr-2">02</span>Catalog
+                <span className="text-white/35 mr-2">02</span>Products
                 <ChevronDown className="ml-1 h-3 w-3" />
               </Link>
 
@@ -158,10 +158,10 @@ const Navbar: React.FC = () => {
             </div>
 
             <Link to="/about-insect-screen-supplier" className={navLinkBase} onClick={closeAllMenus}>
-              <span className="text-white/35 mr-2">03</span>Manifest
+              <span className="text-white/35 mr-2">03</span>About Us
             </Link>
             <Link to="/blog" className={navLinkBase} onClick={closeAllMenus}>
-              <span className="text-white/35 mr-2">04</span>Field Notes
+              <span className="text-white/35 mr-2">04</span>Blog
             </Link>
 
             <Link to="/quote" className="btn-square ml-4" onClick={closeAllMenus}>
@@ -191,8 +191,8 @@ const Navbar: React.FC = () => {
             <div className="flex flex-col">
               {[
                 { to: "/", n: "01", label: "Home" },
-                { to: "/about-insect-screen-supplier", n: "03", label: "Manifest" },
-                { to: "/blog", n: "04", label: "Field Notes" },
+                { to: "/about-insect-screen-supplier", n: "03", label: "About Us" },
+                { to: "/blog", n: "04", label: "Blog" },
               ].map((l) => (
                 <Link
                   key={l.to}
@@ -213,7 +213,7 @@ const Navbar: React.FC = () => {
                 >
                   <span className="flex items-baseline gap-4">
                     <span className="font-mono text-[11px] text-white/40 tracking-[0.18em]">02</span>
-                    Catalog
+                    Products
                   </span>
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${
