@@ -14,11 +14,11 @@ const QuotePage: React.FC = () => {
         <title>Get a Quote · Insect Screen &amp; Mosquito Net Singapore | Tectone Renex Steel</title>
         <meta
           name="description"
-          content="Configure your Singapore insect screen, mosquito net or security mesh in 3 steps. Drop your mm dimensions, leave your number — quote PDF in your inbox within minutes."
+          content="Configure your Singapore insect screen, mosquito net or window mesh in 3 steps. Drop your mm dimensions, leave your number — quote PDF in your inbox within minutes."
         />
         <meta
           name="keywords"
-          content="insect screen quote Singapore, mosquito net quote, security mesh quote, HDB insect screen pricing, BTO mosquito net cost"
+          content="insect screen quote Singapore, mosquito net quote, window mesh quote, HDB insect screen pricing, BTO mosquito net cost, mosquito mesh price Singapore"
         />
 
         <link rel="canonical" href={canonical} />

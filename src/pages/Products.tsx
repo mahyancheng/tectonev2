@@ -92,15 +92,15 @@ const SecurityScreenPage: React.FC = () => {
     <>
       <Head>
         <title>
-          Insect Screen &amp; Mosquito Net Singapore · 7 Systems | Tectone Renex Steel
+          Insect Screen &amp; Mosquito Net Singapore · 7 Window Mesh Systems | Tectone Renex Steel
         </title>
         <meta
           name="description"
-          content="Singapore's full catalog of stainless-steel insect screens, mosquito nets and security mesh — swing, folding, sliding doors plus casement, sliding, fixed and top-hung window systems. SS304 weave, 10-year warranty."
+          content="Singapore's full catalog of stainless-steel insect screens, mosquito nets and window mesh — swing, folding, sliding doors plus casement, sliding, fixed and top-hung window systems. SS304 weave, 10-year warranty."
         />
         <meta
           name="keywords"
-          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, sliding mosquito net, casement window mesh, HDB mosquito screen, BTO insect screen"
+          content="insect screen Singapore, mosquito net Singapore, window mesh Singapore, sliding mosquito net, casement window mesh, insect mesh, HDB mosquito screen, BTO insect screen, magnetic insect screen alternative"
         />
         <meta property="og:title" content="Insect Screen & Mosquito Net Singapore · 7 Systems | Tectone Renex Steel" />
         <meta property="og:description" content="Seven SS304 insect screen + mosquito net systems for Singapore homes — sized to your opening, installed in 14 days, 10-year warranty." />

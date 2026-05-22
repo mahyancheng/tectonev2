@@ -35,19 +35,19 @@ const HomePage: React.FC = () => {
     <>
       <Head>
         <title>
-          Insect Screen Singapore | Mosquito Net &amp; Security Mesh · SS304 | Tectone Renex Steel
+          Insect Screen Singapore | Mosquito Net &amp; Window Mesh · SS304 | Tectone Renex Steel
         </title>
         <meta
           name="description"
-          content="Singapore's specialist for stainless-steel insect screens, mosquito nets and security mesh. SS304 weave in powder-coated aluminium. HDB BTO packages from SGD 1,980. 10-year warranty. Survey + install in 14 days."
+          content="Singapore's specialist for stainless-steel insect screens, mosquito nets and window mesh systems. SS304 weave in powder-coated aluminium. HDB BTO packages from SGD 1,980. 10-year warranty. Survey + install in 14 days."
         />
         <meta
           name="keywords"
-          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, HDB mosquito net, BTO insect screen, stainless steel mosquito net, SS304 insect screen, Singapore window mesh"
+          content="insect screen Singapore, mosquito net Singapore, window mesh Singapore, mosquito mesh, insect mesh, HDB mosquito net, BTO insect screen, magnetic insect screen alternative, invisible grille alternative, stainless steel mosquito net, SS304 insect screen"
         />
 
-        <meta property="og:title" content="Insect Screen Singapore | Mosquito Net & Security Mesh · Tectone Renex Steel" />
-        <meta property="og:description" content="Stainless-steel insect screens, mosquito nets and security mesh — engineered in Singapore for HDB, condo and landed homes. From SGD 1,980 for BTO." />
+        <meta property="og:title" content="Insect Screen Singapore | Mosquito Net & Window Mesh · Tectone Renex Steel" />
+        <meta property="og:description" content="Stainless-steel insect screens, mosquito nets and window mesh — engineered in Singapore for HDB, condo and landed homes. From SGD 1,980 for BTO." />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
         <meta property="og:url" content="https://tectonesteel.com/" />
@@ -55,8 +55,8 @@ const HomePage: React.FC = () => {
         <meta property="og:locale" content="en_SG" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Insect Screen Singapore | Mosquito Net & Security Mesh · Tectone" />
-        <meta name="twitter:description" content="SS304 stainless-steel insect screens for Singapore homes. HDB BTO packages from SGD 1,980." />
+        <meta name="twitter:title" content="Insect Screen Singapore | Mosquito Net & Window Mesh · Tectone" />
+        <meta name="twitter:description" content="SS304 stainless-steel insect screens and window mesh for Singapore homes. HDB BTO packages from SGD 1,980." />
 
         <link rel="canonical" href="https://tectonesteel.com/" />
         <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/" />
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
             "@id": "https://tectonesteel.com/#business",
             name: "Tectone Renex Steel Pte Ltd",
             description:
-              "Singapore specialist for stainless-steel insect screens, mosquito nets and security mesh systems. SS304 weave, SGS-tested, 10-year warranty. HDB BTO, condominium and landed installations.",
+              "Singapore specialist for stainless-steel insect screens, mosquito nets and window mesh systems. SS304 weave, SGS-tested, 10-year warranty. HDB BTO, condominium and landed installations.",
             url: "https://tectonesteel.com",
             telephone: "+6596771199",
             email: "tectone777@gmail.com",
@@ -116,7 +116,7 @@ const HomePage: React.FC = () => {
               },
               {
                 "@type": "Offer",
-                itemOffered: { "@type": "Service", name: "Security Mesh Installation" },
+                itemOffered: { "@type": "Service", name: "Window Mesh Installation" },
                 areaServed: "Singapore",
               },
               {

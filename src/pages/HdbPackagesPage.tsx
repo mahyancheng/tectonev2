@@ -49,7 +49,7 @@ const HdbPackagesPage: React.FC = () => {
         />
         <meta
           name="keywords"
-          content="HDB mosquito net Singapore, BTO insect screen, insect screen HDB, mosquito net HDB BTO, 4-room mosquito net, 5-room insect screen, security mesh HDB Singapore"
+          content="HDB mosquito net Singapore, BTO insect screen, insect screen HDB, mosquito net HDB BTO, 4-room mosquito net, 5-room insect screen, where to buy mosquito net in Singapore, mosquito net installation Singapore, window mesh HDB Singapore"
         />
         {/* Geo */}
         <meta name="geo.region" content="SG" />

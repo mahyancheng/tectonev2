@@ -59,15 +59,15 @@ const AboutPage: React.FC = () => {
     <>
       <Head>
         <title>
-          About · Singapore's Insect Screen, Mosquito Net &amp; Security Mesh Specialist | Tectone Renex Steel
+          About · Singapore's Insect Screen, Mosquito Net &amp; Window Mesh Specialist | Tectone Renex Steel
         </title>
         <meta
           name="description"
-          content="Singapore-based specialist in stainless-steel insect screens, mosquito nets and security mesh. Ten years on the ground, 5,000+ HDB / condo / landed installs, SS304 weave, written 10-year warranty."
+          content="Singapore-based specialist in stainless-steel insect screens, mosquito nets and window mesh. Ten years on the ground, 5,000+ HDB / condo / landed installs, SS304 weave, written 10-year warranty."
         />
         <meta
           name="keywords"
-          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, Tectone Renex Steel, SS304 insect screen, Singapore insect screen specialist"
+          content="insect screen Singapore, mosquito net Singapore, window mesh Singapore, Tectone Renex Steel, SS304 insect screen, Singapore insect screen specialist, mosquito mesh"
         />
         <meta property="og:title" content="About · Tectone Renex Steel — Singapore Insect Screen Specialist" />
         <meta
