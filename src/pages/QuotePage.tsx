@@ -11,30 +11,36 @@ const QuotePage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Get An Instant Quote | Tectone Renex Steel</title>
+        <title>Get a Quote · Insect Screen &amp; Mosquito Net Singapore | Tectone Renex Steel</title>
         <meta
           name="description"
-          content="Get an instant quote for premium aluminium insect screens in Singapore. Submit your measurements and details in 3 simple steps."
+          content="Configure your Singapore insect screen, mosquito net or security mesh in 3 steps. Drop your mm dimensions, leave your number — quote PDF in your inbox within minutes."
+        />
+        <meta
+          name="keywords"
+          content="insect screen quote Singapore, mosquito net quote, security mesh quote, HDB insect screen pricing, BTO mosquito net cost"
         />
 
         <link rel="canonical" href={canonical} />
+        <link rel="alternate" hrefLang="en-SG" href={canonical} />
 
         {/* OG */}
-        <meta property="og:title" content="Get An Instant Quote | Tectone Renex Steel" />
+        <meta property="og:title" content="Get a Quote · Insect Screen & Mosquito Net Singapore | Tectone" />
         <meta
           property="og:description"
-          content="Submit your details to receive a custom quotation for insect screen installation."
+          content="Configure your insect screen or mosquito net for any HDB, condo or landed opening in Singapore. PDF quote in minutes."
         />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_SG" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Get An Instant Quote | Tectone Renex Steel" />
+        <meta name="twitter:title" content="Get a Quote · Insect Screen & Mosquito Net Singapore | Tectone" />
         <meta
           name="twitter:description"
-          content="Get an instant quote for premium aluminium insect screens in Singapore."
+          content="Instant quote for Singapore insect screens, mosquito nets and security mesh. PDF in your inbox."
         />
       </Head>
 

@@ -92,17 +92,23 @@ const SecurityScreenPage: React.FC = () => {
     <>
       <Head>
         <title>
-          Mosquito Netting | Insect Screen Products | Get a Quote Now | Tectone Renex Steel
+          Insect Screen &amp; Mosquito Net Singapore · 7 Systems | Tectone Renex Steel
         </title>
         <meta
           name="description"
-          content="High-quality insect screens and mosquito netting solutions in Singapore. Get an instant quote today!"
+          content="Singapore's full catalog of stainless-steel insect screens, mosquito nets and security mesh — swing, folding, sliding doors plus casement, sliding, fixed and top-hung window systems. SS304 weave, 10-year warranty."
         />
-        <meta property="og:title" content="Mosquito Netting & Insect Screen Products | Get a Quote Now | Tectone Renex Steel" />
-        <meta property="og:description" content="Browse our high-quality insect screen and mosquito net products designed for Singapore homes." />
+        <meta
+          name="keywords"
+          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, sliding mosquito net, casement window mesh, HDB mosquito screen, BTO insect screen"
+        />
+        <meta property="og:title" content="Insect Screen & Mosquito Net Singapore · 7 Systems | Tectone Renex Steel" />
+        <meta property="og:description" content="Seven SS304 insect screen + mosquito net systems for Singapore homes — sized to your opening, installed in 14 days, 10-year warranty." />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta property="og:locale" content="en_SG" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://tectonesteel.com/our-product" />
+        <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/our-product" />
         <link
           rel="preload"
           as="image"

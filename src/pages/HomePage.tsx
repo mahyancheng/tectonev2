@@ -13,6 +13,7 @@ import MeshWeave from "@/components/visuals/MeshWeave";
 import CountUp from "@/components/visuals/CountUp";
 import LockScrollVideo from "@/components/visuals/LockScrollVideo";
 import CatalogAccordion from "@/components/CatalogAccordion";
+import BTOPackages from "@/components/BTOPackages";
 
 const manifestLines = [
   { idx: "I", title: "No bars. Ever.", body: "Stainless-steel weave does the work of a grille without the visual prison. Open windows are the brief — security is the bonus." },
@@ -34,42 +35,98 @@ const HomePage: React.FC = () => {
     <>
       <Head>
         <title>
-          Insect Screen Singapore | Custom Mosquito Netting | Tectone Renex Steel Pte Ltd
+          Insect Screen Singapore | Mosquito Net &amp; Security Mesh · SS304 | Tectone Renex Steel
         </title>
         <meta
           name="description"
-          content="High-quality insect screens and mosquito netting solutions in Singapore. Get an instant quote today!"
+          content="Singapore's specialist for stainless-steel insect screens, mosquito nets and security mesh. SS304 weave in powder-coated aluminium. HDB BTO packages from SGD 1,980. 10-year warranty. Survey + install in 14 days."
         />
-        <meta property="og:title" content="Insect Screen Singapore | Custom Mosquito Netting | Tectone Renex Steel Pte Ltd" />
-        <meta property="og:description" content="Premium insect screens with elegant design and superior protection. Get your quote now." />
+        <meta
+          name="keywords"
+          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, HDB mosquito net, BTO insect screen, stainless steel mosquito net, SS304 insect screen, Singapore window mesh"
+        />
+
+        <meta property="og:title" content="Insect Screen Singapore | Mosquito Net & Security Mesh · Tectone Renex Steel" />
+        <meta property="og:description" content="Stainless-steel insect screens, mosquito nets and security mesh — engineered in Singapore for HDB, condo and landed homes. From SGD 1,980 for BTO." />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta property="og:url" content="https://tectonesteel.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_SG" />
+
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Insect Screen Singapore | Mosquito Net & Security Mesh · Tectone" />
+        <meta name="twitter:description" content="SS304 stainless-steel insect screens for Singapore homes. HDB BTO packages from SGD 1,980." />
+
         <link rel="canonical" href="https://tectonesteel.com/" />
+        <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/" />
+        <link rel="alternate" hrefLang="x-default" href="https://tectonesteel.com/" />
         <link rel="preload" as="image" href={homepage} />
+
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Tectone Renex Steel Pte Ltd",
-            "url": "https://tectonesteel.com",
-            "telephone": "+6596771199",
-            "email": "tectone777@gmail.com",
-            "address": {
+            "@id": "https://tectonesteel.com/#business",
+            name: "Tectone Renex Steel Pte Ltd",
+            description:
+              "Singapore specialist for stainless-steel insect screens, mosquito nets and security mesh systems. SS304 weave, SGS-tested, 10-year warranty. HDB BTO, condominium and landed installations.",
+            url: "https://tectonesteel.com",
+            telephone: "+6596771199",
+            email: "tectone777@gmail.com",
+            image: "https://tectonesteel.com/og-image.webp",
+            logo: "https://tectonesteel.com/og-image.webp",
+            priceRange: "$$",
+            currenciesAccepted: "SGD",
+            paymentAccepted: "Cash, PayNow, Bank Transfer",
+            areaServed: { "@type": "Country", name: "Singapore" },
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "11 Woodlands Cl, #04-40 Woodlands 11",
-              "addressLocality": "Singapore",
-              "postalCode": "737853",
-              "addressCountry": "SG"
+              streetAddress: "11 Woodlands Cl, #04-40 Woodlands 11",
+              addressLocality: "Singapore",
+              postalCode: "737853",
+              addressCountry: "SG",
             },
-            "openingHoursSpecification": [
+            geo: { "@type": "GeoCoordinates", latitude: 1.4344, longitude: 103.8024 },
+            openingHoursSpecification: [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "09:00",
-                "closes": "18:00"
-              }
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "09:00",
+                closes: "18:00",
+              },
             ],
-            "sameAs": ["https://www.facebook.com/share/1FQVZzyYPn/"]
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "59",
+              bestRating: "5",
+            },
+            sameAs: ["https://www.facebook.com/share/1FQVZzyYPn/"],
+            makesOffer: [
+              {
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: "Insect Screen Installation" },
+                areaServed: "Singapore",
+              },
+              {
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: "Mosquito Net Installation" },
+                areaServed: "Singapore",
+              },
+              {
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: "Security Mesh Installation" },
+                areaServed: "Singapore",
+              },
+              {
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: "HDB BTO Insect Screen Package" },
+                areaServed: "Singapore",
+                priceCurrency: "SGD",
+                price: "1980",
+              },
+            ],
           })}
         </script>
       </Head>
@@ -280,6 +337,27 @@ const HomePage: React.FC = () => {
           </div>
 
           <CatalogAccordion />
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════
+          § 02b · HDB BTO PACKAGES — high-volume conversion block
+          Linked to the dedicated /hdb-packages SEO landing page.
+          ════════════════════════════════════════════════════ */}
+      <section className="cv-auto py-24 md:py-32 border-t border-white/5">
+        <div className="container mx-auto px-4">
+          <BTOPackages />
+          <Reveal>
+            <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
+              <p className="text-white/55 text-sm max-w-xl">
+                Bigger floor plan, or HDB resale / condo / landed? Custom-sized
+                configurator handles every opening type.
+              </p>
+              <Link to="/hdb-packages" className="btn-square-outline">
+                Full HDB Page ↗
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

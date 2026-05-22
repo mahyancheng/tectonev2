@@ -18,6 +18,7 @@ import AboutPage from "./pages/AboutPage";
 import Products from "./pages/Products";
 import ContactPage from "./pages/ContactPage";
 import QuotePage from "./pages/QuotePage";
+import HdbPackagesPage from "./pages/HdbPackagesPage";
 import ThankYouPage from "./pages/ThankYouPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -118,6 +119,7 @@ export const routes: RouteRecord[] = [
       { path: "our-product", element: <Products /> },
       { path: "contact-us", element: <ContactPage /> },
       { path: "quote", element: <QuotePage /> },
+      { path: "hdb-packages", element: <HdbPackagesPage /> },
       { path: "thank-you", element: <ThankYouPage /> },
       { path: "blog", element: <BlogPage /> },
       { path: "privacy-policy", element: <PrivacyPolicyPage /> },

@@ -81,6 +81,8 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
     phone: "",
     postcode: "",
     price: "",
+    areaSqft: "",
+    rate: "",
   });
 
   useEffect(() => {
@@ -262,7 +264,13 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
       const pdfBlob = doc.output("blob");
       setPdfUrl(URL.createObjectURL(pdfBlob));
 
-      setSuccessData({ ...formData, price: formattedPrice });
+      const breakdown = calculateBreakdown();
+      setSuccessData({
+        ...formData,
+        price: formattedPrice,
+        areaSqft: formatSqft(breakdown.areaSqft),
+        rate: String(breakdown.rate),
+      });
       setShowSuccessDialog(true);
 
       setFormData({
@@ -514,40 +522,25 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                   </div>
 
                   {formData.width && formData.height && (() => {
-                    const { wMm, hMm, areaSqft, rate, total } = calculateBreakdown();
-                    const trail = `${wMm} × ${hMm} mm  =  ${formatSqft(areaSqft)} sqft × SGD ${rate}`;
+                    // Price is GATED — we no longer expose the dollar total
+                    // until the lead is submitted. Still confirm the dimension
+                    // was captured (UX trust signal) and tease the unlock.
                     return (
                       <motion.div
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         className={`border border-white/10 bg-white/[0.03] ${compact ? "mt-3 px-3.5 py-2.5" : "mt-6 p-4 rounded-md"}`}
                       >
-                        {compact ? (
-                          <>
-                            <div className="flex items-baseline justify-between gap-3">
-                              <span className="eyebrow">Estimated</span>
-                              <span className="font-serif text-lg text-white tracking-tight tabular-nums">
-                                {formatPrice(total)}
-                              </span>
-                            </div>
-                            <div className="mt-1 text-[10px] font-mono tracking-[0.10em] text-white/45 tabular-nums">
-                              {trail}
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <p className="eyebrow mb-1">Estimated</p>
-                            <p className="font-serif text-2xl text-white tracking-tight tabular-nums">
-                              {formatPrice(total)}
-                            </p>
-                            <p className="mt-2 text-[11px] font-mono tracking-[0.10em] text-white/50 tabular-nums">
-                              {trail}
-                            </p>
-                            <p className="text-xs text-white/45 mt-2">
-                              Indicative only · Final quote confirmed after on-site measurement
-                            </p>
-                          </>
-                        )}
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="eyebrow">Dimensions captured</span>
+                          <span className={`font-mono tabular-nums text-white/85 ${compact ? "text-xs" : "text-sm"}`}>
+                            {formData.width} × {formData.height} mm
+                          </span>
+                        </div>
+                        <div className="mt-2 flex items-center gap-2 text-[10px] sm:text-[11px] font-mono tracking-[0.12em] uppercase text-white/55">
+                          <span className="live-dot" />
+                          Price unlocks after Step 3
+                        </div>
                       </motion.div>
                     );
                   })()}
@@ -584,9 +577,10 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                     </p>
                   )}
 
-                  {/* Order summary — single inline strip in compact, full card otherwise */}
+                  {/* Order summary — single inline strip in compact, full card otherwise.
+                      Price + area × rate are LOCKED until form submit. Spec is
+                      shown to confirm the captured dimensions. */}
                   {(() => {
-                    const { areaSqft, rate, total } = calculateBreakdown();
                     if (compact) {
                       return (
                         <div className="mb-4 px-3.5 py-2.5 border border-white/10 bg-white/[0.03]">
@@ -599,16 +593,15 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                             </div>
                             <div className="flex items-baseline gap-2">
                               <span className="eyebrow">Est.</span>
-                              <span className="font-serif text-lg text-white tracking-tight tabular-nums">
-                                {formatPrice(total)}
+                              <span className="inline-flex items-center gap-1.5 text-[10px] font-mono tracking-[0.14em] uppercase text-white/65">
+                                <span className="live-dot" />
+                                Locked
                               </span>
                             </div>
                           </div>
-                          {formData.width && formData.height && (
-                            <div className="mt-1 text-[10px] font-mono tracking-[0.10em] text-white/45 tabular-nums">
-                              {formatSqft(areaSqft)} sqft × SGD {rate}
-                            </div>
-                          )}
+                          <div className="mt-1 text-[10px] font-mono tracking-[0.10em] text-white/45">
+                            Reveals after you submit · sent to your inbox as PDF
+                          </div>
                         </div>
                       );
                     }
@@ -626,16 +619,11 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
                             {formData.width || "—"} mm × {formData.height || "—"} mm
                           </span>
                         </div>
-                        <div className="flex items-baseline justify-between px-4 py-3">
-                          <span className="eyebrow">Area · rate</span>
-                          <span className="text-sm text-white/85 font-mono tracking-[0.10em] tabular-nums">
-                            {formatSqft(areaSqft)} sqft × SGD {rate}
-                          </span>
-                        </div>
                         <div className="flex items-baseline justify-between px-4 py-3.5 bg-white/[0.02]">
                           <span className="eyebrow">Estimated</span>
-                          <span className="font-serif text-xl text-white tracking-tight tabular-nums">
-                            {formatPrice(total)}
+                          <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] uppercase text-white/80">
+                            <span className="live-dot" />
+                            Unlocks after submit
                           </span>
                         </div>
                       </div>
@@ -715,9 +703,17 @@ const EnhancedQuoteCalculator: React.FC<EnhancedQuoteCalculatorProps> = ({ initi
           </div>
 
           <div className="mt-4">
-            <p className="eyebrow">Total estimate</p>
-            <p className="font-serif text-3xl text-white tracking-tight mt-1">
+            <p className="eyebrow">Total estimate · unlocked</p>
+            <p className="font-serif text-4xl text-white tracking-tight mt-1 tabular-nums">
               {successData.price}
+            </p>
+            {successData.areaSqft && successData.rate && (
+              <p className="mt-2 text-[11px] font-mono tracking-[0.12em] uppercase text-white/55 tabular-nums">
+                {successData.areaSqft} sqft × SGD {successData.rate} / sqft
+              </p>
+            )}
+            <p className="mt-2 text-xs text-white/45">
+              Indicative · final quote confirmed after on-site survey
             </p>
           </div>
 

@@ -58,20 +58,28 @@ const AboutPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>About Us | Tectone Renex Steel</title>
+        <title>
+          About · Singapore's Insect Screen, Mosquito Net &amp; Security Mesh Specialist | Tectone Renex Steel
+        </title>
         <meta
           name="description"
-          content="High-quality insect screens and mosquito netting solutions in Singapore. Get an instant quote today!"
+          content="Singapore-based specialist in stainless-steel insect screens, mosquito nets and security mesh. Ten years on the ground, 5,000+ HDB / condo / landed installs, SS304 weave, written 10-year warranty."
         />
-        <meta property="og:title" content="About Us | Tectone Renex Steel" />
+        <meta
+          name="keywords"
+          content="insect screen Singapore, mosquito net Singapore, security mesh Singapore, Tectone Renex Steel, SS304 insect screen, Singapore insect screen specialist"
+        />
+        <meta property="og:title" content="About · Tectone Renex Steel — Singapore Insect Screen Specialist" />
         <meta
           property="og:description"
-          content="Learn about our commitment to high-quality insect screens and mosquito netting solutions for Singapore homes."
+          content="Ten years engineering insect screens, mosquito nets and security mesh for Singapore HDB, condo and landed homes."
         />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta property="og:locale" content="en_SG" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
         <link rel="canonical" href="https://tectonesteel.com/about-insect-screen-supplier" />
+        <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/about-insect-screen-supplier" />
         <link rel="preload" as="image" href={ScreneSolution} />
       </Head>
 
