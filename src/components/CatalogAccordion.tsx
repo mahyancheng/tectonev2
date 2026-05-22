@@ -242,7 +242,20 @@ const CatalogAccordion: React.FC<CatalogAccordionProps> = ({
   // The row the user has actively engaged with (clicked / focussed
   // inside the body). Pinned rows survive a mouse-leave; they're only
   // displaced when the user explicitly hovers a *different* row.
-  const [pinnedId, setPinnedId] = useState<string | null>(null);
+  //
+  // We mirror the state into a ref so the close-timer (which can fire on
+  // a stale closure) and the leave handler always read the *latest*
+  // pinned value. Without this there's a 1-frame race where the user can
+  // click an input (queueing setPinnedId) AND move the mouse off in the
+  // same tick — the leave handler closes over the old `null` pinnedId
+  // and schedules a close that fires before React re-renders with the
+  // pin applied. Reading via ref eliminates the window entirely.
+  const [pinnedId, setPinnedIdState] = useState<string | null>(null);
+  const pinnedIdRef = useRef<string | null>(null);
+  const setPinnedId = useCallback((id: string | null) => {
+    pinnedIdRef.current = id;
+    setPinnedIdState(id);
+  }, []);
 
   // Debounce for hover-out → close. Cancelled if pointer re-enters
   // another row before it fires — that's the "hover across to another
@@ -268,21 +281,27 @@ const CatalogAccordion: React.FC<CatalogAccordionProps> = ({
         setOpenId(id);
       }
     },
-    [cancelClose, openId]
+    [cancelClose, openId, setPinnedId]
   );
 
   const handleHoverLeave = useCallback(
     (id: string) => {
-      // Pinned rows ignore mouse-leave: only an explicit hover onto a
-      // different row (handled in handleHoverEnter above) can displace them.
-      if (pinnedId === id) return;
+      // Read latest pin via ref (see comment above the useRef).
+      if (pinnedIdRef.current === id) return;
       cancelClose();
       closeTimer.current = window.setTimeout(() => {
+        // Re-check the pin when the timer fires — the user may have
+        // clicked inside the body during the 140ms debounce, which is
+        // their signal to "keep this open".
+        if (pinnedIdRef.current === id) {
+          closeTimer.current = null;
+          return;
+        }
         setOpenId((cur) => (cur === id ? null : cur));
         closeTimer.current = null;
       }, 140);
     },
-    [pinnedId, cancelClose]
+    [cancelClose]
   );
 
   const handleHeaderActivate = useCallback(
@@ -292,20 +311,26 @@ const CatalogAccordion: React.FC<CatalogAccordionProps> = ({
       cancelClose();
       if (openId === id) {
         // Closing → also drop the pin.
-        if (pinnedId === id) setPinnedId(null);
+        if (pinnedIdRef.current === id) setPinnedId(null);
         setOpenId(null);
       } else {
         setOpenId(id);
         if (!hoverMode) setPinnedId(id); // touch: header tap pins by default
       }
     },
-    [openId, pinnedId, hoverMode, cancelClose]
+    [openId, hoverMode, cancelClose, setPinnedId]
   );
 
-  const handleContentInteract = useCallback((id: string) => {
-    // Any pointer-down / focus inside the expanded body pins this row open.
-    setPinnedId(id);
-  }, []);
+  const handleContentInteract = useCallback(
+    (id: string) => {
+      // Any pointer-down / focus inside the expanded body pins this row open.
+      // Also kill any in-flight close timer so we don't lose the row while
+      // the user is typing.
+      cancelClose();
+      setPinnedId(id);
+    },
+    [cancelClose, setPinnedId]
+  );
 
   return (
     <div className={`border-t border-white/10 ${className}`}>
