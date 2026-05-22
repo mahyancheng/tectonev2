@@ -274,26 +274,32 @@ const CatalogAccordion: React.FC<CatalogAccordionProps> = ({
   const handleHoverEnter = useCallback(
     (id: string) => {
       cancelClose();
-      // Hovering a *different* row breaks any existing pin — the user
-      // has visibly moved on.
+      // Once a row is pinned, hover events on OTHER rows are ignored —
+      // the user is in the middle of typing / focusing inside the pinned
+      // row, and the cursor passing over a different row's header
+      // shouldn't yank their work away. The only way to switch rows
+      // from a pinned state is to click the new row's header.
+      if (pinnedIdRef.current !== null && pinnedIdRef.current !== id) return;
       if (id !== openId) {
-        setPinnedId(null);
         setOpenId(id);
       }
     },
-    [cancelClose, openId, setPinnedId]
+    [cancelClose, openId]
   );
 
   const handleHoverLeave = useCallback(
     (id: string) => {
       // Read latest pin via ref (see comment above the useRef).
       if (pinnedIdRef.current === id) return;
+      // Pinned elsewhere? Also ignore — another row's pin is holding
+      // the accordion state, this leave is irrelevant.
+      if (pinnedIdRef.current !== null) return;
       cancelClose();
       closeTimer.current = window.setTimeout(() => {
         // Re-check the pin when the timer fires — the user may have
         // clicked inside the body during the 140ms debounce, which is
         // their signal to "keep this open".
-        if (pinnedIdRef.current === id) {
+        if (pinnedIdRef.current !== null) {
           closeTimer.current = null;
           return;
         }
@@ -306,14 +312,17 @@ const CatalogAccordion: React.FC<CatalogAccordionProps> = ({
 
   const handleHeaderActivate = useCallback(
     (id: string) => {
-      // Click / Enter / Space on the row header behaves as a manual toggle.
-      // Useful on touch devices (no hover) and for keyboard users.
+      // Click / Enter / Space on the row header is the explicit gesture
+      // that overrides hover-state. Two cases:
+      //   – same row clicked → toggle closed (and drop pin)
+      //   – different row clicked → switch to it (and drop any pin on
+      //     the previous row, since the user explicitly chose to move on)
       cancelClose();
       if (openId === id) {
-        // Closing → also drop the pin.
         if (pinnedIdRef.current === id) setPinnedId(null);
         setOpenId(null);
       } else {
+        setPinnedId(null); // explicit switch clears prior pin
         setOpenId(id);
         if (!hoverMode) setPinnedId(id); // touch: header tap pins by default
       }
