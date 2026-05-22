@@ -91,18 +91,34 @@ const BlogPage: React.FC = () => {
     <>
       {/* ✅ 统一只用 Head（保证 SSG 写进静态 HTML） */}
       <Head>
-        <title>Blog | Tectone Renex Steel</title>
+        <title>
+          Insect Screen &amp; Mosquito Net Singapore · Buying Guides + Field Notes | Tectone Renex Steel
+        </title>
         <meta
           name="description"
-          content="High-quality insect screens and mosquito netting solutions in Singapore."
+          content="Buying guides, install case studies and material deep-dives on insect screens, mosquito nets and window mesh in Singapore. Written by the team that installed 5,000+ HDB, condo and landed sets."
         />
-        <meta property="og:title" content="Blog | Tectone Renex Steel" />
+        <meta
+          name="keywords"
+          content="insect screen Singapore guide, mosquito net Singapore guide, window mesh Singapore, sliding mosquito net, casement window mesh, BTO insect screen, HDB mosquito net advice, invisible grille alternative"
+        />
+        <meta name="geo.region" content="SG" />
+        <meta name="geo.placename" content="Singapore" />
+        <meta property="og:title" content="Insect Screen & Mosquito Net Singapore Buying Guides | Tectone" />
         <meta
           property="og:description"
-          content="Learn more about insect screens and mosquito nets in Singapore."
+          content="Hands-on Singapore insect screen + mosquito net guides — material, install, pricing, HDB BTO sets, sliding vs casement, invisible grille alternatives."
         />
+        <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
+        <meta property="og:locale" content="en_SG" />
+        <meta property="og:url" content="https://tectonesteel.com/blog" />
+        <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Insect Screen & Mosquito Net Singapore Guides | Tectone" />
+        <meta name="twitter:description" content="Buying guides, install case studies, material deep-dives on Singapore insect screens, mosquito nets and window mesh." />
         <link rel="canonical" href="https://tectonesteel.com/blog" />
+        <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/blog" />
 
         {/* ✅ featured 有图才 preload（可选，但保留你的逻辑） */}
         {featured?.imageUrl && (

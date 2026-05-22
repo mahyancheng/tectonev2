@@ -135,11 +135,12 @@ const SecurityScreenPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
-                Premium Insect Screen Solutions
+                Insect Screen &amp; Mosquito Net Singapore — Seven Window Mesh Systems
               </h1>
               <p className="text-white/55 mb-6">
-                Our comprehensive range of <b>aluminium insect screens</b> offers elegant, grille-free protection from mosquitoes
-                and pests while enhancing the look of modern homes and businesses in Singapore.
+                Tectone's full range of <b>SS304 stainless-steel insect screens, mosquito nets and window mesh</b> for
+                Singapore — engineered grille-free protection against mosquitoes and pests for HDB BTO, condo and
+                landed homes.
               </p>
               <p className="text-white/55 mb-6">
                 Each screen is <b>custom-manufactured to your exact door and window dimensions</b>, ensuring a seamless fit and lasting durability.

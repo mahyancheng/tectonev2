@@ -48,20 +48,31 @@ const ProductDetailPage: React.FC = () => {
     return <NotFound />;
   }
 
-  const pageTitle = `${product.title} | Get an Instant Quote Now | Tectone Renex Steel`;
+  const pageTitle = `${product.title} Singapore · Mosquito Net & Window Mesh · Instant Quote | Tectone Renex Steel`;
   const metaDescription = buildMetaDescription(product.title, product.description);
+  const canonical = `https://tectonesteel.com/our-product/product/${productId}`;
 
   // Build a REV-style code from the product id ("107-security-swing-door" → "RT-107")
   const productCode = `RT-${(productId || "").split("-")[0]}`;
+  const isDoor = ["107", "104", "105"].includes((productId || "").split("-")[0]);
+  const pricePerSqft = isDoor ? 38 : 29;
 
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={`${product.title} | Tectone Renex Steel`} />
-        <meta property="og:description" content={`Discover specifications, features, and installation details for ${product.title}.`} />
+        <meta
+          name="keywords"
+          content={`${product.title} Singapore, ${product.title} mosquito net, ${product.title} insect screen, ${product.title} window mesh, ${productCode} Tectone, mosquito net Singapore, insect screen Singapore`}
+        />
+        <meta name="geo.region" content="SG" />
+        <meta name="geo.placename" content="Singapore" />
+        <meta property="og:title" content={`${product.title} Singapore | Mosquito Net & Insect Screen | Tectone`} />
+        <meta property="og:description" content={`Tectone ${productCode} — ${product.title.toLowerCase()} engineered for Singapore HDB, condo and landed homes. SS304 mesh, 10-year warranty.`} />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta property="og:locale" content="en_SG" />
+        <meta property="og:url" content={canonical} />
         {product.image && <meta property="og:image" content={product.image} />}
         <meta property="og:type" content="product" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +80,65 @@ const ProductDetailPage: React.FC = () => {
         <meta name="twitter:description" content={metaDescription} />
         {product.image && <meta name="twitter:image" content={product.image} />}
         <link rel="preload" as="image" href={product.image} />
-        <link rel="canonical" href={`https://tectonesteel.com/our-product/product/${productId}`} />
+        <link rel="canonical" href={canonical} />
+        <link rel="alternate" hrefLang="en-SG" href={canonical} />
+
+        {/* Product schema — gives rich snippets in Google SERP */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "@id": `${canonical}#product`,
+            name: `${product.title} Singapore`,
+            sku: productCode,
+            mpn: productCode,
+            description: product.description.replace(/\s+/g, " ").trim().slice(0, 480),
+            brand: { "@type": "Brand", name: "Tectone Renex Steel" },
+            manufacturer: { "@type": "Organization", name: "Tectone Renex Steel Pte Ltd" },
+            category: "Insect Screen / Mosquito Net / Window Mesh",
+            image: product.image ? [`https://tectonesteel.com${product.image}`] : undefined,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "SGD",
+              price: pricePerSqft.toFixed(2),
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                priceCurrency: "SGD",
+                price: pricePerSqft.toFixed(2),
+                referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "FTK" },
+                priceType: "https://schema.org/ListPrice",
+                valueAddedTaxIncluded: true,
+              },
+              availability: "https://schema.org/InStock",
+              areaServed: { "@type": "Country", name: "Singapore" },
+              url: canonical,
+              seller: {
+                "@type": "LocalBusiness",
+                "@id": "https://tectonesteel.com/#business",
+                name: "Tectone Renex Steel Pte Ltd",
+              },
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.8",
+              reviewCount: "59",
+              bestRating: "5",
+            },
+          })}
+        </script>
+
+        {/* BreadcrumbList */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://tectonesteel.com/" },
+              { "@type": "ListItem", position: 2, name: "Products", item: "https://tectonesteel.com/our-product" },
+              { "@type": "ListItem", position: 3, name: product.title, item: canonical },
+            ],
+          })}
+        </script>
       </Head>
 
       {/* ═════════════ HERO — spec-sheet layout ═════════════ */}

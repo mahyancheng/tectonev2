@@ -72,7 +72,7 @@ const AboutPage: React.FC = () => {
         <meta property="og:title" content="About · Tectone Renex Steel — Singapore Insect Screen Specialist" />
         <meta
           property="og:description"
-          content="Ten years engineering insect screens, mosquito nets and security mesh for Singapore HDB, condo and landed homes."
+          content="Tectone Renex Steel · ten years engineering insect screens, mosquito nets and window mesh systems for Singapore HDB, BTO, condo and landed homes."
         />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
         <meta property="og:locale" content="en_SG" />

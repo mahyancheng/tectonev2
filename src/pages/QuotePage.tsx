@@ -40,7 +40,7 @@ const QuotePage: React.FC = () => {
         <meta name="twitter:title" content="Get a Quote · Insect Screen & Mosquito Net Singapore | Tectone" />
         <meta
           name="twitter:description"
-          content="Instant quote for Singapore insect screens, mosquito nets and security mesh. PDF in your inbox."
+          content="Instant quote for Singapore insect screens, mosquito nets and window mesh — HDB, BTO, condo or landed. PDF in your inbox in minutes."
         />
       </Head>
 

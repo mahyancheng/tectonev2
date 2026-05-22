@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Head } from "vite-react-ssg";
 
 import { useContent, BlogPost } from "@/contexts/ContentContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -264,6 +265,10 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
+      <Head>
+        <title>Admin · Tectone</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       {/* Header */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Welcome */}
@@ -278,7 +283,7 @@ export default function AdminDashboard() {
             <span className="text-slate-900">Admin</span>
           </h2>
           <p className="text-white/45 text-lg mt-2">
-            Manage your blog content to educate customers about insect screens & security mesh.
+            Manage your blog content to educate customers about insect screens &amp; window mesh.
           </p>
         </motion.div>
 

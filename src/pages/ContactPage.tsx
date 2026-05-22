@@ -37,30 +37,49 @@ const ContactPage: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Contact Us | Tectone Renex Steel</title>
+        <title>
+          Contact · Insect Screen &amp; Mosquito Net Singapore | Free Site Survey | Tectone Renex Steel
+        </title>
         <meta
           name="description"
-          content="Contact Tectone Renex Steel for premium insect screens and mosquito netting solutions in Singapore. Get an instant quote today!"
+          content="Speak to Tectone — Singapore's stainless-steel insect screen, mosquito net and window mesh specialist. Book a free on-site survey, call +65 9677 1199 (Charlie), or WhatsApp for an instant quote."
         />
-        <meta property="og:title" content="Contact Us | Tectone Renex Steel" />
+        <meta
+          name="keywords"
+          content="contact insect screen Singapore, mosquito net Singapore contact, window mesh Singapore survey, insect screen installer Singapore, free site survey mosquito net, Tectone Charlie contact"
+        />
+        <meta name="geo.region" content="SG" />
+        <meta name="geo.placename" content="Singapore" />
+        <meta name="geo.position" content="1.4344;103.8024" />
+        <meta name="ICBM" content="1.4344, 103.8024" />
+        <meta property="og:title" content="Contact · Insect Screen & Mosquito Net Singapore | Free Site Survey | Tectone" />
         <meta
           property="og:description"
-          content="Reach out to our team for product inquiries and installation details."
+          content="Book a free Singapore site survey for stainless-steel insect screens, mosquito nets and window mesh. WhatsApp +65 9677 1199 · Charlie."
         />
         <meta property="og:image" content="https://tectonesteel.com/og-image.webp" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:locale" content="en_SG" />
+        <meta property="og:url" content="https://tectonesteel.com/contact-us" />
+        <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Tectone Renex Steel Pte Ltd" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact · Insect Screen & Mosquito Net Singapore | Tectone" />
+        <meta name="twitter:description" content="Free site survey + instant quote on Singapore insect screens and mosquito nets. WhatsApp Charlie at +65 9677 1199." />
         <link rel="canonical" href="https://tectonesteel.com/contact-us" />
+        <link rel="alternate" hrefLang="en-SG" href="https://tectonesteel.com/contact-us" />
       </Head>
 
       {/* Contact Hero */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Get In Touch</h1>
+            <h1 className="text-4xl font-bold mb-4">
+              Contact · Insect Screen &amp; Mosquito Net Singapore
+            </h1>
             <p className="text-white/55 max-w-3xl mx-auto">
-              Have questions about our products or need a custom solution? Contact us today and
-              our team will be happy to assist you.
+              Book a free Singapore site survey, talk to Charlie on WhatsApp, or send a measurement
+              over for a no-obligation insect screen, mosquito net or window mesh quote. We reply
+              in ~8 minutes during business hours.
             </p>
           </div>
 

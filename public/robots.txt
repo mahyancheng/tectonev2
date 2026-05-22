@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /thank-you
+Disallow: /404
+Disallow: /lp.html
+Disallow: /quote?pkg=
+Disallow: /quote?variant=
 
 Sitemap: https://tectonesteel.com/sitemap.xml
